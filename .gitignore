@@ -1,0 +1,28 @@
+# Editor files
+.idea
+
+# Dependency directories
+-git
+node_modules
+bower_components
+
+# Frontend Build files
+frontend/build
+frontend/src/templates.js
+frontend/src/configFile.js
+/data/
+faviconData.json
+
+# Logs
+logs
+*.log
+npm-debug.log.*
+
+# Runtime data
+pids
+*.pid
+*.seed
+.DS_Store
+
+# node-waf configuration
+.lock-wscript
