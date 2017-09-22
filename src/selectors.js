@@ -3,7 +3,7 @@
 module.exports = function(document) {
 	return {
 		document: document,
-		scene: document.queryselector('a-scene'),
+		scene: document.querySelector('a-scene'),
 		assets: document.querySelector('a-assets'),
 	};
 };
