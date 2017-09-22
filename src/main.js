@@ -1,11 +1,11 @@
 'use strict';
 
 // DATA
-require('./assets/js/data/ajlamps.js');
+require('./data/ajlamps.js');
 
 // SETTINGS
-require('./assets/js/shared/variables.js');
+require('./variables.js');
 
 // MODULES
-require('./assets/js/modules/lamps.js');
-require('./assets/js/modules/led-hover-anim.js');
+require('./modules/lamps.js');
+require('./modules/led-hover-anim.js');
