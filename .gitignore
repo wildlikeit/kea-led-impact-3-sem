@@ -7,9 +7,9 @@ node_modules
 bower_components
 
 # Frontend Build files
-frontend/build
-frontend/src/templates.js
-frontend/src/configFile.js
+build
+src/templates.js
+src/configFile.js
 /data/
 faviconData.json
 
