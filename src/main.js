@@ -12,3 +12,4 @@ const ledHoverAnimationModule = require('./modules/led-hover-anim.js');
 const selectors = require('./selectors')(document);
 
 lampsModule.init(selectors, ajlampsData);
+ledHoverAnimationModule.init(selectors);

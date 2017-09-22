@@ -1,85 +1,100 @@
 'use strict';
 
-var sky = document.querySelector('a-sky');
-var ledText = document.querySelectorAll('.led-text');
-var lampText = document.querySelectorAll('.lamp-text');
-var ledEnterSkyAnim;
-var ledLeaveSkyAnim;
-var ledEnterTextAnim;
-var ledLeaveTextAnim;
-var ledAnimActive = false;
+/*global document*/
 
-document.querySelector('#led-plane').addEventListener('mouseenter', function ledEnter (evnt) {
-	this.emit('led-enter');
+const helpers = require('./helpers');
 
-	ledEnterSkyAnim = document.createElement('a-animation');
-	ledEnterSkyAnim.setAttribute('attribute', 'material.color');
-	ledEnterSkyAnim.setAttribute('from', '#ffffff');
-	ledEnterSkyAnim.setAttribute('to', '#000000');
-	ledEnterSkyAnim.setAttribute('dur', '500');
-	ledEnterSkyAnim.setAttribute('ease', 'ease-out');
 
-	if (ledAnimActive){
-		sky.removeChild(ledLeaveSkyAnim);
-		ledAnimActive = true;
-	}else{
-		ledAnimActive = false;
-	}
+module.exports = {
+	init,
+};
 
-	for (var i = 0; i < ledText.length; i++) {
-		ledEnterTextAnim = document.createElement('a-animation');
-		ledEnterTextAnim.setAttribute('attribute', 'text.opacity');
-		ledEnterTextAnim.setAttribute('from', '1');
-		ledEnterTextAnim.setAttribute('to', '0');
-		ledEnterTextAnim.setAttribute('dur', '500');
-		ledEnterTextAnim.setAttribute('ease', 'ease-out');
-		ledText[i].appendChild(ledEnterTextAnim);
-	}
+function init(selectors) {
+	var ledPlane = document.querySelector('#led-plane');
+	var ledEnterSkyAnim;
+	var ledLeaveSkyAnim;
+	var ledAnimActive = false;
 
-	for (var i = 0; i < lampText.length; i++) {
-		ledEnterTextAnim = document.createElement('a-animation');
-		ledEnterTextAnim.setAttribute('attribute', 'text.opacity');
-		ledEnterTextAnim.setAttribute('from', '1');
-		ledEnterTextAnim.setAttribute('to', '0');
-		ledEnterTextAnim.setAttribute('dur', '500');
-		ledEnterTextAnim.setAttribute('ease', 'ease-out');
-		lampText[i].appendChild(ledEnterTextAnim);
-	}
+	ledPlane.addEventListener('mouseenter', function ledEnter(evnt) {
+		this.emit('led-enter');
 
-	sky.appendChild(ledEnterSkyAnim);
-});
+		ledEnterSkyAnim = helpers.createElement('a-animation', {
+			'attribute': 'material.color',
+			'from': '#ffffff',
+			'to': '#000000',
+			'dur': '500',
+			'ease': 'ease-out',
+		});
 
-document.querySelector('#led-plane').addEventListener('mouseleave', function ledLeave (evnt) {
-	this.emit('led-leave');
-	ledLeaveSkyAnim = document.createElement('a-animation');
-	ledLeaveSkyAnim.setAttribute('attribute', 'material.color');
-	ledLeaveSkyAnim.setAttribute('from', '#000000');
-	ledLeaveSkyAnim.setAttribute('to', '#ffffff');
-	ledLeaveSkyAnim.setAttribute('dur', '500');
-	ledLeaveSkyAnim.setAttribute('ease', 'ease-out');
+		if (ledAnimActive) {
+			selectors.sky.removeChild(ledLeaveSkyAnim);
+			ledAnimActive = true;
+		} else {
+			ledAnimActive = false;
+		}
 
-	for (var i = 0; i < ledText.length; i++) {
-		ledLeaveTextAnim = document.createElement('a-animation');
-		ledLeaveTextAnim.setAttribute('attribute', 'text.opacity');
-		ledLeaveTextAnim.setAttribute('from', '0');
-		ledLeaveTextAnim.setAttribute('to', '1');
-		ledLeaveTextAnim.setAttribute('dur', '500');
-		ledLeaveTextAnim.setAttribute('ease', 'ease-out');
-		// ledText[i].removeChild(ledEnterTextAnim);
-		ledText[i].appendChild(ledLeaveTextAnim);
-	}
+		selectors.ledText.forEach(function(element){
+			let ledEnterTextAnim = helpers.createElement('a-animation', {
+				'attribute': 'text.opacity',
+				'from': '1',
+				'to': '0',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
 
-	for (var i = 0; i < lampText.length; i++) {
-		ledLeaveTextAnim = document.createElement('a-animation');
-		ledLeaveTextAnim.setAttribute('attribute', 'text.opacity');
-		ledLeaveTextAnim.setAttribute('from', '0');
-		ledLeaveTextAnim.setAttribute('to', '1');
-		ledLeaveTextAnim.setAttribute('dur', '500');
-		ledLeaveTextAnim.setAttribute('ease', 'ease-out');
-		// lampText[i].removeChild(ledEnterTextAnim);
-		lampText[i].appendChild(ledLeaveTextAnim);
-	}
+			element.appendChild(ledEnterTextAnim);
+		});
 
-	sky.removeChild(ledEnterSkyAnim);
-	sky.appendChild(ledLeaveSkyAnim);
-});
+		selectors.lampText.forEach(function(element){
+			let lampEnterTextAnim = helpers.createElement('a-animation', {
+				'attribute': 'text.opacity',
+				'from': '1',
+				'to': '0',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+			element.appendChild(lampEnterTextAnim);
+		});
+
+		selectors.sky.appendChild(ledEnterSkyAnim);
+	});
+
+	ledPlane.addEventListener('mouseleave', function ledLeave(evnt) {
+		this.emit('led-leave');
+		ledLeaveSkyAnim = document.createElement('a-animation');
+		ledLeaveSkyAnim.setAttribute('attribute', 'material.color');
+		ledLeaveSkyAnim.setAttribute('from', '#000000');
+		ledLeaveSkyAnim.setAttribute('to', '#ffffff');
+		ledLeaveSkyAnim.setAttribute('dur', '500');
+		ledLeaveSkyAnim.setAttribute('ease', 'ease-out');
+
+
+		selectors.ledText.forEach(function(element){
+			let ledLeaveTextAnim = helpers.createElement('a-animation', {
+				'attribute': 'text.opacity',
+				'from': '0',
+				'to': '1',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+			element.appendChild(ledLeaveTextAnim);
+		});
+
+		selectors.lampText.forEach(function(element){
+			let lampLeaveTextAnim = helpers.createElement('a-animation', {
+				'attribute': 'text.opacity',
+				'from': '1',
+				'to': '0',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+			element.appendChild(lampLeaveTextAnim);
+		});
+
+		selectors.sky.removeChild(ledEnterSkyAnim);
+		selectors.sky.appendChild(ledLeaveSkyAnim);
+	});
+}
