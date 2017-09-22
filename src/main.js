@@ -1,11 +1,14 @@
 'use strict';
 
+/*global document*/
+
 // DATA
-require('./data/ajlamps.js');
+const ajlampsData = require('./data/ajlamps.js');
+
+const lampsModule = require('./modules/lamps.js');
+const ledHoverAnimationModule = require('./modules/led-hover-anim.js');
 
 // SETTINGS
-require('./variables.js');
+const selectors = require('./selectors')(document);
 
-// MODULES
-require('./modules/lamps.js');
-require('./modules/led-hover-anim.js');
+lampsModule.init(selectors, ajlampsData);
