@@ -1,105 +1,127 @@
 'use strict';
 
-/*global document*/
+const helpers = require('./helpers');
 
 module.exports = {
 	init,
 };
 
 function init(selectors, ajlamps) {
-////////////////////////////LAMP INFO////////////////////////////
+	////////////////////////////LAMP INFO////////////////////////////
 
-// MIXINS //
-	var lampInfoTextMixin = document.createElement('a-mixin');
-	lampInfoTextMixin.setAttribute('id', 'lampInfoTextMixin');
-	lampInfoTextMixin.setAttribute('color', '#ffffff');
-	lampInfoTextMixin.setAttribute('align', 'left');
-	lampInfoTextMixin.setAttribute('baseline', 'bottom');
-	lampInfoTextMixin.setAttribute('line-height', '60');
-	lampInfoTextMixin.setAttribute('scale', '3 3');
-	lampInfoTextMixin.setAttribute('rotation', '0 15 0');
+	// MIXINS //
+	const lampInfoTextMixin = helpers.createElement('a-mixin', {
+		'id': 'lampInfoTextMixin',
+		'color': '#ffffff',
+		'align': 'left',
+		'baseline': 'bottom',
+		'line-height': '60',
+		'scale': '3 3',
+		'rotation': '0 15 0',
+	});
+
 	selectors.assets.appendChild(lampInfoTextMixin);
 
 	// var ledPlaneMixin = document.createElement('a-mixin');
-	// ledPlaneMixin.setAttribute('id', 'ledPlaneMixin');
-	// ledPlaneMixin.setAttribute('rotation', '0 -15 0');
-	// ledPlaneMixin.setAttribute('geometry.radius', '2.25');
-	// ledPlaneMixin.setAttribute('geometry.segments', '64');
-	// ledPlaneMixin.setAttribute('material.color', '#0054a6');
+	// var ledTextMixin = helpers.createElement('a-mixin', {
+	// 	'id': 'ledPlaneMixin',
+	// 	'rotation': '0 -15 0',
+	// 	'geometry.radius': '2.25',
+	// 	'geometry.segments': '64',
+	// 	'material.color': '#0054a6',
+	// });
 	// selectors.assets.appendChild(ledPlaneMixin);
 
-	var ledTextMixin = document.createElement('a-mixin');
-	ledTextMixin.setAttribute('id', 'ledTextMixin');
-	ledTextMixin.setAttribute('color', '#ffffff');
-	ledTextMixin.setAttribute('align', 'center');
-	ledTextMixin.setAttribute('baseline', 'bottom');
-	ledTextMixin.setAttribute('line-height', '80');
-	ledTextMixin.setAttribute('scale', '6 6');
-	ledTextMixin.setAttribute('rotation', '0 -15 0');
+	const ledTextMixin = helpers.createElement('a-mixin', {
+		'id': 'ledTextMixin',
+		'color': '#ffffff',
+		'align': 'center',
+		'baseline': 'bottom',
+		'line-height': '80',
+		'scale': '6 6',
+		'rotation': '0 -15 0',
+	});
+
 	selectors.assets.appendChild(ledTextMixin);
 
-// LAMP INFO BACKGROUND //
-	var lampInfoPlaneEl = document.createElement('a-plane');
-	lampInfoPlaneEl.setAttribute('id', 'lampInfo-plane');
-	lampInfoPlaneEl.setAttribute('position', '-22 5.7 -12');
-	lampInfoPlaneEl.setAttribute('rotation', '0 15 0');
-	lampInfoPlaneEl.setAttribute('color', '#0054a6');
-	lampInfoPlaneEl.setAttribute('width', '19');
-	lampInfoPlaneEl.setAttribute('height', '9');
+	// LAMP INFO BACKGROUND //
+	const lampInfoPlaneEl = helpers.createElement('a-plane', {
+		'id': 'lampInfo-plane',
+		'position': '-22 5.7 -12',
+		'rotation': '0 15 0',
+		'color': '#0054a6',
+		'width': '19',
+		'height': '9',
+	});
+
 	selectors.scene.appendChild(lampInfoPlaneEl);
 
-// LAMP INFO NAME //
-	var lampNameEl = document.createElement('a-text');
-	lampNameEl.setAttribute('id', 'lamp-name');
-	lampNameEl.setAttribute('color', '#0054a6');
-	lampNameEl.setAttribute('align', 'left');
-	lampNameEl.setAttribute('baseline', 'bottom');
-	lampNameEl.setAttribute('line-height', '60');
-	lampNameEl.setAttribute('scale', '7 7');
-	lampNameEl.setAttribute('position', '-10 13 -15');
-	lampNameEl.setAttribute('value', ajlamps[0].name);
+	// LAMP INFO NAME //
+	const lampNameEl = helpers.createElement('a-text', {
+		'id': 'lamp-name',
+		'color': '#0054a6',
+		'align': 'left',
+		'baseline': 'bottom',
+		'line-height': '60',
+		'scale': '7 7',
+		'position': '-10 13 -15',
+		'value': ajlamps[0].name,
+	});
+
 	selectors.scene.appendChild(lampNameEl);
 
-// LAMP INFO MEASUREMENTS //
-	var posY = 8;
-	for (var i = 0; i < ajlamps[0].measurements.length; i++) {
-		var lampMeasurementEl = document.createElement('a-text');
-		var lampMeasurementValueEl = document.createElement('a-text');
-		lampMeasurementEl.setAttribute('id', 'measurement-' + [i+1]);
-		lampMeasurementEl.setAttribute('class', 'measurements lamp-text');
-		lampMeasurementEl.setAttribute('mixin', 'lampInfoTextMixin');
-		lampMeasurementEl.setAttribute('position', '-28 ' + posY + ' -9');
-		lampMeasurementEl.setAttribute('value', ajlamps[0].measurements[i].measurement);
-		lampMeasurementValueEl.setAttribute('id', 'value-' + [i+1]);
-		lampMeasurementValueEl.setAttribute('class', 'values lamp-text');
-		lampMeasurementValueEl.setAttribute('mixin', 'lampInfoTextMixin');
-		lampMeasurementValueEl.setAttribute('position', '-15 ' + posY + ' -12.8');
-		lampMeasurementValueEl.setAttribute('value', ajlamps[0].measurements[i].value);
+	// LAMP INFO MEASUREMENTS //
+	let posY = 8;
+	ajlamps[0].measurements.forEach(function(measurement, index) {
+		let lampMeasurementEl = helpers.createElement('a-text', {
+			'id': 'measurement-' + [index + 1],
+			'class': 'measurements lamp-text',
+			'mixin': 'lampInfoTextMixin',
+			'position': '-28 ' + posY + ' -9',
+			'value': measurement.measurement,
+		});
+
+		let lampMeasurementValueEl = helpers.createElement('a-text', {
+			'id': 'value-' + [index + 1],
+			'class': 'values lamp-text',
+			'mixin': 'lampInfoTextMixin',
+			'position': '-15 ' + posY + ' -12.8',
+			'value': measurement.value,
+		});
+
 		selectors.scene.appendChild(lampMeasurementEl);
 		selectors.scene.appendChild(lampMeasurementValueEl);
-		posY = (posY-1);
-	}
+		posY = (posY - 1);
+	});
 
-// LAMP SAVINGS LED//
-	var ledPlaneEl = document.createElement('a-circle');
-	ledPlaneEl.setAttribute('id', 'led-plane');
-	ledPlaneEl.setAttribute('mixin', 'ledPlaneMixin');
-	ledPlaneEl.setAttribute('position', '15.5  6.5 -13.5');
+	// LAMP SAVINGS LED//
+	let ledPlaneEl = helpers.createElement('a-circle', {
+		'id': 'led-plane',
+		'mixin': 'ledPlaneMixin',
+		'position': '15.5  6.5 -13.5',
+	});
+
 	selectors.scene.appendChild(ledPlaneEl);
-	var ledTextEl = document.createElement('a-text');
-	ledTextEl.setAttribute('class', 'led-text');
-	ledTextEl.setAttribute('mixin', 'ledTextMixin');
-	ledTextEl.setAttribute('position', '12.1 7.482 -13.748');
-	ledTextEl.setAttribute('value', 'SAVE 70%');
+
+	let ledTextEl = helpers.createElement('a-circle', {
+		'class': 'led-text',
+		'mixin': 'ledTextMixin',
+		'position': '12.1 7.482 -13.748',
+		'value': 'SAVE 70%',
+	});
+
 	selectors.scene.appendChild(ledTextEl);
-	var ledSubTextEl = document.createElement('a-text');
-	ledSubTextEl.setAttribute('class', 'led-text');
-	ledSubTextEl.setAttribute('mixin', 'ledTextMixin');
-	ledSubTextEl.setAttribute('position', '11.8 5.759 -13.748');
-	ledSubTextEl.setAttribute('value', 'USING LED');
+
+	let ledSubTextEl = helpers.createElement('a-circle', {
+		'class': 'led-text',
+		'mixin': 'ledTextMixin',
+		'position': '11.8 5.759 -13.748',
+		'value': 'USING LED',
+	});
+
 	selectors.scene.appendChild(ledSubTextEl);
 
-	selectors.scene.addEventListener('led-enter', function (evnt) {
+	selectors.scene.addEventListener('led-enter', function(evnt) {
 		// var measurements = document.querySelectorAll('#measurements');
 		// var measurements = document.querySelectorAll('#values');
 		selectors.scene.removeChild(lampInfoPlaneEl);
@@ -110,7 +132,7 @@ function init(selectors, ajlamps) {
 		// selectors.scene.removeChild(ledSubTextEl);
 	});
 
-	selectors.scene.addEventListener('led-leave', function (evnt) {
+	selectors.scene.addEventListener('led-leave', function(evnt) {
 		// var measurements = document.querySelectorAll('.measurements');
 		// var values = document.querySelectorAll('.values');
 		selectors.scene.appendChild(lampInfoPlaneEl);
