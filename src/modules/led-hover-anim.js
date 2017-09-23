@@ -33,30 +33,6 @@ function init(selectors) {
 			ledAnimActive = false;
 		}
 
-		selectors.ledText.forEach(function(element){
-			let ledEnterTextAnim = helpers.createElement('a-animation', {
-				'attribute': 'text.opacity',
-				'from': '1',
-				'to': '0',
-				'dur': '10500',
-				'ease': 'ease-out',
-			});
-
-			element.appendChild(ledEnterTextAnim);
-		});
-
-		selectors.lampText.forEach(function(element){
-			let lampEnterTextAnim = helpers.createElement('a-animation', {
-				'attribute': 'text.opacity',
-				'from': '1',
-				'to': '0',
-				'dur': '10500',
-				'ease': 'ease-out',
-			});
-
-			element.appendChild(lampEnterTextAnim);
-		});
-
 		selectors.sky.appendChild(ledEnterSkyAnim);
 	});
 
@@ -69,30 +45,6 @@ function init(selectors) {
 			'to': '#ffffff',
 			'dur': '500',
 			'ease': 'ease-out',
-		});
-
-		selectors.ledText.forEach(function(element){
-			let ledLeaveTextAnim = helpers.createElement('a-animation', {
-				'attribute': 'text.opacity',
-				'from': '0',
-				'to': '1',
-				'delay': '500',
-				'ease': 'ease-out',
-			});
-
-			element.appendChild(ledLeaveTextAnim);
-		});
-
-		selectors.lampText.forEach(function(element){
-			let lampLeaveTextAnim = helpers.createElement('a-animation', {
-				'attribute': 'text.opacity',
-				'from': '1',
-				'to': '0',
-				'delay': '500',
-				'ease': 'ease-out',
-			});
-
-			element.appendChild(lampLeaveTextAnim);
 		});
 
 		selectors.sky.removeChild(ledEnterSkyAnim);

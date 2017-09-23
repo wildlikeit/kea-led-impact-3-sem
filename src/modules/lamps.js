@@ -124,10 +124,10 @@ function init(selectors, ajlamps) {
 	selectors.scene.addEventListener('led-enter', function(evnt) {
 		// var measurements = document.querySelectorAll('#measurements');
 		// var measurements = document.querySelectorAll('#values');
-		selectors.scene.removeChild(lampInfoPlaneEl);
-		selectors.scene.removeChild(lampNameEl);
 		// selectors.scene.removeChild(measurements);
 		// selectors.scene.removeChild(values);
+		selectors.scene.removeChild(lampInfoPlaneEl);
+		selectors.scene.removeChild(lampNameEl);
 		selectors.scene.removeChild(ledTextEl);
 		selectors.scene.removeChild(ledSubTextEl);
 	});
@@ -135,10 +135,10 @@ function init(selectors, ajlamps) {
 	selectors.scene.addEventListener('led-leave', function(evnt) {
 		// var measurements = document.querySelectorAll('.measurements');
 		// var values = document.querySelectorAll('.values');
-		selectors.scene.appendChild(lampInfoPlaneEl);
-		selectors.scene.appendChild(lampNameEl);
 		// selectors.scene.removeChild(measurements);
 		// selectors.scene.removeChild(values);
+		selectors.scene.appendChild(lampInfoPlaneEl);
+		selectors.scene.appendChild(lampNameEl);
 		selectors.scene.appendChild(ledTextEl);
 		selectors.scene.appendChild(ledSubTextEl);
 	});
