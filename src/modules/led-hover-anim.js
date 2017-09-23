@@ -38,7 +38,7 @@ function init(selectors) {
 				'attribute': 'text.opacity',
 				'from': '1',
 				'to': '0',
-				'dur': '500',
+				'dur': '10500',
 				'ease': 'ease-out',
 			});
 
@@ -50,7 +50,7 @@ function init(selectors) {
 				'attribute': 'text.opacity',
 				'from': '1',
 				'to': '0',
-				'dur': '500',
+				'dur': '10500',
 				'ease': 'ease-out',
 			});
 
@@ -62,20 +62,21 @@ function init(selectors) {
 
 	ledPlane.addEventListener('mouseleave', function ledLeave(evnt) {
 		this.emit('led-leave');
-		ledLeaveSkyAnim = document.createElement('a-animation');
-		ledLeaveSkyAnim.setAttribute('attribute', 'material.color');
-		ledLeaveSkyAnim.setAttribute('from', '#000000');
-		ledLeaveSkyAnim.setAttribute('to', '#ffffff');
-		ledLeaveSkyAnim.setAttribute('dur', '500');
-		ledLeaveSkyAnim.setAttribute('ease', 'ease-out');
 
+		ledLeaveSkyAnim = helpers.createElement('a-animation',{
+			'attribute': 'material.color',
+			'from': '#000000',
+			'to': '#ffffff',
+			'dur': '500',
+			'ease': 'ease-out',
+		});
 
 		selectors.ledText.forEach(function(element){
 			let ledLeaveTextAnim = helpers.createElement('a-animation', {
 				'attribute': 'text.opacity',
 				'from': '0',
 				'to': '1',
-				'dur': '500',
+				'delay': '500',
 				'ease': 'ease-out',
 			});
 
@@ -87,7 +88,7 @@ function init(selectors) {
 				'attribute': 'text.opacity',
 				'from': '1',
 				'to': '0',
-				'dur': '500',
+				'delay': '500',
 				'ease': 'ease-out',
 			});
 

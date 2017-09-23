@@ -103,7 +103,7 @@ function init(selectors, ajlamps) {
 
 	selectors.scene.appendChild(ledPlaneEl);
 
-	let ledTextEl = helpers.createElement('a-circle', {
+	let ledTextEl = helpers.createElement('a-text', {
 		'class': 'led-text',
 		'mixin': 'ledTextMixin',
 		'position': '12.1 7.482 -13.748',
@@ -112,7 +112,7 @@ function init(selectors, ajlamps) {
 
 	selectors.scene.appendChild(ledTextEl);
 
-	let ledSubTextEl = helpers.createElement('a-circle', {
+	let ledSubTextEl = helpers.createElement('a-text', {
 		'class': 'led-text',
 		'mixin': 'ledTextMixin',
 		'position': '11.8 5.759 -13.748',
@@ -125,11 +125,11 @@ function init(selectors, ajlamps) {
 		// var measurements = document.querySelectorAll('#measurements');
 		// var measurements = document.querySelectorAll('#values');
 		selectors.scene.removeChild(lampInfoPlaneEl);
-		// selectors.scene.removeChild(lampNameEl);
+		selectors.scene.removeChild(lampNameEl);
 		// selectors.scene.removeChild(measurements);
 		// selectors.scene.removeChild(values);
-		// selectors.scene.removeChild(ledTextEl);
-		// selectors.scene.removeChild(ledSubTextEl);
+		selectors.scene.removeChild(ledTextEl);
+		selectors.scene.removeChild(ledSubTextEl);
 	});
 
 	selectors.scene.addEventListener('led-leave', function(evnt) {
