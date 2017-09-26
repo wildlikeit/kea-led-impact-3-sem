@@ -1,12 +1,10 @@
 'use strict';
 
-const helpers = require('./helpers');
-
 module.exports = {
 	init,
 };
 
-function init(selectors, ajlamps) {
+function init(selectors, helpers, ajlamps) {
 
 	// MIXINS //
 	const lampInfoTextMixin = helpers.createElement('a-mixin', {
@@ -42,16 +40,8 @@ function init(selectors, ajlamps) {
 	});
 	selectors.scene.appendChild(led);
 
-	let ledPlaneAnimActive = false;
-	let ledEnterPlaneScaleAnim;
-	let ledEnterPlaneRotateAnim;
-	let ledEnterPlaneColorAnim;
-	let ledLeavePlaneScaleAnim;
-	let ledLeavePlaneRotateAnim;
-	let ledLeavePlaneColorAnim;
-
 	// LAMP INFO //
-	var lampInfoPlaneEl = helpers.createElement('a-plane', {
+	const lampInfoPlaneEl = helpers.createElement('a-plane', {
 		'id': 'lampInfo-plane',
 		'position': '-22 5.7 -12',
 		'rotation': '0 15 0',
@@ -135,92 +125,13 @@ function init(selectors, ajlamps) {
 	led.appendChild(ledSubTextEl);
 
 	selectors.scene.addEventListener('led-enter', function() {
-		selectors.scene.removeChild(lamp);
-		led.removeChild(ledTextEl);
-		led.removeChild(ledSubTextEl);
-		ledPlaneEl.removeChild(ledPlaneScaleAnim);
 
-		ledEnterPlaneScaleAnim = helpers.createElement('a-animation', {
-			'attribute': 'radius',
-			'from': '5',
-			'to': '16',
-			'dur': '500',
-			'ease': 'ease-out',
-		});
-
-		ledEnterPlaneRotateAnim = helpers.createElement('a-animation', {
-			'attribute': 'rotation',
-			'from': '0 -15 0',
-			'to': '0 -43 0',
-			'dur': '500',
-			'ease': 'ease-out',
-		});
-
-		ledEnterPlaneColorAnim = helpers.createElement('a-animation', {
-			'attribute': 'color',
-			'from': '#0054a6',
-			'to': '#19b77e',
-			'dur': '500',
-			'ease': 'ease-out',
-		});
-
-		if (ledPlaneAnimActive) {
-
-			ledPlaneEl.removeChild(ledLeavePlaneScaleAnim);
-			ledPlaneEl.removeChild(ledLeavePlaneRotateAnim);
-			ledPlaneEl.removeChild(ledLeavePlaneColorAnim);
-
-		} else {
-
-			ledPlaneAnimActive = true;
-
-		}
-
-		ledPlaneEl.appendChild(ledEnterPlaneScaleAnim);
-		ledPlaneEl.appendChild(ledEnterPlaneRotateAnim);
-		ledPlaneEl.appendChild(ledEnterPlaneColorAnim);
 
 	});
 
 
 
 	selectors.scene.addEventListener('led-leave', function() {
-		selectors.scene.appendChild(lamp);
-		led.appendChild(ledTextEl);
-		led.appendChild(ledSubTextEl);
-		ledPlaneEl.appendChild(ledPlaneScaleAnim);
-
-		ledLeavePlaneScaleAnim = helpers.createElement('a-animation', {
-			'attribute': 'radius',
-			'from': '16',
-			'to': '5',
-			'dur': '400',
-			'ease': 'ease-out',
-		});
-
-		ledLeavePlaneRotateAnim = helpers.createElement('a-animation', {
-			'attribute': 'rotation',
-			'from': '0 -43 0',
-			'to': '0 -15 0',
-			'dur': '500',
-			'ease': 'ease-out',
-		});
-
-		ledLeavePlaneColorAnim = helpers.createElement('a-animation', {
-			'attribute': 'color',
-			'from': '#19b77e',
-			'to': '#0054a6',
-			'dur': '500',
-			'ease': 'ease-out',
-		});
-
-		ledPlaneEl.appendChild(ledLeavePlaneScaleAnim);
-		ledPlaneEl.appendChild(ledLeavePlaneRotateAnim);
-		ledPlaneEl.appendChild(ledLeavePlaneColorAnim);
-
-		ledPlaneEl.removeChild(ledEnterPlaneScaleAnim);
-		ledPlaneEl.removeChild(ledEnterPlaneRotateAnim);
-		ledPlaneEl.removeChild(ledEnterPlaneColorAnim);
 
 	});
 }

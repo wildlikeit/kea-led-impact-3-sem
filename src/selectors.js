@@ -7,5 +7,7 @@ module.exports = function(document) {
 		sky: document.querySelector('a-sky'),
 		ledText: document.querySelectorAll('.led-text'),
 		lampText: document.querySelectorAll('.lamp-text'),
+		lamp: document.querySelectorAll('#lamp'),
+		led: document.querySelectorAll('#led'),
 	};
 };
