@@ -7,7 +7,6 @@ module.exports = {
 };
 
 function init(selectors, ajlamps) {
-	////////////////////////////LAMP INFO////////////////////////////
 
 	// MIXINS //
 	const lampInfoTextMixin = helpers.createElement('a-mixin', {
@@ -16,21 +15,10 @@ function init(selectors, ajlamps) {
 		'align': 'left',
 		'baseline': 'bottom',
 		'line-height': '60',
-		'scale': '3 3',
+		'scale': '3 3 0',
 		'rotation': '0 15 0',
 	});
-
 	selectors.assets.appendChild(lampInfoTextMixin);
-
-	// var ledPlaneMixin = document.createElement('a-mixin');
-	// var ledTextMixin = helpers.createElement('a-mixin', {
-	// 	'id': 'ledPlaneMixin',
-	// 	'rotation': '0 -15 0',
-	// 	'geometry.radius': '2.25',
-	// 	'geometry.segments': '64',
-	// 	'material.color': '#0054a6',
-	// });
-	// selectors.assets.appendChild(ledPlaneMixin);
 
 	const ledTextMixin = helpers.createElement('a-mixin', {
 		'id': 'ledTextMixin',
@@ -41,11 +29,29 @@ function init(selectors, ajlamps) {
 		'scale': '6 6',
 		'rotation': '0 -15 0',
 	});
-
 	selectors.assets.appendChild(ledTextMixin);
 
-	// LAMP INFO BACKGROUND //
-	const lampInfoPlaneEl = helpers.createElement('a-plane', {
+	// LAMP //
+	const lamp = helpers.createElement('a-entity', {
+		'id': 'lamp',
+	});
+	selectors.scene.appendChild(lamp);
+
+	const led = helpers.createElement('a-entity', {
+		'id': 'led',
+	});
+	selectors.scene.appendChild(led);
+
+	let ledPlaneAnimActive = false;
+	let ledEnterPlaneScaleAnim;
+	let ledEnterPlaneRotateAnim;
+	let ledEnterPlaneColorAnim;
+	let ledLeavePlaneScaleAnim;
+	let ledLeavePlaneRotateAnim;
+	let ledLeavePlaneColorAnim;
+
+	// LAMP INFO //
+	var lampInfoPlaneEl = helpers.createElement('a-plane', {
 		'id': 'lampInfo-plane',
 		'position': '-22 5.7 -12',
 		'rotation': '0 15 0',
@@ -53,10 +59,8 @@ function init(selectors, ajlamps) {
 		'width': '19',
 		'height': '9',
 	});
+	lamp.appendChild(lampInfoPlaneEl);
 
-	selectors.scene.appendChild(lampInfoPlaneEl);
-
-	// LAMP INFO NAME //
 	const lampNameEl = helpers.createElement('a-text', {
 		'id': 'lamp-name',
 		'color': '#0054a6',
@@ -67,10 +71,8 @@ function init(selectors, ajlamps) {
 		'position': '-10 13 -15',
 		'value': ajlamps[0].name,
 	});
+	lamp.appendChild(lampNameEl);
 
-	selectors.scene.appendChild(lampNameEl);
-
-	// LAMP INFO MEASUREMENTS //
 	let posY = 8;
 	ajlamps[0].measurements.forEach(function(measurement, index) {
 		let lampMeasurementEl = helpers.createElement('a-text', {
@@ -80,6 +82,7 @@ function init(selectors, ajlamps) {
 			'position': '-28 ' + posY + ' -9',
 			'value': measurement.measurement,
 		});
+		lamp.appendChild(lampMeasurementEl);
 
 		let lampMeasurementValueEl = helpers.createElement('a-text', {
 			'id': 'value-' + [index + 1],
@@ -88,58 +91,136 @@ function init(selectors, ajlamps) {
 			'position': '-15 ' + posY + ' -12.8',
 			'value': measurement.value,
 		});
+		lamp.appendChild(lampMeasurementValueEl);
 
-		selectors.scene.appendChild(lampMeasurementEl);
-		selectors.scene.appendChild(lampMeasurementValueEl);
 		posY = (posY - 1);
 	});
 
 	// LAMP SAVINGS LED//
 	let ledPlaneEl = helpers.createElement('a-circle', {
 		'id': 'led-plane',
-		'mixin': 'ledPlaneMixin',
+		'color': '#0054a6',
+		'rotation': '0 -15 0',
+		'segments': '64',
+		'radius': '5',
 		'position': '15.5  6.5 -13.5',
 	});
+	led.appendChild(ledPlaneEl);
 
-	selectors.scene.appendChild(ledPlaneEl);
+	const ledPlaneScaleAnim = helpers.createElement('a-animation', {
+		'attribute': 'radius',
+		'from': '5',
+		'to': '5.2',
+		'dur': '1000',
+		'repeat': 'indefinite',
+		'direction': 'alternate',
+		'ease': 'ease-in-out',
+	});
+	ledPlaneEl.appendChild(ledPlaneScaleAnim);
 
 	let ledTextEl = helpers.createElement('a-text', {
-		'class': 'led-text',
+		'id': 'led-text',
 		'mixin': 'ledTextMixin',
 		'position': '12.1 7.482 -13.748',
 		'value': 'SAVE 70%',
 	});
-
-	selectors.scene.appendChild(ledTextEl);
+	led.appendChild(ledTextEl);
 
 	let ledSubTextEl = helpers.createElement('a-text', {
-		'class': 'led-text',
+		'id': 'led-sub-text',
 		'mixin': 'ledTextMixin',
 		'position': '11.8 5.759 -13.748',
 		'value': 'USING LED',
 	});
+	led.appendChild(ledSubTextEl);
 
-	selectors.scene.appendChild(ledSubTextEl);
+	selectors.scene.addEventListener('led-enter', function() {
+		selectors.scene.removeChild(lamp);
+		led.removeChild(ledTextEl);
+		led.removeChild(ledSubTextEl);
+		ledPlaneEl.removeChild(ledPlaneScaleAnim);
 
-	selectors.scene.addEventListener('led-enter', function(evnt) {
-		// var measurements = document.querySelectorAll('#measurements');
-		// var measurements = document.querySelectorAll('#values');
-		// selectors.scene.removeChild(measurements);
-		// selectors.scene.removeChild(values);
-		selectors.scene.removeChild(lampInfoPlaneEl);
-		selectors.scene.removeChild(lampNameEl);
-		selectors.scene.removeChild(ledTextEl);
-		selectors.scene.removeChild(ledSubTextEl);
+		ledEnterPlaneScaleAnim = helpers.createElement('a-animation', {
+			'attribute': 'radius',
+			'from': '5',
+			'to': '16',
+			'dur': '500',
+			'ease': 'ease-out',
+		});
+
+		ledEnterPlaneRotateAnim = helpers.createElement('a-animation', {
+			'attribute': 'rotation',
+			'from': '0 -15 0',
+			'to': '0 -43 0',
+			'dur': '500',
+			'ease': 'ease-out',
+		});
+
+		ledEnterPlaneColorAnim = helpers.createElement('a-animation', {
+			'attribute': 'color',
+			'from': '#0054a6',
+			'to': '#19b77e',
+			'dur': '500',
+			'ease': 'ease-out',
+		});
+
+		if (ledPlaneAnimActive) {
+
+			ledPlaneEl.removeChild(ledLeavePlaneScaleAnim);
+			ledPlaneEl.removeChild(ledLeavePlaneRotateAnim);
+			ledPlaneEl.removeChild(ledLeavePlaneColorAnim);
+
+		} else {
+
+			ledPlaneAnimActive = true;
+
+		}
+
+		ledPlaneEl.appendChild(ledEnterPlaneScaleAnim);
+		ledPlaneEl.appendChild(ledEnterPlaneRotateAnim);
+		ledPlaneEl.appendChild(ledEnterPlaneColorAnim);
+
 	});
 
-	selectors.scene.addEventListener('led-leave', function(evnt) {
-		// var measurements = document.querySelectorAll('.measurements');
-		// var values = document.querySelectorAll('.values');
-		// selectors.scene.removeChild(measurements);
-		// selectors.scene.removeChild(values);
-		selectors.scene.appendChild(lampInfoPlaneEl);
-		selectors.scene.appendChild(lampNameEl);
-		selectors.scene.appendChild(ledTextEl);
-		selectors.scene.appendChild(ledSubTextEl);
+
+
+	selectors.scene.addEventListener('led-leave', function() {
+		selectors.scene.appendChild(lamp);
+		led.appendChild(ledTextEl);
+		led.appendChild(ledSubTextEl);
+		ledPlaneEl.appendChild(ledPlaneScaleAnim);
+
+		ledLeavePlaneScaleAnim = helpers.createElement('a-animation', {
+			'attribute': 'radius',
+			'from': '16',
+			'to': '5',
+			'dur': '400',
+			'ease': 'ease-out',
+		});
+
+		ledLeavePlaneRotateAnim = helpers.createElement('a-animation', {
+			'attribute': 'rotation',
+			'from': '0 -43 0',
+			'to': '0 -15 0',
+			'dur': '500',
+			'ease': 'ease-out',
+		});
+
+		ledLeavePlaneColorAnim = helpers.createElement('a-animation', {
+			'attribute': 'color',
+			'from': '#19b77e',
+			'to': '#0054a6',
+			'dur': '500',
+			'ease': 'ease-out',
+		});
+
+		ledPlaneEl.appendChild(ledLeavePlaneScaleAnim);
+		ledPlaneEl.appendChild(ledLeavePlaneRotateAnim);
+		ledPlaneEl.appendChild(ledLeavePlaneColorAnim);
+
+		ledPlaneEl.removeChild(ledEnterPlaneScaleAnim);
+		ledPlaneEl.removeChild(ledEnterPlaneRotateAnim);
+		ledPlaneEl.removeChild(ledEnterPlaneColorAnim);
+
 	});
 }
