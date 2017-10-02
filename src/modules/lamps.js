@@ -126,7 +126,6 @@ function init(selectors, helpers, ajlamps) {
 
 	selectors.scene.addEventListener('led-enter', function() {
 
-
 	});
 
 

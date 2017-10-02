@@ -6,6 +6,8 @@ module.exports = {
 };
 
 function hideLamp (selectors){
+	console.log(selectors.scene);
+	console.log(selectors.lamp);
 	selectors.scene.removeChild(selectors.lamp);
 }
 
