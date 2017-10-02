@@ -35,11 +35,6 @@ function init(selectors, helpers, ajlamps) {
 	});
 	selectors.scene.appendChild(lamp);
 
-	const led = helpers.createElement('a-entity', {
-		'id': 'led',
-	});
-	selectors.scene.appendChild(led);
-
 	// LAMP INFO //
 	const lampInfoPlaneEl = helpers.createElement('a-plane', {
 		'id': 'lampInfo-plane',
@@ -84,53 +79,5 @@ function init(selectors, helpers, ajlamps) {
 		lamp.appendChild(lampMeasurementValueEl);
 
 		posY = (posY - 1);
-	});
-
-	// LAMP SAVINGS LED//
-	let ledPlaneEl = helpers.createElement('a-circle', {
-		'id': 'led-plane',
-		'color': '#0054a6',
-		'rotation': '0 -15 0',
-		'segments': '64',
-		'radius': '5',
-		'position': '15.5  6.5 -13.5',
-	});
-	led.appendChild(ledPlaneEl);
-
-	const ledPlaneScaleAnim = helpers.createElement('a-animation', {
-		'attribute': 'radius',
-		'from': '5',
-		'to': '5.2',
-		'dur': '1000',
-		'repeat': 'indefinite',
-		'direction': 'alternate',
-		'ease': 'ease-in-out',
-	});
-	ledPlaneEl.appendChild(ledPlaneScaleAnim);
-
-	let ledTextEl = helpers.createElement('a-text', {
-		'id': 'led-text',
-		'mixin': 'ledTextMixin',
-		'position': '12.1 7.482 -13.748',
-		'value': 'SAVE 70%',
-	});
-	led.appendChild(ledTextEl);
-
-	let ledSubTextEl = helpers.createElement('a-text', {
-		'id': 'led-sub-text',
-		'mixin': 'ledTextMixin',
-		'position': '11.8 5.759 -13.748',
-		'value': 'USING LED',
-	});
-	led.appendChild(ledSubTextEl);
-
-	selectors.scene.addEventListener('led-enter', function() {
-
-	});
-
-
-
-	selectors.scene.addEventListener('led-leave', function() {
-
 	});
 }

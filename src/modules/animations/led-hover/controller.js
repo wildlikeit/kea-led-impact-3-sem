@@ -1,28 +1,27 @@
 'use strict';
 
 /*global document*/
-const sky = require('./sky');
-const lamp = require('./lamp');
-const led = require('./led');
+const skyAnim = require('./skyAnim');
+const ledAnim = require('./ledAnim');
 
 
 module.exports = {
 	init,
 };
 
-function init(selectors, helpers) {
+function init(selectors, helpers, lampsModule, ajlamps) {
 	let ledPlane = document.querySelector('#led-plane');
 	ledPlane.addEventListener('mouseenter', function ledEnter() {
 		this.emit('led-enter');
-		sky.darkenSky(selectors, helpers);
-		lamp.hideLamp(selectors);
-		setTimeout(led.displayLedImpact(selectors, helpers), 400);
+		skyAnim.darkenSky(selectors, helpers);
+		selectors.scene.removeChild(document.querySelector('#lamp'));
+		setTimeout(ledAnim.show(selectors, helpers), 400);
 	});
 
 	ledPlane.addEventListener('mouseleave', function ledLeave() {
 		this.emit('led-leave');
-		led.hideLedImpact(selectors);
-		lamp.displayLamp(selectors);
-		sky.lightenSky(selectors, helpers);
+		ledAnim.hide(selectors, helpers);
+		lampsModule.init(selectors, helpers, ajlamps);
+		skyAnim.lightenSky(selectors, helpers);
 	});
 }
