@@ -11,6 +11,7 @@ let ledSkyAnimActive = false;
 
 function darkenSky(selectors, helpers) {
 	ledEnterSkyAnim = helpers.createElement('a-animation', {
+		'id':'skyAnim',
 		'attribute': 'material.color',
 		'from': '#ffffff',
 		'to': '#000000',
@@ -28,6 +29,7 @@ function darkenSky(selectors, helpers) {
 
 function lightenSky(selectors, helpers){
 	ledLeaveSkyAnim = helpers.createElement('a-animation',{
+		'id':'skyAnim',
 		'attribute': 'material.color',
 		'from': '#000000',
 		'to': '#ffffff',

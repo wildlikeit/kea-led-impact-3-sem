@@ -17,7 +17,7 @@ function init(selectors, helpers) {
 		'id': 'led-plane',
 		'color': '#0054a6',
 		'rotation': '0 -15 0',
-		'segments': '64',
+		'segments': '128',
 		'radius': '5',
 		'position': '15.5  6.5 -13.5',
 	});

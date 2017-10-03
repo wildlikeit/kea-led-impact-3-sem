@@ -9,6 +9,7 @@ module.exports = function(document) {
 		lampText: document.querySelectorAll('.lamp-text'),
 		lamp: document.querySelector('#lamp'),
 		led: document.querySelector('#led'),
+		ledText2: document.querySelector('#led-text'),
 		ledPlane: document.querySelector('#led-plane'),
 	};
 };
