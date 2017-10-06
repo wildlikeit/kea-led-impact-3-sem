@@ -4,8 +4,8 @@ module.exports = {
 	init,
 };
 
-function init(selectors, helpers) {
-
+function init(helpers) {
+	const selectors = require('./../selectors');
 	// LAMP SAVINGS LED//
 
 	const led = helpers.createElement('a-entity', {

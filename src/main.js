@@ -12,11 +12,11 @@ const ledHoverModule = require('./modules/animations/led-hover/controller.js');
 const ledImpactStory = require('./modules/animations/led-impact-story/controller.js');
 
 // SETTINGS
-const selectors = require('./selectors')(document);
+// const selectors = require('./selectors')(document);
 const helpers = require('./modules/helpers');
 
 // IMPORTS
-lampsModule.init(selectors, helpers, ajlampsData);
-ledModule.init(selectors, helpers);
-ledHoverModule.init(selectors, helpers, lampsModule, ajlampsData);
-ledImpactStory.init(selectors, helpers);
+lampsModule.init(helpers, ajlampsData);
+ledModule.init(helpers);
+ledHoverModule.init(helpers, lampsModule, ajlampsData);
+ledImpactStory.init(helpers);

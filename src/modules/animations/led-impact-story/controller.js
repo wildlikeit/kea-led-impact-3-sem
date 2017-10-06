@@ -8,7 +8,8 @@ module.exports = {
 	init,
 };
 
-function init(selectors, helpers){
+function init(helpers){
+	const selectors = require('./../../../selectors');
 	selectors.scene.addEventListener('startLedImpactStory', function(){
 		trees.animIn(selectors, helpers);
 	});
