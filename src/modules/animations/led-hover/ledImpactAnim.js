@@ -205,7 +205,7 @@ function show(selectors, helpers) {
 					const ledImpactYLetter = helpers.createElement('a-text', {
 						'id': 'ledImpactYLetter',
 						'mixin': 'ledImpactTextMixin',
-						'position': '16.235 4 -21.652',
+						'position': '16.235 4 -21.602',
 						'value': 'Y',
 						'scale': '55 55',
 						'rotation': '0 -34 0',
