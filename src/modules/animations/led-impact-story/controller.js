@@ -14,4 +14,5 @@ function init(helpers){
 	selectors.scene.addEventListener('startLedImpactStory', function(){
 		counter.init(selectors, helpers);
 	});
+	trees.animIn(selectors, helpers);
 }
