@@ -199,18 +199,18 @@
   "buffers": [
     {
       "byteLength": 153672,
-      "uri": "assets/models/motion_green_tree_2/scene.bin"
+      "uri": "scene.bin"
     }
   ],
   "images": [
     {
-      "uri": "assets/models/motion_green_tree_2/textures/COM_Nature_TreeA_MotionGreenTree01_MIT02_normal.png"
+      "uri": "textures/COM_Nature_TreeA_MotionGreenTree01_MIT02_normal.png"
     },
     {
-      "uri": "assets/models/motion_green_tree_2/textures/COM_Nature_TreeA_MotionGreenTree01_MIT02_baseColor.png"
+      "uri": "textures/COM_Nature_TreeA_MotionGreenTree01_MIT02_baseColor.png"
     },
     {
-      "uri": "assets/models/motion_green_tree_2/textures/COM_Nature_TreeA_MotionGreenTree01_MIT01_baseColor.png"
+      "uri": "textures/COM_Nature_TreeA_MotionGreenTree01_MIT01_baseColor.png"
     }
   ],
   "materials": [

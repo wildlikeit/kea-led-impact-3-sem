@@ -37,6 +37,10 @@ module.exports = {
 			all: 'src/assets/images/**/*',
 			dest: 'build/images'
 		},
+		models: {
+			all: 'src/assets/models/**/*',
+			dest: 'build/models'
+		},
 		favicon : {
 			icon : 'src/tile.png',
 			dest : 'build/images/favicon'
