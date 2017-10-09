@@ -1,6 +1,7 @@
 'use strict';
 
 /*global document*/
+const counter = require('./counter');
 const trees = require('./trees');
 
 
@@ -11,6 +12,6 @@ module.exports = {
 function init(helpers){
 	const selectors = require('./../../../selectors');
 	selectors.scene.addEventListener('startLedImpactStory', function(){
-		trees.animIn(selectors, helpers);
+		counter.init(selectors, helpers);
 	});
 }

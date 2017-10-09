@@ -200,43 +200,21 @@ function show(selectors, helpers) {
 				});
 				ledImpactYesText.appendChild(ledImpactYesTextPosition);
 
-				setTimeout(hide, 1350);
-				function hide(){
-					const ledImpactYLetter = helpers.createElement('a-text', {
-						'id': 'ledImpactYLetter',
+				setTimeout(hideYesText, 1350);
+				function hideYesText(){
+					const ledImpactFigure = helpers.createElement('a-text', {
+						'id': 'ledImpactFigure',
 						'mixin': 'ledImpactTextMixin',
-						'position': '16.235 4 -21.602',
-						'value': 'Y',
+						'position': '22.235 4 -14.602',
+						'align': 'center',
+						'value': '0',
 						'scale': '55 55',
 						'rotation': '0 -34 0',
 					});
-					ledImpactText.appendChild(ledImpactYLetter);
-
-					const hide = helpers.createElement('a-animation', {
-						'attribute': 'opacity',
-						'from': '1',
-						'to': '0',
-						'dur': '750',
-						'ease': 'ease-out',
-					});
-					ledImpactYesText.appendChild(hide);
-
-					const changeColor = helpers.createElement('a-animation', {
-						'attribute': 'color',
-						'from': '#ffffff',
-						'to': '#058442',
-						'dur': '750',
-						'ease': 'ease-out',
-					});
-					ledImpactYLetter.appendChild(changeColor);
-
-					setTimeout(remove, 750);
-					function remove(){
-						ledImpactText.removeChild(ledImpactYesText);
-					}
+					ledImpactText.appendChild(ledImpactFigure);
+					ledImpactText.removeChild(ledImpactYesText);
+					selectors.scene.emit('startLedImpactStory', true);
 				}
-
-				this.emit('startLedImpactStory', true);
 			});
 
 			ledImpactNoPlane.addEventListener('click', function backToLamp() {

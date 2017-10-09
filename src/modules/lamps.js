@@ -8,7 +8,6 @@ module.exports = {
 function init(helpers, ajlamps) {
 	const selectors = require('./../selectors');
 	// MIXINS //
-	console.log(helpers);
 	const lampInfoTextMixin = helpers.createElement('a-mixin', {
 		'id': 'lampInfoTextMixin',
 		'color': '#ffffff',
