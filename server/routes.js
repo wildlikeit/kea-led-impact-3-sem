@@ -21,8 +21,6 @@ module.exports = function(app) {
 		}
 
 		// Serve index.html if not, so as to leave routing up to Angular
-		return res.sendFile('index.html', {
-			root: path.join(__dirname, '../build/'),
-		});
+		return res.status(404).send();
 	});
 };
