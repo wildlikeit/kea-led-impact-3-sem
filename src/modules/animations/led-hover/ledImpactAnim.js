@@ -156,24 +156,64 @@ function show(selectors, helpers) {
 		});
 		ledImpactTextContainer.appendChild(ledImpactCtaContainer);
 
+		//NEXT
+		const ledImpactNextCtaWrapper = helpers.createElement('a-entity', {
+			'id': 'ledImpactNextCta',
+			'position': '7 0 0',
+		});
+		ledImpactCtaContainer.appendChild(ledImpactNextCtaWrapper);
+
 		const ledImpactNextCta = helpers.createElement('a-text', {
 			'id': 'ledImpactNextCta',
-			'position': '-5 0 0',
+			'position': '0 0 0',
 			'value': 'Next',
-			'scale': '5 5',
+			'scale': '5.5 5.5',
 			'align': 'center',
-
 		});
-		ledImpactCtaContainer.appendChild(ledImpactNextCta);
+		ledImpactNextCtaWrapper.appendChild(ledImpactNextCta);
+
+		const ledImpactNextEvent = helpers.createElement('a-plane', {
+			'id': 'ledImpactNextEvent',
+			'position': '0 0 0',
+			'width': '5',
+			'height': '1',
+			'opacity': '0',
+		});
+
+		ledImpactNextEvent.addEventListener('click', function(){
+			console.log('next');
+		});
+		ledImpactNextCtaWrapper.appendChild(ledImpactNextEvent);
+
+
+		// PREVIOUS
+		const ledImpactPrevCtaWrapper = helpers.createElement('a-entity', {
+			'id': 'ledImpactPrevCta',
+			'position': '-7 0 0',
+		});
+		ledImpactCtaContainer.appendChild(ledImpactPrevCtaWrapper);
 
 		const ledImpactPrevCta = helpers.createElement('a-text', {
 			'id': 'ledImpactPrevCta',
-			'position': '5 0 0',
+			'position': '0 0 0',
 			'value': 'Previous',
-			'scale': '5 5',
+			'scale': '5.5 5.5',
 			'align': 'center',
 		});
-		ledImpactCtaContainer.appendChild(ledImpactPrevCta);
+		ledImpactPrevCtaWrapper.appendChild(ledImpactPrevCta);
+
+		const ledImpactPrevEvent = helpers.createElement('a-plane', {
+			'id': 'ledImpactPrevEvent',
+			'position': '0 0 0',
+			'width': '5',
+			'height': '1',
+			'opacity': '0',
+		});
+
+		ledImpactPrevEvent.addEventListener('click', function(){
+			console.log('prev');
+		});
+		ledImpactPrevCtaWrapper.appendChild(ledImpactPrevEvent);
 
 		// Adding text
 		for (let i = 0; i < daylightHoursData.length; i++){
