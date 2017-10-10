@@ -5,12 +5,24 @@ module.exports = {
 };
 
 function init(selectors, helpers){
-	let countTo = 50000;
-	function count(i){
-		setTimeout(function() { document.querySelector('#ledImpactFigure').setAttribute('value', i); }, 100 - (i*0.1));
-	}
+	setTimeout(function(){
+		let i = 0;
+		let countTo = 1;
+		function count(){
+			setTimeout(function() {
+				document.querySelector('#ledImpactFigure').setAttribute('value', i);
+				i++;
+				if (i <= countTo) {
+					count();
+				}
+				if(i == countTo){
+					setTimeout(function(){
+						selectors.scene.emit('startTrees', true);
+					}, 500);
+				}
 
-	for (var i = 0; i <= countTo; i++){
-		count(i);
-	}
+			}, 100 - (i*0.9));
+		}
+		count();
+	}, 1000);
 }
