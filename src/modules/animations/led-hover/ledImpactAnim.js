@@ -2,6 +2,8 @@
 
 /*global document*/
 
+const helpers = require('../../helpers');
+
 module.exports = {
 	show,
 	hide,
@@ -27,7 +29,7 @@ ledPlaneScaleAnim.setAttribute('direction', 'alternate');
 ledPlaneScaleAnim.setAttribute('ease', 'ease-in-out');
 let ledPlaneScaleAnimActive = true;
 
-function show(selectors, helpers) {
+function show(selectors) {
 	document.querySelector('#led-text').setAttribute('opacity', '0');
 	document.querySelector('#led-sub-text').setAttribute('opacity', '0');
 	document.querySelector('#led-text').setAttribute('position', '0 0 0');
@@ -224,7 +226,7 @@ function show(selectors, helpers) {
 	}
 }
 
-function hide(selectors, helpers) {
+function hide(selectors) {
 	setTimeout(ledHideDelay, 50);
 
 	function ledHideDelay() {

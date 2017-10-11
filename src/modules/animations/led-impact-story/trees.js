@@ -1,12 +1,13 @@
 'use strict';
 
 /*global document*/
+const helpers = require('../../helpers');
 
 module.exports = {
 	animIn,
 };
 
-function animIn(selectors, helpers) {
+function animIn(selectors) {
 
 	selectors.sky.setAttribute('color', '#ffffff');
 	selectors.sky.setAttribute('src','#field360');

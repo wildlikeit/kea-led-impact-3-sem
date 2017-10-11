@@ -1,10 +1,12 @@
 'use strict';
+
 /*global document*/
+
 module.exports = {
 	init,
 };
 
-function init(selectors, helpers){
+function init(selectors){
 	setTimeout(function(){
 		let i = 0;
 		let countTo = 1;
@@ -20,7 +22,6 @@ function init(selectors, helpers){
 						selectors.scene.emit('startTrees', true);
 					}, 500);
 				}
-
 			}, 100 - (i*0.9));
 		}
 		count();

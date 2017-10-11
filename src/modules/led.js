@@ -1,19 +1,20 @@
 'use strict';
 
+const helpers = require('./helpers');
+
 module.exports = {
 	init,
 };
 
-function init(helpers) {
+function init() {
 	const selectors = require('./../selectors');
 	// LAMP SAVINGS LED//
 
-	const led = helpers.createElement('a-entity', {
+	const led = helpers.appendNewElement(selectors.scene, 'a-entity', {
 		'id': 'led',
 	});
-	selectors.scene.appendChild(led);
 
-	let ledPlaneEl = helpers.createElement('a-circle', {
+	const ledPlaneEl = helpers.appendNewElement(led, 'a-circle', {
 		'id': 'led-plane',
 		'color': '#0054a6',
 		'rotation': '0 -15 0',
@@ -21,9 +22,8 @@ function init(helpers) {
 		'radius': '5',
 		'position': '15.5  6.5 -13.5',
 	});
-	led.appendChild(ledPlaneEl);
 
-	const ledPlaneScaleAnim = helpers.createElement('a-animation', {
+	helpers.appendNewElement(ledPlaneEl, 'a-animation', {
 		'id': 'ledPlaneScaleAnim',
 		'attribute': 'radius',
 		'from': '5',
@@ -33,22 +33,18 @@ function init(helpers) {
 		'direction': 'alternate',
 		'ease': 'ease-in-out',
 	});
-	ledPlaneEl.appendChild(ledPlaneScaleAnim);
 
-	let ledTextEl = helpers.createElement('a-text', {
+	helpers.appendNewElement(led, 'a-text', {
 		'id': 'led-text',
 		'mixin': 'ledTextMixin',
 		'position': '12.1 7.482 -13.748',
 		'value': 'SAVE 70%',
 	});
-	led.appendChild(ledTextEl);
 
-	let ledSubTextEl = helpers.createElement('a-text', {
+	helpers.appendNewElement(led, 'a-text', {
 		'id': 'led-sub-text',
 		'mixin': 'ledTextMixin',
 		'position': '11.8 5.759 -13.748',
 		'value': 'USING LED',
 	});
-	led.appendChild(ledSubTextEl);
-
 }
