@@ -18,6 +18,7 @@ function init(helpers, lampsModule, ajlamps) {
 		// selectors.scene.removeChild(selectors.lamp);
 		selectors.scene.removeChild(document.querySelector('#lamp'));
 		ledAnim.show(selectors, helpers);
+		ledHours.init(selectors, helpers);
 	});
 
 
