@@ -6,6 +6,7 @@ module.exports = {
 	scene: document.querySelector('a-scene'),
 	assets: document.querySelector('a-assets'),
 	sky: document.querySelector('a-sky'),
+	camera: document.querySelector('a-camera'),
 	ledText: document.querySelectorAll('.led-text'),
 	lampText: document.querySelectorAll('.lamp-text'),
 	lamp: document.querySelector('#lamp'),

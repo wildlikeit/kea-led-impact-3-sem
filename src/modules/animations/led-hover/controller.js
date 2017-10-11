@@ -5,16 +5,15 @@ const skyAnim = require('./skyAnim');
 const ledAnim = require('./ledImpactAnim');
 const ledHours = require('./ledImpactHours');
 
-
 module.exports = {
 	init,
 };
 
-function init(helpers, lampsModule, ajlamps) {
+function init(lampsModule, ajlamps) {
 	const selectors = require('./../../../selectors');
 	let ledPlane = document.querySelector('#led-plane');
 	ledPlane.addEventListener('mouseenter', function ledEnter() {
-		skyAnim.darkenSky(selectors, helpers);
+		skyAnim.darkenSky(selectors);
 		// selectors.scene.removeChild(selectors.lamp);
 		selectors.scene.removeChild(document.querySelector('#lamp'));
 		ledAnim.show(selectors, helpers);

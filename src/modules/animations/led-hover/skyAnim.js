@@ -1,5 +1,7 @@
 'use strict';
 
+const helpers = require('../../helpers');
+
 module.exports = {
 	darkenSky,
 	lightenSky,
@@ -9,7 +11,7 @@ let ledEnterSkyAnim;
 let ledLeaveSkyAnim;
 let ledSkyAnimActive = false;
 
-function darkenSky(selectors, helpers) {
+function darkenSky(selectors) {
 	ledEnterSkyAnim = helpers.createElement('a-animation', {
 		'id':'skyAnim',
 		'attribute': 'material.color',
@@ -27,7 +29,7 @@ function darkenSky(selectors, helpers) {
 	selectors.sky.appendChild(ledEnterSkyAnim);
 }
 
-function lightenSky(selectors, helpers){
+function lightenSky(selectors){
 	ledLeaveSkyAnim = helpers.createElement('a-animation',{
 		'id':'skyAnim',
 		'attribute': 'material.color',
