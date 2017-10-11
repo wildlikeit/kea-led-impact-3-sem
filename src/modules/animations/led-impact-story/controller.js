@@ -14,4 +14,9 @@ function init(){
 	selectors.scene.addEventListener('startLedImpactStory', function(){
 		counter.init(selectors);
 	});
+	selectors.scene.addEventListener('startTrees', function(){
+		setTimeout(function(){
+			trees.animIn(selectors, helpers);
+		}, 1000);
+	});
 }

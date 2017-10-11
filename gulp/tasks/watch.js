@@ -9,6 +9,7 @@ gulp.task('watch', function() {
 	gulp.watch(config.paths.js.all, ['lint']);
 	gulp.watch(config.paths.views.all, ['views']);
 	gulp.watch(config.paths.images.all, ['images']);
+	gulp.watch(config.paths.models.all, ['models']);
 	gulp.watch(config.paths.fonts.all, ['fonts']);
 	gulp.watch(config.paths.js.all, function(e) {
 		if (e.type === 'added') {
