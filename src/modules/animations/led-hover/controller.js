@@ -3,6 +3,7 @@
 /*global document*/
 const skyAnim = require('./skyAnim');
 const ledAnim = require('./ledImpactAnim');
+const ledHours = require('./ledImpactHours');
 
 module.exports = {
 	init,
@@ -15,12 +16,16 @@ function init(lampsModule, ajlamps) {
 		skyAnim.darkenSky(selectors);
 		// selectors.scene.removeChild(selectors.lamp);
 		selectors.scene.removeChild(document.querySelector('#lamp'));
-		ledAnim.show(selectors);
+		ledAnim.show(selectors, helpers);
+		ledHours.init(selectors, helpers);
 	});
 
-	ledPlane.addEventListener('mouseleave', function ledLeave() {
-		ledAnim.hide(selectors);
-		lampsModule.init(ajlamps);
-		skyAnim.lightenSky(selectors);
-	});
+
+	// TODO: Add eventlistener for pressing the "back"/"next" plane
+
+	// ledPlane.addEventListener('mouseleave', function ledLeave() {
+	// 	ledAnim.hide(selectors, helpers);
+	// 	lampsModule.init(helpers, ajlamps);
+	// 	skyAnim.lightenSky(selectors, helpers);
+	// });
 }
