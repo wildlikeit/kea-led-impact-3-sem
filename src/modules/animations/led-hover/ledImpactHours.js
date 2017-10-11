@@ -3,6 +3,7 @@
 /*global document*/
 
 const helpers = require('../../helpers');
+const skyAnim = require('./skyAnim');
 
 module.exports = {
 	init,
@@ -130,15 +131,15 @@ function init(selectors){
 	});
 
 	// Adding text
-	for (let i = 0; i < daylightHoursData.length; i++){
+	daylightHoursData.forEach(function(element, index){
 		let ledImpactText = helpers.appendNewElement(ledImpactTextContainer, 'a-text', {
-			'id': 'ledImpactText' + i,
+			'id': 'ledImpactText' + index,
 			'mixin': 'ledImpactTextMixin',
 			'align': 'right',
-			'position': '0 '+ -i*3 +' 0',
-			'value': daylightHoursData[i],
+			'position': '0 '+ (-index * 3) +' 0',
+			'value': element,
 		});
-	}
+	});
 
 	// INPUTS
 
