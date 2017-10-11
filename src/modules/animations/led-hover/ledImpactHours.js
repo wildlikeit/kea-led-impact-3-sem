@@ -149,18 +149,18 @@ function init(selectors){
 	});
 
 	// Adding inputs via the data
-	for (let i = 0; i < inputHoursData.length; i++){
+	inputHoursData.forEach(function(element, index){
 
 		// Total Input Wrapper
 		let ledImpactInputWrapper = helpers.appendNewElement(ledImpactInputsContainer, 'a-entity', {
-			'id': 'ledImpactInputWrapper' + i,
-			'position': '0 '+ -i*3 +' 0',
+			'id': 'ledImpactInputWrapper' + index,
+			'position': '0 '+ (-index * 3) +' 0',
 		});
 
-		if (inputHoursData[i].type == 'input') {
+		if (element.type == 'input') {
 			// Plus Input
 			let ledImpactInputPlusCircle = helpers.appendNewElement(ledImpactInputWrapper, 'a-circle', {
-				'id': 'ledImpactPlusCircle' + i,
+				'id': 'ledImpactPlusCircle' + index,
 				'position': '-1.903 0 -1.802',
 				'rotation': '0 -43 0',
 				'radius': '0.6',
@@ -168,7 +168,7 @@ function init(selectors){
 			});
 
 			let ledImpactInputPlus = helpers.appendNewElement(ledImpactInputPlusCircle, 'a-text', {
-				'id': 'ledImpactInputPlus' + i,
+				'id': 'ledImpactInputPlus' + index,
 				'position': '0 0 0',
 				'scale': '4.5 4.5',
 				'align': 'center',
@@ -176,7 +176,7 @@ function init(selectors){
 			});
 
 			let ledImpactInputPlusEvent = helpers.appendNewElement(ledImpactInputPlusCircle, 'a-circle', {
-				'id': 'ledImpactPlusEvent' + i,
+				'id': 'ledImpactPlusEvent' + index,
 				'position': '0 0 0',
 				'radius': '0.6',
 				'opacity': '0',
@@ -186,11 +186,11 @@ function init(selectors){
 				let incrementVal;
 				let curVal = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
 
-				if (i == 0) {
+				if (index == 0) {
 					incrementVal = 10;
-				} else if (i == 1) {
+				} else if (index == 1) {
 					incrementVal = 100;
-				} else if (i == 2) {
+				} else if (index == 2) {
 					incrementVal = 1000;
 				}
 
@@ -201,7 +201,7 @@ function init(selectors){
 
 			// Minus Input
 			let ledImpactInputMinusCircle = helpers.appendNewElement(ledImpactInputWrapper, 'a-circle', {
-				'id': 'ledImpactMinusCircle' + i,
+				'id': 'ledImpactMinusCircle' + index,
 				'position': '-0.790 0 -0.801',
 				'rotation': '0 -43 0',
 				'radius': '0.6',
@@ -209,7 +209,7 @@ function init(selectors){
 			});
 
 			let ledImpactInputMinus = helpers.appendNewElement(ledImpactInputMinusCircle, 'a-text', {
-				'id': 'ledImpactInputMinus' + i,
+				'id': 'ledImpactInputMinus' + index,
 				'position': '0 0 0',
 				'scale': '4.5 4.5',
 				'align': 'center',
@@ -217,7 +217,7 @@ function init(selectors){
 			});
 
 			let ledImpactInputMinusEvent = helpers.appendNewElement(ledImpactInputMinusCircle, 'a-circle', {
-				'id': 'ledImpactMinusEvent' + i,
+				'id': 'ledImpactMinusEvent' + index,
 				'position': '0 0 0',
 				'radius': '0.6',
 				'opacity': '0',
@@ -227,11 +227,11 @@ function init(selectors){
 				let decrementVal;
 				let curVal = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
 
-				if (i == 0) {
+				if (index == 0) {
 					decrementVal = 10;
-				} else if (i == 1) {
+				} else if (index == 1) {
 					decrementVal = 100;
-				} else if (i == 2) {
+				} else if (index == 2) {
 					decrementVal = 1000;
 				}
 
@@ -244,10 +244,10 @@ function init(selectors){
 
 		// Input Text
 		let letImpactInput = helpers.appendNewElement(ledImpactInputWrapper, 'a-text', {
-			'id': 'ledImpactInput' + i,
+			'id': 'ledImpactInput' + index,
 			'mixin': 'ledImpactTextMixin',
 			'position': '0 0 0',
-			'value': inputHoursData[i].value,
+			'value': element.value,
 		});
-	}
+	});
 }
