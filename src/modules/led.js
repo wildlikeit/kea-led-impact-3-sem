@@ -10,11 +10,11 @@ function init() {
 	const selectors = require('./../selectors');
 	// LAMP SAVINGS LED//
 
-	const led = helpers.appendElement(selectors.scene, 'a-entity', {
+	const led = helpers.appendNewElement(selectors.scene, 'a-entity', {
 		'id': 'led',
 	});
 
-	const ledPlaneEl = helpers.appendElement(led, 'a-circle', {
+	const ledPlaneEl = helpers.appendNewElement(led, 'a-circle', {
 		'id': 'led-plane',
 		'color': '#0054a6',
 		'rotation': '0 -15 0',
@@ -23,7 +23,7 @@ function init() {
 		'position': '15.5  6.5 -13.5',
 	});
 
-	helpers.appendElement(ledPlaneEl, 'a-animation', {
+	helpers.appendNewElement(ledPlaneEl, 'a-animation', {
 		'id': 'ledPlaneScaleAnim',
 		'attribute': 'radius',
 		'from': '5',
@@ -34,14 +34,14 @@ function init() {
 		'ease': 'ease-in-out',
 	});
 
-	helpers.appendElement(led, 'a-text', {
+	helpers.appendNewElement(led, 'a-text', {
 		'id': 'led-text',
 		'mixin': 'ledTextMixin',
 		'position': '12.1 7.482 -13.748',
 		'value': 'SAVE 70%',
 	});
 
-	helpers.appendElement(led, 'a-text', {
+	helpers.appendNewElement(led, 'a-text', {
 		'id': 'led-sub-text',
 		'mixin': 'ledTextMixin',
 		'position': '11.8 5.759 -13.748',

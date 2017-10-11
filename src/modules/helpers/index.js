@@ -1,6 +1,6 @@
 'use strict';
 
 module.exports = {
-	appendElement: require('./append-element'),
+	appendNewElement: require('./append-new-element'),
 	createElement: require('./create-element'),
 };

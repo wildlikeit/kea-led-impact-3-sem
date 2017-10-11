@@ -9,7 +9,7 @@ module.exports = {
 function init(ajlamps) {
 	const selectors = require('./../selectors');
 	// MIXINS //
-	helpers.appendElement(selectors.assets, 'a-mixin', {
+	helpers.appendNewElement(selectors.assets, 'a-mixin', {
 		'id': 'lampInfoTextMixin',
 		'color': '#ffffff',
 		'align': 'left',
@@ -19,7 +19,7 @@ function init(ajlamps) {
 		'rotation': '0 15 0',
 	});
 
-	helpers.appendElement(selectors.assets, 'a-mixin', {
+	helpers.appendNewElement(selectors.assets, 'a-mixin', {
 		'id': 'ledTextMixin',
 		'color': '#ffffff',
 		'align': 'center',
@@ -30,12 +30,12 @@ function init(ajlamps) {
 	});
 
 	// LAMP //
-	const lamp = helpers.appendElement(selectors.scene, 'a-entity', {
+	const lamp = helpers.appendNewElement(selectors.scene, 'a-entity', {
 		'id': 'lamp',
 	});
 
 	// LAMP INFO //
-	helpers.appendElement(lamp, 'a-plane', {
+	helpers.appendNewElement(lamp, 'a-plane', {
 		'id': 'lampInfo-plane',
 		'position': '-22 5.7 -12',
 		'rotation': '0 15 0',
@@ -44,7 +44,7 @@ function init(ajlamps) {
 		'height': '9',
 	});
 
-	helpers.appendElement(lamp, 'a-text', {
+	helpers.appendNewElement(lamp, 'a-text', {
 		'id': 'lamp-name',
 		'color': '#0054a6',
 		'align': 'left',
@@ -57,7 +57,7 @@ function init(ajlamps) {
 
 	let posY = 8;
 	ajlamps[0].measurements.forEach(function(measurement, index) {
-		helpers.appendElement(lamp, 'a-text', {
+		helpers.appendNewElement(lamp, 'a-text', {
 			'id': 'measurement-' + [index + 1],
 			'class': 'measurements lamp-text',
 			'mixin': 'lampInfoTextMixin',
@@ -65,7 +65,7 @@ function init(ajlamps) {
 			'value': measurement.measurement,
 		});
 
-		helpers.appendElement(lamp, 'a-text', {
+		helpers.appendNewElement(lamp, 'a-text', {
 			'id': 'value-' + [index + 1],
 			'class': 'values lamp-text',
 			'mixin': 'lampInfoTextMixin',
