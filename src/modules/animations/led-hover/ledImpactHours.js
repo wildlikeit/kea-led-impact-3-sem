@@ -100,7 +100,7 @@ function init(selectors){
 	});
 
 	ledImpactNextEvent.addEventListener('click', function(){
-		console.log('next');
+		skyAnim.lightenSky(selectors);
 	});
 
 	// PREVIOUS
