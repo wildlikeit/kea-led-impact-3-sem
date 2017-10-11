@@ -9,9 +9,9 @@ module.exports = {
 	init,
 };
 
-function init(helpers){
+function init(){
 	const selectors = require('./../../../selectors');
 	selectors.scene.addEventListener('startLedImpactStory', function(){
-		counter.init(selectors, helpers);
+		counter.init(selectors);
 	});
 }

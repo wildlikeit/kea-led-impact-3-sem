@@ -1,10 +1,12 @@
 'use strict';
 
+const helpers = require('./helpers');
+
 module.exports = {
 	init,
 };
 
-function init(helpers) {
+function init() {
 	const selectors = require('./../selectors');
 	// LAMP SAVINGS LED//
 

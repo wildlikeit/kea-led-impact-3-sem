@@ -4,6 +4,6 @@ module.exports = {
 	animIn,
 };
 
-function animIn(selectors, helpers){
+function animIn(selectors){
 	console.log('hello from trees.js');
 }

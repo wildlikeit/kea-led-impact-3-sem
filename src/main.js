@@ -13,10 +13,9 @@ const ledImpactStory = require('./modules/animations/led-impact-story/controller
 
 // SETTINGS
 // const selectors = require('./selectors')(document);
-const helpers = require('./modules/helpers');
 
 // IMPORTS
-lampsModule.init(helpers, ajlampsData);
-ledModule.init(helpers);
-ledHoverModule.init(helpers, lampsModule, ajlampsData);
-ledImpactStory.init(helpers);
+lampsModule.init(ajlampsData);
+ledModule.init();
+ledHoverModule.init(lampsModule, ajlampsData);
+ledImpactStory.init();

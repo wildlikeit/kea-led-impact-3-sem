@@ -1,11 +1,12 @@
 'use strict';
-/*global document*/
+
+const helpers = require('./helpers');
 
 module.exports = {
 	init,
 };
 
-function init(helpers, ajlamps) {
+function init(ajlamps) {
 	const selectors = require('./../selectors');
 	// MIXINS //
 	const lampInfoTextMixin = helpers.createElement('a-mixin', {
