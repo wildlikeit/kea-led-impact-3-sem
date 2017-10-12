@@ -18,7 +18,7 @@ let ledLeavePlaneRotateAnim;
 let ledLeavePlaneColorAnim;
 let ledImpactText;
 
-let ledPlaneScaleAnim = document.createElement('a-animation', {
+let ledPlaneScaleAnim = helpers.createElement('a-animation', {
 	'id': 'ledPlaneScaleAnim',
 	'attribute': 'radius',
 	'from': '5',

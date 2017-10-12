@@ -16,8 +16,8 @@ function init(lampsModule, ajlamps) {
 		skyAnim.darkenSky(selectors);
 		// selectors.scene.removeChild(selectors.lamp);
 		selectors.scene.removeChild(document.querySelector('#lamp'));
-		ledAnim.show(selectors, helpers);
-		ledHours.init(selectors, helpers);
+		ledAnim.show(selectors);
+		ledHours.init(selectors);
 	});
 
 
