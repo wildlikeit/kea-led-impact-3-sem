@@ -94,8 +94,9 @@ helpers
 	.appendNewElement(ledImpactNextCtaWrapper, 'a-text', {
 		'id': 'ledImpactNextCta',
 		'position': '0 0 0',
-		'value': 'Next',
-		'scale': '5.5 5.5',
+		'value': 'NEXT',
+		'color': '#ff6961',
+		'scale': '10 10',
 		'align': 'center',
 	});
 
@@ -119,8 +120,9 @@ helpers
 	.appendNewElement(ledImpactPrevCtaWrapper, 'a-text', {
 		'id': 'ledImpactPrevCta',
 		'position': '0 0 0',
-		'value': 'Back',
-		'scale': '5.5 5.5',
+		'value': 'BACK',
+		'color': '#ff6961',
+		'scale': '10 10',
 		'align': 'center',
 	});
 
@@ -139,7 +141,7 @@ daylightHoursText.create(daylightHoursData, ledImpactTextContainer);
 // Input container
 const ledImpactInputsContainer = helpers.createElement('a-entity', {
 	'id': 'ledImpactInputsContainer',
-	'position': '18.218 12.311 -10.623',
+	'position': '19.049 12.311 -9.762',
 });
 
 // INPUTS

@@ -26,7 +26,7 @@ function create(inputHoursData, container) {
 					'id': 'ledImpactPlusCircle' + index,
 					'position': '-1.903 0 -1.802',
 					'rotation': '0 -43 0',
-					'radius': '0.6',
+					'radius': '0.75',
 					'opacity': '0.5',
 				});
 
@@ -34,7 +34,7 @@ function create(inputHoursData, container) {
 				.appendNewElement(ledImpactInputPlusCircle, 'a-text', {
 					'id': 'ledImpactInputPlus' + index,
 					'position': '0 0 0',
-					'scale': '4.5 4.5',
+					'scale': '6 6',
 					'align': 'center',
 					'value': '+',
 				});
@@ -43,7 +43,7 @@ function create(inputHoursData, container) {
 				.appendNewElement(ledImpactInputPlusCircle, 'a-circle', {
 					'id': 'ledImpactPlusEvent' + index,
 					'position': '0 0 0',
-					'radius': '0.6',
+					'radius': '0.75',
 					'opacity': '0',
 				});
 
@@ -59,9 +59,9 @@ function create(inputHoursData, container) {
 			let ledImpactInputMinusCircle = helpers
 				.appendNewElement(ledImpactInputWrapper, 'a-circle', {
 					'id': 'ledImpactMinusCircle' + index,
-					'position': '-0.790 0 -0.801',
+					'position': '-0.642 0 -0.690',
 					'rotation': '0 -43 0',
-					'radius': '0.6',
+					'radius': '0.75',
 					'opacity': '0.5',
 				});
 
@@ -69,7 +69,7 @@ function create(inputHoursData, container) {
 				.appendNewElement(ledImpactInputMinusCircle, 'a-text', {
 					'id': 'ledImpactInputMinus' + index,
 					'position': '0 0 0',
-					'scale': '4.5 4.5',
+					'scale': '6 6',
 					'align': 'center',
 					'value': '-',
 				});
@@ -78,7 +78,7 @@ function create(inputHoursData, container) {
 				.appendNewElement(ledImpactInputMinusCircle, 'a-circle', {
 					'id': 'ledImpactMinusEvent' + index,
 					'position': '0 0 0',
-					'radius': '0.6',
+					'radius': '0.75',
 					'opacity': '0',
 				});
 
@@ -88,6 +88,18 @@ function create(inputHoursData, container) {
 				if ((curVal - element.value) >= 0) {
 					ledImpactInput3.setAttribute('value', curVal -= element.value);
 				}
+			});
+		}
+
+		// Input underline
+		if (index == (inputHoursData.length - 1)) {
+			let element = helpers.appendNewElement(ledImpactInputWrapper, 'a-box', {
+				'id': 'ledImpactUnderline',
+				'position': '1.352 1.5 1.130',
+				'width': '10',
+				'height': '0.1',
+				'depth': '0.1',
+				'rotation': '0 -43 0',
 			});
 		}
 
