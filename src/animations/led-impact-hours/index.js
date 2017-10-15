@@ -6,6 +6,9 @@ const helpers = require('../../helpers');
 const animations = require('../../animations');
 const inputs = require('./inputs');
 const daylightHoursText = require('./daylight-hours-text');
+const lampsModule = require('../../modules/lamps');
+const sky = require('../sky');
+const ledImpact = require('../led-impact');
 
 module.exports = {
 	create,
@@ -105,11 +108,7 @@ const ledImpactNextEvent = helpers
 		'opacity': '0',
 	});
 
-ledImpactNextEvent.addEventListener('click', function() {
-	animations.sky.lighten();
-}, { passive: true });
-
-// PREVIOUS
+// Back
 const ledImpactPrevCtaWrapper = helpers
 	.appendNewElement(ledImpactCtaContainer, 'a-entity', {
 		'id': 'ledImpactPrevCtaWrapper',
@@ -120,7 +119,7 @@ helpers
 	.appendNewElement(ledImpactPrevCtaWrapper, 'a-text', {
 		'id': 'ledImpactPrevCta',
 		'position': '0 0 0',
-		'value': 'Previous',
+		'value': 'Back',
 		'scale': '5.5 5.5',
 		'align': 'center',
 	});
@@ -134,9 +133,6 @@ const ledImpactPrevEvent = helpers
 		'opacity': '0',
 	});
 
-ledImpactPrevEvent.addEventListener('click', function() {
-	console.log('previous');
-}, { passive: true });
 
 daylightHoursText.create(daylightHoursData, ledImpactTextContainer);
 
@@ -158,6 +154,7 @@ function create() {
 	const sceneContainerElement = document.querySelector('a-scene');
 	sceneContainerElement.appendChild(ledImpactTextContainer);
 	sceneContainerElement.appendChild(ledImpactInputsContainer);
+	sceneContainerElement.emit('ledImpactInit');
 }
 
 function remove() {
@@ -171,4 +168,5 @@ function remove() {
 	if (ledImpactInputsContainer) {
 		sceneContainerElement.removeChild(ledImpactInputsContainer);
 	}
+
 }

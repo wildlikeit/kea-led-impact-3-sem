@@ -85,7 +85,6 @@ function show() {
 	ledPlaneEl.appendChild(ledEnterPlaneRotateAnim);
 	ledPlaneEl.appendChild(ledEnterPlaneColorAnim);
 
-	ledImpactStoryDelay();
 }
 
 function hide() {

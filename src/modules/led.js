@@ -34,14 +34,14 @@ helpers.appendNewElement(led, 'a-text', {
 	'id': 'led-text',
 	'mixin': 'ledTextMixin',
 	'position': '12.1 7.482 -13.748',
-	'value': 'SAVE 70%',
+	'value': 'CALCULATE YOUR',
 });
 
 helpers.appendNewElement(led, 'a-text', {
 	'id': 'led-sub-text',
 	'mixin': 'ledTextMixin',
 	'position': '11.8 5.759 -13.748',
-	'value': 'USING LED',
+	'value': 'LED SAVINGS',
 });
 
 function create() {

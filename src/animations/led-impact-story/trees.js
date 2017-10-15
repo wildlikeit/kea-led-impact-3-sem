@@ -7,12 +7,16 @@ module.exports = {
 	animIn,
 };
 
-function animIn(selectors) {
+const sceneElement = document.querySelector('a-scene');
+const sky = document.querySelector('a-sky');
+const camera = document.querySelector('a-camera');
 
-	selectors.sky.setAttribute('color', '#ffffff');
-	selectors.sky.setAttribute('src','#field360');
-	selectors.scene.removeChild(document.querySelector('#ledImpactText'));
-	const floor = helpers.createElement('a-circle',{
+function animIn() {
+
+	sky.setAttribute('color', '#ffffff');
+	sky.setAttribute('src','#field360');
+	sceneElement.removeChild(document.querySelector('#ledImpactText'));
+	const floor = helpers.appendNewElement(sceneElement, 'a-circle',{
 		'id':'forest-floor',
 		'src': '#forestFloor',
 		'repeat': '1000 1000',
@@ -20,15 +24,13 @@ function animIn(selectors) {
 		'radius':'3500',
 		'rotation': '-90 0 0',
 	});
-	selectors.scene.appendChild(floor);
 
 	setTimeout(function() {
 		let i = 0;
 		let treesToCreate = 20;
-		const trees = helpers.createElement('a-entity',{
+		const trees = helpers.appendNewElement(sceneElement, 'a-entity',{
 			'id': 'trees',
 		});
-		selectors.scene.appendChild(trees);
 
 		function createTree() {
 			let xMin = -1750;
@@ -52,20 +54,19 @@ function animIn(selectors) {
 
 				if (i == treesToCreate) {
 					setTimeout(function() {
-						const cameraUpAnim = helpers.createElement('a-animation', {
+						const cameraUpAnim = helpers.appendNewElement(camera, 'a-animation', {
 							'attribute':'position',
 							'from':'0 2 5',
 							'to':'0 300 5',
 							'dur':'3000',
 							'ease':'ease-in-out',
 						});
-						selectors.camera.appendChild(cameraUpAnim);
 
 						setTimeout(function(){
-							selectors.scene.removeChild(floor);
-							selectors.scene.removeChild(trees);
-							selectors.sky.setAttribute('src', '');
-							selectors.scene.emit('endTrees', true);
+							sceneElement.removeChild(floor);
+							sceneElement.removeChild(trees);
+							sky.setAttribute('src', '');
+							sceneElement.emit('endTrees', true);
 						},5000);
 
 					}, 5000);

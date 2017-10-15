@@ -6,7 +6,9 @@ module.exports = {
 	init,
 };
 
-function init(selectors){
+const sceneElement = document.querySelector('a-scene');
+
+function init(){
 	setTimeout(function(){
 		let i = 0;
 		let countTo = 1;
@@ -19,7 +21,7 @@ function init(selectors){
 				}
 				if(i == countTo){
 					setTimeout(function(){
-						selectors.scene.emit('startTrees', true);
+						sceneElement.emit('startTrees', true);
 					}, 500);
 				}
 			}, 100 - (i*0.9));

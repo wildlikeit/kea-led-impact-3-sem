@@ -9,7 +9,6 @@ module.exports = {
 };
 
 function create(inputHoursData, container) {
-	const ledImpactInput3 = document.querySelector('#ledImpactInput3');
 
 	// Adding inputs via the data
 	inputHoursData.forEach(function(element, index) {
