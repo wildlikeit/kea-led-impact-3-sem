@@ -9,9 +9,11 @@ module.exports = {
 	lighten,
 };
 
+const sky = document.querySelector('a-sky');
+
 let ledEnterSkyAnim = helpers
 	.createElement('a-animation', {
-		'id': 'skyAnim',
+		'id': 'skyAnimEnter',
 		'attribute': 'material.color',
 		'from': '#ffffff',
 		'to': '#000000',
@@ -21,7 +23,7 @@ let ledEnterSkyAnim = helpers
 
 let ledLeaveSkyAnim = helpers
 	.createElement('a-animation', {
-		'id': 'skyAnim',
+		'id': 'skyAnimLeave',
 		'attribute': 'material.color',
 		'from': '#000000',
 		'to': '#ffffff',
@@ -32,7 +34,7 @@ let ledLeaveSkyAnim = helpers
 let ledSkyAnimActive = false;
 
 function darken() {
-	const sky = document.querySelector('a-sky');
+	console.log(ledLeaveSkyAnim, ledEnterSkyAnim);
 
 	if (ledSkyAnimActive) {
 		sky.removeChild(ledLeaveSkyAnim);
@@ -44,8 +46,7 @@ function darken() {
 }
 
 function lighten() {
-	const sky = document.querySelector('a-sky');
-
+	console.log(ledLeaveSkyAnim, ledEnterSkyAnim);
 	sky.removeChild(ledEnterSkyAnim);
 	sky.appendChild(ledLeaveSkyAnim);
 }

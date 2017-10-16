@@ -11,11 +11,16 @@ const sky = require('../sky');
 const ledImpact = require('../led-impact');
 
 module.exports = {
+	step2,
 	create,
-	remove
+	remove,
+	step3,
 };
 
 let assetsSetup = false;
+let firstValue;
+let secondValue;
+let thirdValue;
 
 function _setupAssets() {
 	const assetsContainerElement = document.querySelector('a-assets');
@@ -152,11 +157,8 @@ function create() {
 	if (!assetsSetup) {
 		_setupAssets();
 	}
-
-	const sceneContainerElement = document.querySelector('a-scene');
-	sceneContainerElement.appendChild(ledImpactTextContainer);
-	sceneContainerElement.appendChild(ledImpactInputsContainer);
-	sceneContainerElement.emit('ledImpactInit');
+	// call step 1
+	step1();
 }
 
 function remove() {
@@ -170,5 +172,22 @@ function remove() {
 	if (ledImpactInputsContainer) {
 		sceneContainerElement.removeChild(ledImpactInputsContainer);
 	}
+}
 
+// STEPS
+function step1(){
+	const sceneContainerElement = document.querySelector('a-scene');
+	sceneContainerElement.appendChild(ledImpactTextContainer);
+	sceneContainerElement.appendChild(ledImpactInputsContainer);
+	sceneContainerElement.emit('ledImpactInit');
+}
+
+function step2(){
+	firstValue = document.querySelector('#ledImpactInput3').getAttribute('value');
+	console.log(firstValue);
+}
+
+function step3(){
+	secondValue = document.querySelector('#ledImpactInput3').getAttribute('value');
+	console
 }
