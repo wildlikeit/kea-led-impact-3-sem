@@ -11,16 +11,13 @@ const sky = require('../sky');
 const ledImpact = require('../led-impact');
 
 module.exports = {
-	step2,
 	create,
 	remove,
-	step3,
+	steps,
 };
 
 let assetsSetup = false;
-let firstValue;
-let secondValue;
-let thirdValue;
+let emitSetup = false;
 
 function _setupAssets() {
 	const assetsContainerElement = document.querySelector('a-assets');
@@ -41,11 +38,29 @@ function _setupAssets() {
 
 // DATA
 const daylightHoursData = [
-	'How many ',
-	'daylight hours',
-	'will your lamps',
-	'operate?',
-];
+		{
+			'text': [
+				'How many',
+				'hours will',
+				'each lamp',
+				'operate per year?',
+			],
+		},
+		{
+			'text': [
+				'How many',
+				'of those hours',
+				'are nighttime?',
+			],
+		},
+		{
+			'text': [
+				'How many ',
+				'lamps will',
+				'you operate?',
+			],
+		}
+	];
 
 const inputHoursData = [
 	{ 'type': 'input', 'value': 10 },
@@ -140,25 +155,45 @@ const ledImpactPrevEvent = helpers
 		'opacity': '0',
 	});
 
-
-daylightHoursText.create(daylightHoursData, ledImpactTextContainer);
-
 // Input container
 const ledImpactInputsContainer = helpers.createElement('a-entity', {
 	'id': 'ledImpactInputsContainer',
 	'position': '19.049 12.311 -9.762',
 });
 
-// INPUTS
-inputs.create(inputHoursData, ledImpactInputsContainer);
-
-function create() {
+function create(step) {
 	// Only setup assets on first run
 	if (!assetsSetup) {
 		_setupAssets();
 	}
 	// call step 1
-	step1();
+	steps(step);
+}
+
+// STEPS
+function steps(step){
+	if (step == 1){
+		const sceneContainerElement = document.querySelector('a-scene');
+		sceneContainerElement.appendChild(ledImpactTextContainer);
+		sceneContainerElement.appendChild(ledImpactInputsContainer);
+		inputs.create(inputHoursData, ledImpactInputsContainer);
+		if (!emitSetup) {
+			sceneContainerElement.emit('ledImpactInit');
+			emitSetup = true;
+		}
+	} else if (step > 1) {
+
+		const ledImpactTextContainer = document.querySelector('#ledImpactTextContainer');
+		let impactTexts = document.querySelectorAll('.ledImpactText');
+
+		impactTexts.forEach(function(element){
+			element.parentNode.removeChild(element);
+		});
+
+		document.querySelector('#ledImpactInput3').setAttribute('value', '0');
+	}
+
+	daylightHoursText.create(daylightHoursData, ledImpactTextContainer, step);
 }
 
 function remove() {
@@ -172,22 +207,4 @@ function remove() {
 	if (ledImpactInputsContainer) {
 		sceneContainerElement.removeChild(ledImpactInputsContainer);
 	}
-}
-
-// STEPS
-function step1(){
-	const sceneContainerElement = document.querySelector('a-scene');
-	sceneContainerElement.appendChild(ledImpactTextContainer);
-	sceneContainerElement.appendChild(ledImpactInputsContainer);
-	sceneContainerElement.emit('ledImpactInit');
-}
-
-function step2(){
-	firstValue = document.querySelector('#ledImpactInput3').getAttribute('value');
-	console.log(firstValue);
-}
-
-function step3(){
-	secondValue = document.querySelector('#ledImpactInput3').getAttribute('value');
-	console
 }

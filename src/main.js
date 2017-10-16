@@ -8,12 +8,15 @@ const animations = require('./animations');
 
 const sceneElement = document.querySelector('a-scene');
 
+let ledActive = false;
+
+let step = 1;
+let calcValues = [];
+
 lampsModule.create();
 const ledEl = ledModule.create();
 const ledPlaneEl = ledEl.getChildren().find(el => el.id === 'led-plane');
 
-let ledActive = false;
-let step = 1;
 
 ledPlaneEl
 	.addEventListener('click', function() {
@@ -21,7 +24,7 @@ ledPlaneEl
 			lampsModule.remove();
 			animations.sky.darken();
 			animations.ledImpact.show();
-			animations.ledImpactHours.create();
+			animations.ledImpactHours.create(step);
 		}
 		ledActive = true;
 	}, { passive: true });
@@ -39,32 +42,32 @@ sceneElement
 				animations.ledImpact.hide();
 				animations.ledImpactHours.remove();
 				setTimeout( function(){ ledActive = false; }, 500);
-			} else if (step == 2) {
-				console.log('step2');
-			} else if (step == 3) {
-				console.log('step3');
+			} else if (step > 1) {
+				step--;
+				animations.ledImpactHours.steps(step);
+				console.log(`at step ${step}`);
 			}
 		}, { passive: true });
 
-		ledImpactNextEvent.addEventListener('click', function() {
-
-			if (step == 1){
-				animations.ledImpactHours.step2();
+		ledImpactNextEvent.addEventListener('click', function(e) {
+			if (step < 3){
+				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
+				calcValues.push(value);
 				step++;
-			} else if (step == 2){
-				console.log('step2');
-			} else if (step == 3){
+				console.log(`at step ${step} with ${calcValues}`);
+				setTimeout(function(){
+					animations.ledImpactHours.steps(step);
+				}, 500);
+
+			} else if (step == 3){
+				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
+				calcValues.push(value);
+				console.log(`at step ${step} with ${calcValues}`);
 				animations.ledImpactHours.remove();
 				animations.ledImpactStoryDelay.init();
 			}
-
 		}, { passive: true });
-
-
-}, { passive: true });
-
-
-
+	}, { passive: true });
 
 sceneElement
 	.addEventListener('startLedImpactStory', function() {
