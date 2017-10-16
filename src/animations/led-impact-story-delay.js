@@ -1,5 +1,5 @@
 'use strict';
-
+/*global document*/
 const helpers = require('../helpers');
 
 module.exports = {
@@ -9,6 +9,8 @@ module.exports = {
 const sceneElement = document.querySelector('a-scene');
 const assets = document.querySelector('a-assets');
 const sky = document.querySelector('a-sky');
+const camera = document.querySelector('a-camera');
+const cursor = document.querySelector('#cursor');
 
 function init() {
 	const ledImpactTextMixin = helpers.appendNewElement(assets, 'a-mixin', {
@@ -74,6 +76,7 @@ function init() {
 			ledImpactText.removeChild(ledImpactText2);
 			ledImpactText.removeChild(ledImpactText3);
 			ledImpactText.removeChild(ledImpactYesPlane);
+			camera.removeChild(cursor);
 
 			const ledImpactYesTextScale = helpers.appendNewElement(ledImpactYesText, 'a-animation', {
 				'attribute': 'scale',
