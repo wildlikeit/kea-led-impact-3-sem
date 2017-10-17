@@ -34,6 +34,7 @@ function animIn() {
 		'id': 'trash',
 	});
 
+<<<<<<< HEAD
 	const item = helpers.appendNewElement(trash, 'a-gltf-model',{
 		'src': '#car',
 		'scale': '1 1 1',
@@ -43,5 +44,11 @@ function animIn() {
 	setTimeout(function(){
 		// sceneElement.removeChild(trash);
 		// sceneElement.emit('trashEnd', true);
+=======
+
+	setTimeout(function(){
+		sceneElement.removeChild(trash);
+		sceneElement.emit('trashEnd', true);
+>>>>>>> 7df264b81ff366b5509d7e9c1c498b2ac7bff73f
 	}, 1000);
 }

@@ -9,7 +9,6 @@ module.exports = {
 };
 
 function create(inputHoursData, container) {
-
 	// Adding inputs via the data
 	inputHoursData.forEach(function(element, index) {
 		// Total Input Wrapper
@@ -26,7 +25,7 @@ function create(inputHoursData, container) {
 					'id': 'ledImpactPlusCircle' + index,
 					'position': '-1.903 0 -1.802',
 					'rotation': '0 -43 0',
-					'radius': '0.75',
+					'radius': '0.9',
 					'opacity': '0.5',
 				});
 
@@ -43,13 +42,12 @@ function create(inputHoursData, container) {
 				.appendNewElement(ledImpactInputPlusCircle, 'a-circle', {
 					'id': 'ledImpactPlusEvent' + index,
 					'position': '0 0 0',
-					'radius': '0.75',
+					'radius': '0.9',
 					'opacity': '0',
 				});
 
 			ledImpactInputPlusEvent.addEventListener('click', function() {
 				let curVal = parseInt(ledImpactInput3.getAttribute('value'));
-
 				if (curVal >= 0) {
 					ledImpactInput3.setAttribute('value', curVal += element.value);
 				}
@@ -61,7 +59,7 @@ function create(inputHoursData, container) {
 					'id': 'ledImpactMinusCircle' + index,
 					'position': '-0.642 0 -0.690',
 					'rotation': '0 -43 0',
-					'radius': '0.75',
+					'radius': '0.9',
 					'opacity': '0.5',
 				});
 
@@ -78,7 +76,7 @@ function create(inputHoursData, container) {
 				.appendNewElement(ledImpactInputMinusCircle, 'a-circle', {
 					'id': 'ledImpactMinusEvent' + index,
 					'position': '0 0 0',
-					'radius': '0.75',
+					'radius': '0.9',
 					'opacity': '0',
 				});
 

@@ -9,6 +9,8 @@ module.exports = {
 	lighten,
 };
 
+const sky = document.querySelector('a-sky');
+
 let ledEnterSkyAnim = helpers
 	.createElement('a-animation', {
 		'id': 'skyAnim',
@@ -32,8 +34,6 @@ let ledLeaveSkyAnim = helpers
 let ledSkyAnimActive = false;
 
 function darken() {
-	const sky = document.querySelector('a-sky');
-
 	if (ledSkyAnimActive) {
 		sky.removeChild(ledLeaveSkyAnim);
 	} else {
@@ -44,8 +44,6 @@ function darken() {
 }
 
 function lighten() {
-	const sky = document.querySelector('a-sky');
-
 	sky.removeChild(ledEnterSkyAnim);
 	sky.appendChild(ledLeaveSkyAnim);
 }

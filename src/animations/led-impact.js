@@ -133,7 +133,5 @@ function hide() {
 		ledPlaneEl.appendChild(ledLeavePlaneScaleAnim);
 		ledPlaneEl.appendChild(ledLeavePlaneRotateAnim);
 		ledPlaneEl.appendChild(ledLeavePlaneColorAnim);
-
-		// selectors.scene.removeChild(ledImpactText);
 	}
 }
