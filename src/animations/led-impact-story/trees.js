@@ -14,6 +14,7 @@ const camera = document.querySelector('a-camera');
 function animIn() {
 	sky.setAttribute('color', '#ffffff');
 	sceneElement.removeChild(document.querySelector('#ledImpactText'));
+	sceneElement.setAttribute('rain', '');
 
 	setTimeout(function() {
 		let i = 0;
@@ -53,6 +54,7 @@ function animIn() {
 						'dur':'3000',
 						'ease':'ease-in-out',
 					});
+					sceneElement.removeAttribute('rain');
 					setTimeout(function(){
 						let countTo = 9;
 						let split = Math.floor(Math.sqrt(countTo));
@@ -94,8 +96,8 @@ function animIn() {
 							}
 							setTimeout(function(){
 								sceneElement.removeChild(forests);
-								camera.setAttribute('position', '0 0 0');
-								sceneElement.emit('endTrees', true);
+								camera.setAttribute('position', '0 2 5');
+								sceneElement.emit('treesEnd', true);
 							}, 1000);
 
 						}, 1000);
