@@ -50,12 +50,9 @@ sceneElement
 
 }, { passive: true });
 
-
-
-
 sceneElement
 	.addEventListener('startLedImpactStory', function() {
-		animations.ledImpactStory.counter.init();
+		animations.ledImpactStory.counter.initTrees();
 	}, { passive: true });
 
 sceneElement
@@ -64,3 +61,33 @@ sceneElement
 			animations.ledImpactStory.trees.animIn();
 		}, 1000);
 	}, { passive: true });
+
+sceneElement
+	.addEventListener('treesEnd', function() {
+		setTimeout(function() {
+			animations.ledImpactStory.cars.init();
+			animations.ledImpactStory.counter.initCars();
+		}, 1000);
+	}, { passive: true });
+
+sceneElement
+	.addEventListener('startCars', function() {
+		setTimeout(function() {
+			animations.ledImpactStory.cars.animIn();
+		}, 1000);
+	}, { passive: true });
+
+sceneElement
+	.addEventListener('carsEnd', function() {
+		setTimeout(function() {
+			animations.ledImpactStory.trash.init();
+			animations.ledImpactStory.counter.initTrash();
+		}, 1000);
+	}, { passive: true });
+
+sceneElement
+		.addEventListener('startTrash', function() {
+			setTimeout(function() {
+				animations.ledImpactStory.trash.animIn();
+			}, 1000);
+		}, { passive: true });
