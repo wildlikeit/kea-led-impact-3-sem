@@ -5,13 +5,21 @@
 const lampsModule = require('./modules/lamps');
 const ledModule = require('./modules/led');
 const animations = require('./animations');
+const helpers = require('./helpers');
+const ajlamps = require('./data/ajlamps');
 
 const sceneElement = document.querySelector('a-scene');
 
 let ledActive = false;
-
 let step = 1;
-let calcValues = [];
+
+let calcValues = {
+	'daylightHours': 0,
+	'dimmedHours': 0,
+	'lampAmount': 0
+};
+
+let lamp = ajlamps[0];
 
 lampsModule.create();
 const ledEl = ledModule.create();
@@ -51,7 +59,13 @@ sceneElement
 		ledImpactNextEvent.addEventListener('click', function(e) {
 			if (step < 3){
 				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
-				calcValues.push(value);
+
+				if(step == 1){
+					calcValues.daylightHours = value;
+				} else if (step == 2) {
+					calcValues.dimmedHours = value;
+				}
+
 				step++;
 
 				setTimeout(function(){
@@ -60,11 +74,15 @@ sceneElement
 
 			} else if (step == 3){
 				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
-				calcValues.push(value);
+				calcValues.lampAmount = value;
+
+				let savings = helpers.calculateSavings(calcValues, lamp);
+				console.log(savings);
 
 				animations.ledImpactHours.remove();
 				animations.ledImpactStoryDelay.init();
 			}
+
 		}, { passive: true });
 	}, { passive: true });
 

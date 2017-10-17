@@ -10,5 +10,9 @@ module.exports = [{
 		{ 'measurement': 'Lighting out of the luminaire [Lumen]', 'value': 1395 },
 		{ 'measurement': 'Operating time normal 100% [Hours]', 'value': 4000 },
 		{ 'measurement': 'Operating time wet night 50% 22-06', 'value': 0 },
-	]
+	],
+	'normal': 46,
+	'dimmed': 46,
+	'ledNormal': 20,
+	'ledDimmed': 10.3,
 }];
