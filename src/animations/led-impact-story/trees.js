@@ -11,13 +11,14 @@ const sceneElement = document.querySelector('a-scene');
 const sky = document.querySelector('a-sky');
 const camera = document.querySelector('a-camera');
 
-function animIn() {
+function animIn(savings) {
 	sky.setAttribute('color', '#ffffff');
 	sceneElement.removeChild(document.querySelector('#ledImpactText'));
 
 	setTimeout(function() {
 		let i = 0;
 		let treesToCreate = 1;
+		console.log(treesToCreate);
 		const trees = helpers.appendNewElement(sceneElement, 'a-entity',{
 			'id': 'trees',
 		});

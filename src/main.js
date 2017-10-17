@@ -18,8 +18,8 @@ let calcValues = {
 	'dimmedHours': 0,
 	'lampAmount': 0
 };
-
 let lamp = ajlamps[0];
+let savings = {};
 
 lampsModule.create();
 const ledEl = ledModule.create();
@@ -76,8 +76,8 @@ sceneElement
 				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
 				calcValues.lampAmount = value;
 
-				let savings = helpers.calculateSavings(calcValues, lamp);
-				console.log(savings);
+				savings = helpers.calculateSavings(calcValues, lamp);
+				console.log(savings, calcValues);
 
 				animations.ledImpactHours.remove();
 				animations.ledImpactStoryDelay.init();
@@ -88,12 +88,12 @@ sceneElement
 
 sceneElement
 	.addEventListener('startLedImpactStory', function() {
-		animations.ledImpactStory.counter.init();
+		animations.ledImpactStory.counter.init(savings);
 	}, { passive: true });
 
 sceneElement
 	.addEventListener('startTrees', function() {
 		setTimeout(function() {
-			animations.ledImpactStory.trees.animIn();
+			animations.ledImpactStory.trees.animIn(savings);
 		}, 1000);
 	}, { passive: true });

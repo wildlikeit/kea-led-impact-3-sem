@@ -8,10 +8,10 @@ module.exports = {
 
 const sceneElement = document.querySelector('a-scene');
 
-function init(){
+function init(savings){
 	setTimeout(function(){
 		let i = 0;
-		let countTo = 1;
+		let countTo = ((savings.yearlySavings * 1.222) / 48);
 		function count(){
 			setTimeout(function() {
 				document.querySelector('#ledImpactFigure').setAttribute('value', i);
