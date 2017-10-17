@@ -24,7 +24,7 @@ ledPlaneEl
 			lampsModule.remove();
 			animations.sky.darken();
 			animations.ledImpact.show();
-			animations.ledImpactHours.create(step);
+			animations.ledImpactHours.create(step, ledActive);
 		}
 		ledActive = true;
 	}, { passive: true });
@@ -44,8 +44,7 @@ sceneElement
 				setTimeout( function(){ ledActive = false; }, 500);
 			} else if (step > 1) {
 				step--;
-				animations.ledImpactHours.steps(step);
-				console.log(`at step ${step}`);
+				animations.ledImpactHours.steps(step, ledActive);
 			}
 		}, { passive: true });
 
@@ -54,15 +53,15 @@ sceneElement
 				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
 				calcValues.push(value);
 				step++;
-				console.log(`at step ${step} with ${calcValues}`);
+
 				setTimeout(function(){
-					animations.ledImpactHours.steps(step);
+					animations.ledImpactHours.steps(step, ledActive);
 				}, 500);
 
 			} else if (step == 3){
 				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
 				calcValues.push(value);
-				console.log(`at step ${step} with ${calcValues}`);
+
 				animations.ledImpactHours.remove();
 				animations.ledImpactStoryDelay.init();
 			}

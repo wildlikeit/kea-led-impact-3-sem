@@ -41,9 +41,9 @@ const daylightHoursData = [
 		{
 			'text': [
 				'How many',
-				'hours will',
-				'each lamp',
-				'operate per year?',
+				'hours per year',
+				'will each',
+				'lamp operate?',
 			],
 		},
 		{
@@ -114,19 +114,18 @@ helpers
 	.appendNewElement(ledImpactNextCtaWrapper, 'a-text', {
 		'id': 'ledImpactNextCta',
 		'position': '0 0 0',
-		'value': 'NEXT',
-		'color': '#ff6961',
+		'value': '>',
+		'color': '#FFFFFF',
 		'scale': '10 10',
 		'align': 'center',
 	});
 
 const ledImpactNextEvent = helpers
-	.appendNewElement(ledImpactNextCtaWrapper, 'a-plane', {
+	.appendNewElement(ledImpactNextCtaWrapper, 'a-circle', {
 		'id': 'ledImpactNextEvent',
-		'position': '0 0 0',
-		'width': '5',
-		'height': '1',
-		'opacity': '0',
+		'position': '0.048 0 -0.045',
+		'radius': '2',
+		'color': '#ff6961',
 	});
 
 // Back
@@ -140,19 +139,30 @@ helpers
 	.appendNewElement(ledImpactPrevCtaWrapper, 'a-text', {
 		'id': 'ledImpactPrevCta',
 		'position': '0 0 0',
-		'value': 'BACK',
-		'color': '#ff6961',
+		'value': '<',
+		'color': '#FFFFFF',
 		'scale': '10 10',
 		'align': 'center',
 	});
 
 const ledImpactPrevEvent = helpers
-	.appendNewElement(ledImpactPrevCtaWrapper, 'a-plane', {
+	.appendNewElement(ledImpactPrevCtaWrapper, 'a-circle', {
 		'id': 'ledImpactPrevEvent',
-		'position': '0 0 0',
-		'width': '5',
-		'height': '1',
-		'opacity': '0',
+		'position': '0.081 0 -0.075',
+		'radius': '2',
+		'color': '#ff6961',
+	});
+
+// Step text
+const ledImpactStepText = helpers
+	.appendNewElement(ledImpactTextContainer, 'a-text', {
+		'id': 'ledImpactStepText',
+		'position': '2.307 7 1.306',
+		'rotation': '0 -43 0',
+		'align': 'center',
+		'value': 'STEP 1',
+		'color': '#FFFFFF',
+		'scale': '15 15',
 	});
 
 // Input container
@@ -161,18 +171,18 @@ const ledImpactInputsContainer = helpers.createElement('a-entity', {
 	'position': '19.049 12.311 -9.762',
 });
 
-function create(step) {
+function create(step, ledActive) {
 	// Only setup assets on first run
 	if (!assetsSetup) {
 		_setupAssets();
 	}
 	// call step 1
-	steps(step);
+	steps(step, ledActive);
 }
 
 // STEPS
-function steps(step){
-	if (step == 1){
+function steps(step, ledActive){
+	if (step == 1 && !ledActive){
 		const sceneContainerElement = document.querySelector('a-scene');
 		sceneContainerElement.appendChild(ledImpactTextContainer);
 		sceneContainerElement.appendChild(ledImpactInputsContainer);
@@ -182,18 +192,22 @@ function steps(step){
 			emitSetup = true;
 		}
 	} else if (step > 1) {
-
-		const ledImpactTextContainer = document.querySelector('#ledImpactTextContainer');
-		let impactTexts = document.querySelectorAll('.ledImpactText');
-
-		impactTexts.forEach(function(element){
-			element.parentNode.removeChild(element);
-		});
-
 		document.querySelector('#ledImpactInput3').setAttribute('value', '0');
 	}
 
-	daylightHoursText.create(daylightHoursData, ledImpactTextContainer, step);
+	const ledImpactTextContainerElement = document.querySelector('#ledImpactTextContainer');
+	let impactTexts = document.querySelectorAll('.ledImpactText');
+
+	if (impactTexts){
+		impactTexts.forEach(function(element){
+			element.parentNode.removeChild(element);
+		});
+	}
+
+	const ledImpactStepText = document.querySelector('#ledImpactStepText');
+	ledImpactStepText.setAttribute('value', 'STEP ' + step);
+
+	daylightHoursText.create(daylightHoursData, ledImpactTextContainerElement, step);
 }
 
 function remove() {
