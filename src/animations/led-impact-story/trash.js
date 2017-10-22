@@ -97,6 +97,21 @@ function animIn() {
 				'height': '0.75',
 				'width': '0.45',
 				'rotation': '0 '+ ranY +' 0',
+			},
+			{
+				'type': 'a-cylinder',
+				'src': '#tubeChips',
+				'height': '0.7',
+				'radius': '0.14',
+				'rotation': '-90 '+ ranY +' 0',
+			},
+			{
+				'type': 'a-box',
+				'src': '#cookies',
+				'depth': '0.3',
+				'height': '0.075',
+				'width': '0.45',
+				'rotation': '0 '+ ranY +' 0',
 			}];
 
 		let ranItem = Math.floor(Math.random() * items.length);
