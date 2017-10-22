@@ -96,7 +96,7 @@ function animIn() {
 							}
 							setTimeout(function(){
 								sceneElement.removeChild(forests);
-								camera.setAttribute('position', '0 2 5');
+								camera.setAttribute('position', '0 2 0');
 								sceneElement.emit('treesEnd', true);
 							}, 1000);
 
@@ -104,7 +104,7 @@ function animIn() {
 
 					},3000);
 				}
-			}, 350 - (i));
+			}, 350);
 		}
 		createTree();
 	}, 2000);
