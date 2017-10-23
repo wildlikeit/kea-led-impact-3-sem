@@ -138,6 +138,7 @@ sceneElement
 				savings = helpers.calculateSavings(calcValues, lamp);
 
 				setTimeout(function(){
+					animations.ledImpactHours.remove();
 					animations.ledImpactStoryDelay.init();
 				}, 500)
 			}
