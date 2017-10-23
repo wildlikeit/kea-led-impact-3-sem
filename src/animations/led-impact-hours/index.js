@@ -201,7 +201,9 @@ function steps(step, ledActive){
 	let impactTexts = document.querySelectorAll('.ledImpactText');
 
 	if (impactTexts){
-		impactTexts.forEach(function(element){
+		impactTexts.forEach(function(element, index){
+			let childAnimation = document.querySelector('#ledImpactTextAnim' + index);
+			element.removeChild(childAnimation);
 			element.parentNode.removeChild(element);
 		});
 	}

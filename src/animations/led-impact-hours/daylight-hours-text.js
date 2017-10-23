@@ -17,5 +17,13 @@ function create(daylightHoursData, container, step) {
 			'position': '0 ' + (-index * 3) + ' 0',
 			'value': text,
 		});
+		helpers.appendNewElement(document.querySelector('#ledImpactText' + index), 'a-animation', {
+				'id': 'ledImpactTextAnim' + index,
+				'attribute': 'opacity',
+				'from': '0',
+				'to': '1',
+				'dur': '500',
+				'ease': 'ease-out',
+		});
 	});
 }
