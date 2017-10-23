@@ -11,12 +11,12 @@ module.exports = {
 const sceneElement = document.querySelector('a-scene');
 const sky = document.querySelector('a-sky');
 let ledImpactFigure;
+let floor;
 
 function init(){
-	sky.setAttribute('color', '#000000');
 	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text',{
 		'id': 'ledImpactFigure',
-		'color': '#ffffff',
+		'color': '#000000',
 		'position': '11.700 0 -24.485',
 		'align': 'center',
 		'baseline': 'bottom',
@@ -24,20 +24,27 @@ function init(){
 		'rotation': '0 -34 0',
 		'value': '0',
 	});
+	floor = helpers.appendNewElement(sceneElement, 'a-plane',{
+		'id': 'floor',
+		'width': '100',
+		'height': '100',
+		'rotation': '-90 0 0',
+		'static-body': '',
+	});
 }
 
 function animIn() {
 	sceneElement.removeChild(ledImpactFigure);
-	sky.setAttribute('color', '#ffffff');
 
 	const trash = helpers.appendNewElement(sceneElement, 'a-entity',{
 		'id': 'trash',
 	});
 
 	let i = 0;
-	let trashToCreate = 200;
-	let cMin = -10;
-	let cMax = 10;
+	const trashToCreate = 600;
+	const cMin = -20;
+	const cMax = 20;
+	const rainHeight = 200;
 
 	function createTrash() {
 		let ranX = Math.floor(Math.random() * (cMax - cMin)) + cMin;
@@ -51,6 +58,9 @@ function animIn() {
 				'height': '0.1',
 				'width': '1',
 				'rotation': '0 '+ ranY +' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
+
 			},
 			{
 				'type': 'a-box',
@@ -59,6 +69,8 @@ function animIn() {
 				'height': '0.01',
 				'width': '1',
 				'rotation': '0 '+ ranY +' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
 			},
 			{
 				'type': 'a-box',
@@ -67,6 +79,8 @@ function animIn() {
 				'height': '0.2',
 				'width': '0.5',
 				'rotation': '0 '+ ranY +' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
 			},
 			{
 				'type': 'a-cylinder',
@@ -74,6 +88,8 @@ function animIn() {
 				'height': '0.3',
 				'radius': '0.1',
 				'rotation': '0 '+ ranY +' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: cylinder',
 				'child':
 				{
 					'type': 'a-circle',
@@ -89,6 +105,8 @@ function animIn() {
 				'height': '0.4',
 				'radius': '0.1',
 				'rotation': '-90 '+ ranY +' 45',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: cylinder',
 			},
 			{
 				'type': 'a-box',
@@ -97,6 +115,8 @@ function animIn() {
 				'height': '0.75',
 				'width': '0.45',
 				'rotation': '0 '+ ranY +' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
 			},
 			{
 				'type': 'a-cylinder',
@@ -104,6 +124,8 @@ function animIn() {
 				'height': '0.7',
 				'radius': '0.14',
 				'rotation': '-90 '+ ranY +' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: cylinder',
 			},
 			{
 				'type': 'a-box',
@@ -112,6 +134,8 @@ function animIn() {
 				'height': '0.075',
 				'width': '0.45',
 				'rotation': '0 '+ ranY +' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
 			}];
 
 		let ranItem = Math.floor(Math.random() * items.length);
@@ -136,19 +160,20 @@ function animIn() {
 					}
 				}
 				trash.appendChild(item);
-				const anim = helpers.appendNewElement(item, 'a-animation',{
-					'attribute': 'position',
-					'from': ranX + ' 1000 '+ ranZ,
-					'to': ranX + ' 0 '+ ranZ,
-					'dur': '7500',
-					'ease': 'linear',
-				});
+				// const anim = helpers.appendNewElement(item, 'a-animation',{
+				// 	'attribute': 'position',
+				// 	'from': ranX + ' 1000 '+ ranZ,
+				// 	'to': ranX + ' 20 '+ ranZ,
+				// 	'dur': '5000',
+				// 	'ease': 'linear',
+				// });
 				i++;
 			}
 			if (i <= trashToCreate) {
 				createTrash();
 			}else{
 				sceneElement.removeChild(trash);
+				sceneElement.removeChild(floor);
 				sceneElement.emit('trashEnd', true);
 			}
 		}, 100);
