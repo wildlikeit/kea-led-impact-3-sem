@@ -20,15 +20,5 @@ module.exports = function(values, subject){
   savings.yearlySavings = savings.yearlySavingsPerLamp * values.lampAmount;
   savings.yearlySavingsPercent = ((savings.yearlyEffect - savings.yearlyLedEffect) / savings.yearlyEffect * 100).toFixed(0);
 
-
-
-	// scope.calc.type1 = ng.extend({
-	// 	dimmedHours: scope.calc.input.dimmedHours,
-	// 	normalHours: scope.calc.input.normalHours - scope.calc.input.dimmedHours
-	// }, scope.data.ledProducts[scope.calc.selected.type1_idx - 1])
-  //
-	// scope.calc.type1.yearlyEffect = yearlyEffect(scope.calc.type1, scope.calc.type1).toFixed(0)
-	// let ledSavings = ((scope.calc.yearlyEffect - scope.calc.type1.yearlyEffect) / scope.calc.yearlyEffect * 100).toFixed(0)
-
 	return savings;
 };

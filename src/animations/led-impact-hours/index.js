@@ -100,7 +100,7 @@ const ledImpactCtaContainer = helpers
 	.appendNewElement(ledImpactTextContainer, 'a-entity', {
 		'id': 'ledImpactCtaContainer',
 		'position': '2.274 -16.275 1.236',
-		'rotation': '0 -43 0'
+		'rotation': '0 -43 0',
 	});
 
 //NEXT
@@ -126,6 +126,7 @@ const ledImpactNextEvent = helpers
 		'position': '0.048 0 -0.045',
 		'radius': '2',
 		'color': '#ff6961',
+		'opacity': '0.9',
 	});
 
 // Back
@@ -151,6 +152,7 @@ const ledImpactPrevEvent = helpers
 		'position': '0.081 0 -0.075',
 		'radius': '2',
 		'color': '#ff6961',
+		'opacity': '0.9',
 	});
 
 // Step text

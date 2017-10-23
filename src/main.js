@@ -43,7 +43,27 @@ sceneElement
 		let ledImpactPrevEvent = document.querySelector('#ledImpactPrevEvent');
 		let ledImpactNextEvent = document.querySelector('#ledImpactNextEvent');
 
-		ledImpactPrevEvent.addEventListener('click', function() {
+		ledImpactPrevEvent.addEventListener('mouseenter', function() {
+
+			helpers.appendNewElement(ledImpactPrevEvent, 'a-animation', {
+				'id': 'prevOpacityIn',
+				'attribute': 'opacity',
+				'from': '0.9',
+				'to': '1',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+			helpers.appendNewElement(ledImpactPrevEvent, 'a-animation', {
+				'id': 'prevOpacityIn',
+				'attribute': 'radius',
+				'from': '2',
+				'to': '2.25',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+
 			if (ledActive && step == 1){
 				lampsModule.create();
 				animations.sky.lighten();
@@ -56,7 +76,48 @@ sceneElement
 			}
 		}, { passive: true });
 
-		ledImpactNextEvent.addEventListener('click', function(e) {
+		ledImpactPrevEvent.addEventListener('mouseleave', function() {
+
+			helpers.appendNewElement(ledImpactPrevEvent, 'a-animation', {
+				'id': 'prevOpacityOut',
+				'attribute': 'opacity',
+				'from': '1',
+				'to': '0.9',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+			helpers.appendNewElement(ledImpactPrevEvent, 'a-animation', {
+				'id': 'prevRadiusOut',
+				'attribute': 'radius',
+				'from': '2.25',
+				'to': '2',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+		}, {passive: true });
+
+		ledImpactNextEvent.addEventListener('mouseenter', function() {
+
+			helpers.appendNewElement(ledImpactNextEvent, 'a-animation', {
+				'id': 'nextOpacityIn',
+				'attribute': 'opacity',
+				'from': '0.9',
+				'to': '1',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+			helpers.appendNewElement(ledImpactNextEvent, 'a-animation', {
+				'id': 'nextRadiusIn',
+				'attribute': 'radius',
+				'from': '2',
+				'to': '2.25',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
 			if (step < 3){
 				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
 
@@ -67,7 +128,6 @@ sceneElement
 				}
 
 				step++;
-
 				setTimeout(function(){
 					animations.ledImpactHours.steps(step, ledActive);
 				}, 500);
@@ -75,20 +135,41 @@ sceneElement
 			} else if (step == 3){
 				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
 				calcValues.lampAmount = value;
-
 				savings = helpers.calculateSavings(calcValues, lamp);
-				console.log(savings, calcValues);
 
-				animations.ledImpactHours.remove();
-				animations.ledImpactStoryDelay.init();
+				setTimeout(function(){
+					animations.ledImpactStoryDelay.init();
+				}, 500)
 			}
 
 		}, { passive: true });
+
+		ledImpactNextEvent.addEventListener('mouseleave', function(){
+
+			helpers.appendNewElement(ledImpactNextEvent, 'a-animation', {
+				'id': 'nextOpacityOut',
+				'attribute': 'opacity',
+				'from': '1',
+				'to': '0.9',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+			helpers.appendNewElement(ledImpactNextEvent, 'a-animation', {
+				'id': 'nextRadiusOut',
+				'attribute': 'radius',
+				'from': '2.25',
+				'to': '2',
+				'dur': '500',
+				'ease': 'ease-out',
+			});
+
+		});
 	}, { passive: true });
 
 sceneElement
 	.addEventListener('startLedImpactStory', function() {
-		animations.ledImpactStory.counter.init(savings);
+		animations.ledImpactStory.counter.initTrees();
 	}, { passive: true });
 
 sceneElement
@@ -97,3 +178,33 @@ sceneElement
 			animations.ledImpactStory.trees.animIn(savings);
 		}, 1000);
 	}, { passive: true });
+
+sceneElement
+	.addEventListener('treesEnd', function() {
+		setTimeout(function() {
+			animations.ledImpactStory.cars.init();
+			animations.ledImpactStory.counter.initCars();
+		}, 1000);
+	}, { passive: true });
+
+sceneElement
+	.addEventListener('startCars', function() {
+		setTimeout(function() {
+			animations.ledImpactStory.cars.animIn();
+		}, 1000);
+	}, { passive: true });
+
+sceneElement
+	.addEventListener('carsEnd', function() {
+		setTimeout(function() {
+			animations.ledImpactStory.trash.init();
+			animations.ledImpactStory.counter.initTrash();
+		}, 1000);
+	}, { passive: true });
+
+sceneElement
+		.addEventListener('startTrash', function() {
+			setTimeout(function() {
+				animations.ledImpactStory.trash.animIn();
+			}, 1000);
+		}, { passive: true });
