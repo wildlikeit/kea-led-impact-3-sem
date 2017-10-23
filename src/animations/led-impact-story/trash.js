@@ -33,7 +33,7 @@ function init(){
 	});
 }
 
-function animIn() {
+function animIn(savings) {
 	sceneElement.removeChild(ledImpactFigure);
 
 	const trash = helpers.appendNewElement(sceneElement, 'a-entity',{
@@ -41,7 +41,8 @@ function animIn() {
 	});
 
 	let i = 0;
-	const trashToCreate = 600;
+	// let trashToCreate = 600;
+	let trashToCreate = (((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0);
 	const cMin = -20;
 	const cMax = 20;
 	const rainHeight = 200;
@@ -171,7 +172,7 @@ function animIn() {
 			}
 			if (i <= trashToCreate) {
 				createTrash();
-			}else{
+			} else {
 				sceneElement.removeChild(trash);
 				sceneElement.removeChild(floor);
 				sceneElement.emit('trashEnd', true);

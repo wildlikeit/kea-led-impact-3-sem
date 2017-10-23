@@ -11,7 +11,7 @@ const sceneElement = document.querySelector('a-scene');
 const sky = document.querySelector('a-sky');
 const camera = document.querySelector('a-camera');
 
-function animIn() {
+function animIn(savings) {
 	sky.setAttribute('color', '#ffffff');
 	sceneElement.removeChild(document.querySelector('#ledImpactText'));
 	sceneElement.setAttribute('rain', '');
@@ -19,6 +19,7 @@ function animIn() {
 	setTimeout(function() {
 		let i = 0;
 		let treesToCreate = 1;
+		// let treesToCreate = ((savings.yearlySavings * 1.222) / 48);
 		const trees = helpers.appendNewElement(sceneElement, 'a-entity',{
 			'id': 'trees',
 		});

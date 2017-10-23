@@ -23,7 +23,7 @@ function create(inputHoursData, container) {
 			let ledImpactInputPlusCircle = helpers
 				.appendNewElement(ledImpactInputWrapper, 'a-circle', {
 					'id': 'ledImpactPlusCircle' + index,
-					'position': '-1.903 0 -1.802',
+					'position': '-1.741 0 -1.811',
 					'rotation': '0 -43 0',
 					'radius': '0.9',
 					'opacity': '0.5',
@@ -57,7 +57,7 @@ function create(inputHoursData, container) {
 			let ledImpactInputMinusCircle = helpers
 				.appendNewElement(ledImpactInputWrapper, 'a-circle', {
 					'id': 'ledImpactMinusCircle' + index,
-					'position': '-0.642 0 -0.690',
+					'position': '-0.152 0 -0.327',
 					'rotation': '0 -43 0',
 					'radius': '0.9',
 					'opacity': '0.5',
@@ -106,7 +106,7 @@ function create(inputHoursData, container) {
 			.appendNewElement(ledImpactInputWrapper, 'a-text', {
 				'id': 'ledImpactInput' + index,
 				'mixin': 'ledImpactTextMixin',
-				'position': '0 0 0',
+				'position': '0.754 0 0.595',
 				'value': element.value,
 			});
 	});

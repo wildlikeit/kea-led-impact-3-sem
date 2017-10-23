@@ -25,7 +25,7 @@ function init(){
 	});
 }
 
-function animIn() {
+function animIn(savings) {
 	sceneElement.removeChild(ledImpactFigure);
 
 	const cars = helpers.appendNewElement(sceneElement, 'a-entity',{
