@@ -45,7 +45,7 @@ function animIn(savings) {
 	let trashToCreate = (((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0);
 	const cMin = -20;
 	const cMax = 20;
-	const rainHeight = 200;
+	const rainHeight = 10;
 
 	function createTrash() {
 		let ranX = Math.floor(Math.random() * (cMax - cMin)) + cMin;
