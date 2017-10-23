@@ -13,10 +13,9 @@ const sky = document.querySelector('a-sky');
 let ledImpactFigure;
 
 function init(){
-	sky.setAttribute('color', '#000000');
 	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text',{
 		'id': 'ledImpactFigure',
-		'color': '#ffffff',
+		'color': '#000000',
 		'position': '11.700 0 -24.485',
 		'align': 'center',
 		'baseline': 'bottom',
@@ -28,7 +27,6 @@ function init(){
 
 function animIn() {
 	sceneElement.removeChild(ledImpactFigure);
-	sky.setAttribute('color', '#ffffff');
 
 	const cars = helpers.appendNewElement(sceneElement, 'a-entity',{
 		'id': 'cars',
