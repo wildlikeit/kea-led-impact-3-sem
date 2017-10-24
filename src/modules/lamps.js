@@ -108,7 +108,7 @@ function setupLampData(id){
 
 	let posY = 8;
 	ajlamps[id].measurements.forEach(function(measurement, index) {
-		helpers.appendNewElement(lampElement, 'a-text', {
+		let measurementText = helpers.appendNewElement(lampElement, 'a-text', {
 			'id': 'measurement-' + [index + 1],
 			'class': 'measurements lamp-text',
 			'mixin': 'lampInfoTextMixin',
@@ -116,17 +116,35 @@ function setupLampData(id){
 			'value': measurement.measurement,
 		});
 
-		helpers.appendNewElement(lampElement, 'a-text', {
+		helpers.appendNewElement(measurementText, 'a-animation', {
+			'id': 'measurement-' + [index + 1] + '-animation',
+			'attribute': 'opacity',
+			'from': '0',
+			'to': '1',
+			'dur': '500',
+			'ease': 'ease-out',
+		});
+
+		let measurementValue = helpers.appendNewElement(lampElement, 'a-text', {
 			'id': 'value-' + [index + 1],
 			'class': 'values lamp-text',
 			'mixin': 'lampInfoTextMixin',
 			'position': '-15 ' + posY + ' -12.8',
 			'value': measurement.value,
 		});
+
+		helpers.appendNewElement(measurementValue, 'a-animation', {
+			'id': 'value-' + [index + 1] + '-animation',
+			'attribute': 'opacity',
+			'from': '0',
+			'to': '1',
+			'dur': '500',
+			'ease': 'ease-out',
+		});
 		posY = (posY - 1);
 	});
 
-	helpers.appendNewElement(lampElement, 'a-text', {
+	let lampNameText = helpers.appendNewElement(lampElement, 'a-text', {
 		'id': 'lamp-name',
 		'color': '#0054a6',
 		'align': 'center',
@@ -137,11 +155,28 @@ function setupLampData(id){
 		'value': ajlamps[id].name,
 	});
 
-	const lamp = helpers.appendNewElement(lampElement, 'a-gltf-model',{
+	helpers.appendNewElement(lampNameText, 'a-animation',{
+		'id': 'lamp-name-animation',
+		'attribute': 'opacity',
+		'from': '0',
+		'to': '1',
+		'dur': '500',
+		'ease': 'ease-out',
+	});
+
+	let lamp = helpers.appendNewElement(lampElement, 'a-gltf-model',{
 		'id': 'lamp-model',
 		'src': ajlamps[id].src,
-		'scale': ajlamps[id].scale,
 		'position': '0 5 -15',
+	});
+
+	helpers.appendNewElement(lamp, 'a-animation',{
+		'id': 'lamp-animation',
+		'attribute': 'scale',
+		'from': '0 0 0',
+		'to': ajlamps[id].scale,
+		'dur': '500',
+		'ease': 'ease-out',
 	});
 }
 
