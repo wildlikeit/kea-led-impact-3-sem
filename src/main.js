@@ -18,20 +18,14 @@ let step = 1;
 let activeLampId = 0;
 
 // Sounds
-const sounds = [
-	{
+const sounds = {
 		'intro_1': document.querySelector('#intro_1'),
-	},
-	{
 		'steps': [
-			document.querySelector('#step_1'),
-			document.querySelector('#step_2'),
-			document.querySelector('#step_3'),
+			document.querySelector('#calc_step_1'),
+			document.querySelector('#calc_step_2'),
+			document.querySelector('#calc_step_3'),
 		],
-	},
-]
-
-
+};
 
 // Objects
 let calcValues = {
@@ -47,10 +41,25 @@ sounds.intro_1.play();
 const ledEl = ledModule.create(activeLampId);
 const ledPlaneEl = ledEl.getChildren().find(el => el.id === 'led-plane');
 
-introSound.play();
-
 const lampNextEvent = document.querySelector('#lampNextEvent');
 const lampPrevEvent = document.querySelector('#lampPrevEvent');
+
+// Add event listener after sound 1 has ended
+sounds.intro_1.addEventListener('ended', function(){
+	sounds.intro_1.currentTime = 0;
+	ledPlaneEl
+		.addEventListener('click', function() {
+			if (!ledActive) {
+				lampsModule.remove();
+				animations.sky.darken();
+				animations.ledImpact.show();
+				animations.ledImpactHours.create(step, ledActive);
+				sounds.steps[step - 1].play();
+			}
+			ledActive = true;
+		}, { passive: true });
+
+}, {passive: true});
 
 lampNextEvent
 	.addEventListener('mouseenter', function(){
@@ -74,16 +83,7 @@ lampPrevEvent
 		}
 	}, {passive: true});
 
-ledPlaneEl
-	.addEventListener('click', function() {
-		if (!ledActive) {
-			lampsModule.remove();
-			animations.sky.darken();
-			animations.ledImpact.show();
-			animations.ledImpactHours.create(step, ledActive);
-		}
-		ledActive = true;
-	}, { passive: true });
+
 
 sceneElement
 	.addEventListener('ledImpactInit', function() {
@@ -119,6 +119,7 @@ sceneElement
 				setTimeout( function(){ ledActive = false; }, 500);
 			} else if (step > 1) {
 				step--;
+				sounds.steps[step - 1].play();
 				animations.ledImpactHours.steps(step, ledActive);
 			}
 		}, { passive: true });
@@ -173,8 +174,7 @@ sceneElement
 				} else if (step == 2) {
 					calcValues.dimmedHours = value;
 				}
-
-
+				sounds.steps[step].play();
 				step++;
 				setTimeout(function(){
 					animations.ledImpactHours.steps(step, ledActive);
