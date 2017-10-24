@@ -7,7 +7,10 @@ const lampsModule = require('./modules/lamps');
 const ledModule = require('./modules/led');
 const animations = require('./animations');
 const helpers = require('./helpers');
+
+// Data
 const ajlamps = require('./data/ajlamps');
+const ajsounds = require('./data/ajsounds');
 
 // Global Elements
 const sceneElement = document.querySelector('a-scene');
@@ -16,16 +19,6 @@ const sceneElement = document.querySelector('a-scene');
 let ledActive = false;
 let step = 1;
 let activeLampId = 0;
-
-// Sounds
-const sounds = {
-		'intro_1': document.querySelector('#intro_1'),
-		'steps': [
-			document.querySelector('#calc_step_1'),
-			document.querySelector('#calc_step_2'),
-			document.querySelector('#calc_step_3'),
-		],
-};
 
 // Objects
 let calcValues = {
@@ -36,7 +29,7 @@ let calcValues = {
 let savings = {};
 
 lampsModule.create(activeLampId);
-sounds.intro_1.play();
+aj.intro_1.play();
 
 const ledEl = ledModule.create(activeLampId);
 const ledPlaneEl = ledEl.getChildren().find(el => el.id === 'led-plane');
@@ -45,8 +38,8 @@ const lampNextEvent = document.querySelector('#lampNextEvent');
 const lampPrevEvent = document.querySelector('#lampPrevEvent');
 
 // Add event listener after sound 1 has ended
-sounds.intro_1.addEventListener('ended', function(){
-	sounds.intro_1.currentTime = 0;
+ajsounds.intro_1.addEventListener('ended', function(){
+	ajsounds.intro_1.currentTime = 0;
 	ledPlaneEl
 		.addEventListener('click', function() {
 			if (!ledActive) {
@@ -54,7 +47,7 @@ sounds.intro_1.addEventListener('ended', function(){
 				animations.sky.darken();
 				animations.ledImpact.show();
 				animations.ledImpactHours.create(step, ledActive);
-				sounds.steps[step - 1].play();
+				ajsounds.steps[step - 1].play();
 			}
 			ledActive = true;
 		}, { passive: true });
@@ -119,7 +112,7 @@ sceneElement
 				setTimeout( function(){ ledActive = false; }, 500);
 			} else if (step > 1) {
 				step--;
-				sounds.steps[step - 1].play();
+				ajsounds.steps[step - 1].play();
 				animations.ledImpactHours.steps(step, ledActive);
 			}
 		}, { passive: true });
@@ -174,7 +167,7 @@ sceneElement
 				} else if (step == 2) {
 					calcValues.dimmedHours = value;
 				}
-				sounds.steps[step].play();
+				ajsounds.steps[step].play();
 				step++;
 				setTimeout(function(){
 					animations.ledImpactHours.steps(step, ledActive);
@@ -190,6 +183,9 @@ sceneElement
 				setTimeout(function(){
 					animations.ledImpactHours.remove();
 					animations.ledImpactStoryDelay.init();
+					setTimeout(function(){
+							ajsounds.impact_intro.play();
+					}, 500);
 				}, 500)
 			}
 
