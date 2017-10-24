@@ -2,18 +2,38 @@
 
 /*global document*/
 
+// Modules
 const lampsModule = require('./modules/lamps');
 const ledModule = require('./modules/led');
 const animations = require('./animations');
 const helpers = require('./helpers');
 const ajlamps = require('./data/ajlamps');
 
+// Global Elements
 const sceneElement = document.querySelector('a-scene');
 
+// Global variables
 let ledActive = false;
 let step = 1;
 let activeLampId = 0;
 
+// Sounds
+const sounds = [
+	{
+		'intro_1': document.querySelector('#intro_1'),
+	},
+	{
+		'steps': [
+			document.querySelector('#step_1'),
+			document.querySelector('#step_2'),
+			document.querySelector('#step_3'),
+		],
+	},
+]
+
+
+
+// Objects
 let calcValues = {
 	'daylightHours': 0,
 	'dimmedHours': 0,
@@ -22,8 +42,12 @@ let calcValues = {
 let savings = {};
 
 lampsModule.create(activeLampId);
+sounds.intro_1.play();
+
 const ledEl = ledModule.create(activeLampId);
 const ledPlaneEl = ledEl.getChildren().find(el => el.id === 'led-plane');
+
+introSound.play();
 
 const lampNextEvent = document.querySelector('#lampNextEvent');
 const lampPrevEvent = document.querySelector('#lampPrevEvent');
