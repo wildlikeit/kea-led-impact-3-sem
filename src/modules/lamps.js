@@ -11,6 +11,7 @@ module.exports = {
 };
 
 let assetsSetup = false;
+
 const lampElement = helpers.createElement('a-entity', { 'id': 'lamp' });
 
 // LAMP INFO //
@@ -32,6 +33,12 @@ helpers.appendNewElement(lampElement, 'a-text', {
 	'scale': '7 7',
 	'position': '-10 13 -15',
 	'value': ajlamps[0].name,
+});
+
+const lamp = helpers.appendNewElement(lampElement, 'a-gltf-model',{
+	'src': '#street_lamp',
+	'scale': '4 4 4',
+	'position': '0 5 -15',
 });
 
 let posY = 8;
