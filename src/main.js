@@ -12,19 +12,43 @@ const sceneElement = document.querySelector('a-scene');
 
 let ledActive = false;
 let step = 1;
+let activeLampId = 0;
 
 let calcValues = {
 	'daylightHours': 0,
 	'dimmedHours': 0,
 	'lampAmount': 0
 };
-let lamp = ajlamps[0];
 let savings = {};
 
-lampsModule.create();
-const ledEl = ledModule.create();
+lampsModule.create(activeLampId);
+const ledEl = ledModule.create(activeLampId);
 const ledPlaneEl = ledEl.getChildren().find(el => el.id === 'led-plane');
 
+const lampNextEvent = document.querySelector('#lampNextEvent');
+const lampPrevEvent = document.querySelector('#lampPrevEvent');
+
+lampNextEvent
+	.addEventListener('mouseenter', function(){
+		if(activeLampId == (ajlamps.length - 1)){
+			activeLampId = 0;
+			lampsModule.setupLampData(activeLampId);
+		} else {
+			activeLampId++;
+			lampsModule.setupLampData(activeLampId);
+		}
+	}, {passive: true});
+
+lampPrevEvent
+	.addEventListener('mouseenter', function(){
+		if(activeLampId == 0){
+			activeLampId = (ajlamps.length - 1);
+			lampsModule.setupLampData(activeLampId);
+		} else {
+			activeLampId--;
+			lampsModule.setupLampData(activeLampId);
+		}
+	}, {passive: true});
 
 ledPlaneEl
 	.addEventListener('click', function() {
@@ -39,7 +63,6 @@ ledPlaneEl
 
 sceneElement
 	.addEventListener('ledImpactInit', function() {
-
 		let ledImpactPrevEvent = document.querySelector('#ledImpactPrevEvent');
 		let ledImpactNextEvent = document.querySelector('#ledImpactNextEvent');
 
@@ -65,7 +88,7 @@ sceneElement
 
 
 			if (ledActive && step == 1){
-				lampsModule.create();
+				lampsModule.create(activeLampId);
 				animations.sky.lighten();
 				animations.ledImpact.hide();
 				animations.ledImpactHours.remove();
@@ -134,9 +157,11 @@ sceneElement
 				}, 500);
 
 			} else if (step == 3){
+				let lamp = ajlamps[activeLampId];
 				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
 				calcValues.lampAmount = value;
 				savings = helpers.calculateSavings(calcValues, lamp);
+				console.log(calcValues, savings);
 
 				setTimeout(function(){
 					animations.ledImpactHours.remove();

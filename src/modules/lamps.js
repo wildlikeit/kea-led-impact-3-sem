@@ -112,6 +112,7 @@ function setupLampData(id){
 			'id': 'measurement-' + [index + 1],
 			'class': 'measurements lamp-text',
 			'mixin': 'lampInfoTextMixin',
+			'opacity': '0',
 			'position': '-28 ' + posY + ' -9',
 			'value': measurement.measurement,
 		});
@@ -129,6 +130,7 @@ function setupLampData(id){
 			'id': 'value-' + [index + 1],
 			'class': 'values lamp-text',
 			'mixin': 'lampInfoTextMixin',
+			'opacity': '0',
 			'position': '-15 ' + posY + ' -12.8',
 			'value': measurement.value,
 		});
@@ -141,6 +143,7 @@ function setupLampData(id){
 			'dur': '500',
 			'ease': 'ease-out',
 		});
+
 		posY = (posY - 1);
 	});
 
