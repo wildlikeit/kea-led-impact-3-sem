@@ -7,7 +7,6 @@ module.exports = {
 	initCars,
 	initTrash,
 };
-
 const sceneElement = document.querySelector('a-scene');
 
 function initTrees(savings){
@@ -15,7 +14,6 @@ function initTrees(savings){
 		let i = 0;
 		let countTo = 10;
 		// let countTo = ((savings.yearlySavings * 1.222) / 48).toFixed(0);
-		console.log(countTo);
 		function count(){
 			setTimeout(function() {
 				document.querySelector('#ledImpactFigure').setAttribute('value', i);
@@ -30,10 +28,11 @@ function initTrees(savings){
 			}, 100 - (i*0.9));
 		}
 		count();
-	}, 1000);
+	}, 13000);
 }
 
 function initCars(savings){
+	document.querySelector('#ledImpactFigure').setAttribute('value', 0);
 	setTimeout(function(){
 		let i = 0;
 		// let countTo = 10;
@@ -53,7 +52,7 @@ function initCars(savings){
 			}, 100 - (i*0.9));
 		}
 		count();
-	}, 1000);
+	}, 13000);
 }
 
 function initTrash(savings){

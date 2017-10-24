@@ -18,7 +18,7 @@ function init(savings) {
 		'color': '#ffffff',
 		'baseline': 'bottom',
 		'line-height': '80',
-		'scale': '10 10',
+		'scale': '12 12',
 		'rotation': '0 -43 0',
 	});
 
@@ -32,6 +32,7 @@ function init(savings) {
 		'mixin': 'ledImpactTextMixin',
 		'position': '18.663 9.010 -7.3',
         'align': 'center',
+        'scale': '13 13',
 		'value': 'SAVINGS',
 	});
 
@@ -100,10 +101,26 @@ function init(savings) {
 			const ledImpactYesTextPosition = helpers.appendNewElement(ledImpactYesText, 'a-animation', {
 				'attribute': 'position',
 				'from': '18.663 -6.33 -7.3',
-				'to': '16.235 4 -21.652',
+				'to': '22.235 4 -14.602',
 				'dur': '1000',
 				'ease': 'ease-out',
 			});
+
+            const ledImpactYesTextColor = helpers.appendNewElement(ledImpactYesText, 'a-animation', {
+                'attribute': 'color',
+				'from': '#FFFFFF',
+				'to': '#000000',
+				'dur': '1000',
+				'ease': 'ease-out',
+			});
+
+            helpers.appendNewElement(sky, 'a-animation', {
+                'attribute': 'color',
+				'from': '#000000',
+				'to': '#FFFFFF',
+				'dur': '1000',
+				'ease': 'ease-out',
+            });
 
 			setTimeout(hideYesText, 1350);
 
@@ -111,6 +128,7 @@ function init(savings) {
 				const ledImpactFigure = helpers.appendNewElement(ledImpactText, 'a-text', {
 					'id': 'ledImpactFigure',
 					'mixin': 'ledImpactTextMixin',
+                    'color': '#000000',
 					'position': '22.235 4 -14.602',
 					'align': 'center',
 					'value': '0',

@@ -71,6 +71,7 @@ function animIn(savings) {
 		'alongpath': 'curve: #path; dur: 10000; loop: true; rotate: true;',
 	});
 
+
 	// setTimeout(function(){
 	// 	sceneElement.removeChild(cars);
 	// 	sceneElement.emit('carsEnd', true);
