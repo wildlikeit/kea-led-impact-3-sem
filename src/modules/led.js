@@ -33,14 +33,14 @@ helpers.appendNewElement(ledPlaneEl, 'a-animation', {
 helpers.appendNewElement(led, 'a-text', {
 	'id': 'led-text',
 	'mixin': 'ledTextMixin',
-	'position': '12.1 7.482 -13.748',
+	'position': '11.589 7.216 -14.371',
 	'value': 'CALCULATE YOUR',
 });
 
 helpers.appendNewElement(led, 'a-text', {
 	'id': 'led-sub-text',
 	'mixin': 'ledTextMixin',
-	'position': '11.8 5.759 -13.748',
+	'position': '12.382 5.890 -14.270',
 	'value': 'LED SAVINGS',
 });
 
