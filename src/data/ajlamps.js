@@ -23,7 +23,7 @@ module.exports = [
 		'id': '2',
 		'name': 'Kipp Post 50W HME',
 		'src': '#lamp_2',
-		'scale': '4 4 4',
+		'scale': '0.00125 0.00125 0.00125',
 		'measurements': [
 			{ 'measurement': 'System power normal operation * [W]', 'value': 61 },
 			{ 'measurement': 'System power night mode * [W]', 'value': 61 },
