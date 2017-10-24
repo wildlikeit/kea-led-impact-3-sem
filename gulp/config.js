@@ -41,6 +41,10 @@ module.exports = {
 			all: 'src/assets/models/**/*',
 			dest: 'build/models'
 		},
+		audio: {
+			all: 'src/assets/audio/**/*',
+			dest: 'build/audio'
+		},
 		favicon : {
 			icon : 'src/tile.png',
 			dest : 'build/images/favicon'
