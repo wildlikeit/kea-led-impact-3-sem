@@ -29,7 +29,7 @@ let calcValues = {
 let savings = {};
 
 lampsModule.create(activeLampId);
-aj.intro_1.play();
+ajsounds.intro_1.play();
 
 const ledEl = ledModule.create(activeLampId);
 const ledPlaneEl = ledEl.getChildren().find(el => el.id === 'led-plane');
@@ -38,21 +38,37 @@ const lampNextEvent = document.querySelector('#lampNextEvent');
 const lampPrevEvent = document.querySelector('#lampPrevEvent');
 
 // Add event listener after sound 1 has ended
-ajsounds.intro_1.addEventListener('ended', function(){
-	ajsounds.intro_1.currentTime = 0;
-	ledPlaneEl
-		.addEventListener('click', function() {
-			if (!ledActive) {
-				lampsModule.remove();
-				animations.sky.darken();
-				animations.ledImpact.show();
-				animations.ledImpactHours.create(step, ledActive);
-				ajsounds.steps[step - 1].play();
-			}
-			ledActive = true;
-		}, { passive: true });
+// ajsounds.intro_1.addEventListener('ended', function(){
+// 	ajsounds.intro_1.currentTime = 0;
+// 	ledPlaneEl
+// 		.addEventListener('click', function() {
+// 			if (!ledActive) {
+// 				lampsModule.remove();
+// 				animations.sky.darken();
+// 				animations.ledImpact.show();
+// 				animations.ledImpactHours.create(step, ledActive);
+// 				setTimeout( function(){
+// 					ajsounds.steps[step - 1].play()
+// 				}, 300);
+// 			}
+// 			ledActive = true;
+// 		}, { passive: true });
+//
+// }, {passive: true});
 
-}, {passive: true});
+ledPlaneEl
+	.addEventListener('click', function() {
+		if (!ledActive) {
+			lampsModule.remove();
+			animations.sky.darken();
+			animations.ledImpact.show();
+			animations.ledImpactHours.create(step, ledActive);
+			setTimeout( function(){
+				ajsounds.steps[step - 1].play()
+			}, 300);
+		}
+		ledActive = true;
+	}, { passive: true });
 
 lampNextEvent
 	.addEventListener('mouseenter', function(){
@@ -112,7 +128,10 @@ sceneElement
 				setTimeout( function(){ ledActive = false; }, 500);
 			} else if (step > 1) {
 				step--;
-				ajsounds.steps[step - 1].play();
+
+				setTimeout( function(){
+					ajsounds.steps[step - 1].play()
+				}, 300);
 				animations.ledImpactHours.steps(step, ledActive);
 			}
 		}, { passive: true });
@@ -182,10 +201,10 @@ sceneElement
 
 				setTimeout(function(){
 					animations.ledImpactHours.remove();
-					animations.ledImpactStoryDelay.init();
+					animations.ledImpactStoryDelay.init(savings);
 					setTimeout(function(){
 							ajsounds.impact_intro.play();
-					}, 500);
+					}, 1000);
 				}, 500)
 			}
 
@@ -216,21 +235,22 @@ sceneElement
 
 sceneElement
 	.addEventListener('startLedImpactStory', function() {
+		ajsounds.trees_counter.play();
 		animations.ledImpactStory.counter.initTrees(savings);
 	}, { passive: true });
 
 sceneElement
 	.addEventListener('startTrees', function() {
-		console.log('trees start');
+		ajsounds.trees_intro.play();
 		setTimeout(function() {
 			animations.ledImpactStory.trees.animIn(savings);
-		}, 1000);
+		}, 6000);
 	}, { passive: true });
 
 sceneElement
 	.addEventListener('treesEnd', function() {
-		console.log('trees end');
 		setTimeout(function() {
+			ajsounds.cars_counter.play();
 			animations.ledImpactStory.cars.init();
 			animations.ledImpactStory.counter.initCars(savings);
 		}, 1000);
@@ -238,7 +258,6 @@ sceneElement
 
 sceneElement
 	.addEventListener('startCars', function() {
-		console.log('cars start');
 		setTimeout(function() {
 			animations.ledImpactStory.cars.animIn(savings);
 		}, 1000);
@@ -246,7 +265,6 @@ sceneElement
 
 sceneElement
 	.addEventListener('carsEnd', function() {
-		console.log('cars end');
 		setTimeout(function() {
 			animations.ledImpactStory.trash.init();
 			animations.ledImpactStory.counter.initTrash(savings);
@@ -255,7 +273,6 @@ sceneElement
 
 sceneElement
 		.addEventListener('startTrash', function() {
-			console.log('trash start');
 			setTimeout(function() {
 				animations.ledImpactStory.trash.animIn(savings);
 			}, 1000);
