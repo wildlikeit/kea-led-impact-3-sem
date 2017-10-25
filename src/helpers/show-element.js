@@ -4,7 +4,7 @@ module.exports = {
 	show,
 };
 
-function show(selectors, helpers){
+function show(selectors, helpers) {
 	const show = helpers.createElement('a-animation', {
 		'attribute': 'opacity',
 		'from': '0',

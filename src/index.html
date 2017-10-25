@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+
 <head>
 	<base href="/">
 	<meta charset="utf-8">
@@ -18,6 +19,7 @@
 	<script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v2.1.0/dist/aframe-physics-system.min.js"></script>
 	<script src="js/modernizr[ver].js" async></script>
 </head>
+
 <body>
 	<a-scene physics="debug:true">
 		<a-assets>
@@ -82,21 +84,18 @@
 			<a-asset-item id="car" src="models/car/scene.gltf"></a-asset-item>
 		</a-assets>
 		<a-camera position="0 2 5">
-			<a-entity cursor="fuse: true; fuseTimeout: 0000001"
-						id="cursor"
-						position="0 0 -1"
-						geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.03"
-						material="color: #ff6961; shader: flat">
-  		</a-entity>
+			<a-entity cursor="fuse: true; fuseTimeout: 0000001" id="cursor" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.03" material="color: #ff6961; shader: flat">
+			</a-entity>
 		</a-camera>
 		<a-sky id="sky"></a-sky>
 		<!-- <a-curve id="path">
-	      <a-curve-point position="0 0 -100"></a-curve-point>
-	      <a-curve-point position="0 0 -50"></a-curve-point>
-	      <a-curve-point position="0 0 0"></a-curve-point>
+			<a-curve-point position="0 0 -100"></a-curve-point>
+			<a-curve-point position="0 0 -50"></a-curve-point>
+			<a-curve-point position="0 0 0"></a-curve-point>
 	    </a-curve> -->
 
 	</a-scene>
 	<script src="js/main[ver].js" async defer></script>
 </body>
+
 </html>

@@ -2,7 +2,7 @@
 
 /*global document*/
 
-module.exports = function(elementSelector, attributes){
+module.exports = function(elementSelector, attributes) {
 	var element = document.createElement(elementSelector);
 
 	if (attributes) {

@@ -4,7 +4,7 @@ module.exports = {
 	hide,
 };
 
-function hide(selectors, helpers){
+function hide(selectors, helpers) {
 	const hide = helpers.createElement('a-animation', {
 		'attribute': 'opacity',
 		'from': '1',

@@ -8,7 +8,9 @@ module.exports = {
 	remove,
 };
 
-const led = helpers.createElement('a-entity', { 'id': 'led' });
+const led = helpers.createElement('a-entity', {
+	'id': 'led'
+});
 
 const ledPlaneEl = helpers.appendNewElement(led, 'a-circle', {
 	'id': 'led-plane',

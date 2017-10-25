@@ -3,7 +3,7 @@
 const helpers = require('../helpers');
 
 module.exports = {
-  init,
+	init,
 }
 
 const sceneElement = document.querySelector('a-scene');
@@ -31,16 +31,16 @@ function init(savings) {
 		'id': 'ledImpactText1',
 		'mixin': 'ledImpactTextMixin',
 		'position': '18.663 9.010 -7.3',
-        'align': 'center',
-        'scale': '13 13',
+		'align': 'center',
+		'scale': '13 13',
 		'value': 'SAVINGS',
 	});
 
-	const ledImpactText2 = helpers.appendNewElement(ledImpactText ,'a-text', {
+	const ledImpactText2 = helpers.appendNewElement(ledImpactText, 'a-text', {
 		'id': 'ledImpactText1',
 		'mixin': 'ledImpactTextMixin',
 		'position': '18.663 6.106 -7.3',
-        'align': 'center',
+		'align': 'center',
 		'value': 'You can save',
 	});
 
@@ -48,7 +48,7 @@ function init(savings) {
 		'id': 'ledImpactText1',
 		'mixin': 'ledImpactTextMixin',
 		'position': '18.663 3.181 -7.3',
-        'align': 'center',
+		'align': 'center',
 		'value': savings.yearlySavingsPercent + '%',
 	});
 
@@ -60,7 +60,7 @@ function init(savings) {
 			'mixin': 'ledImpactTextMixin',
 			'position': '18.663 -6.33 -7.3',
 			'value': 'START',
-            'align': 'center',
+			'align': 'center',
 			'scale': '25 25',
 		});
 
@@ -106,21 +106,21 @@ function init(savings) {
 				'ease': 'ease-out',
 			});
 
-            const ledImpactYesTextColor = helpers.appendNewElement(ledImpactYesText, 'a-animation', {
-                'attribute': 'color',
+			const ledImpactYesTextColor = helpers.appendNewElement(ledImpactYesText, 'a-animation', {
+				'attribute': 'color',
 				'from': '#FFFFFF',
 				'to': '#000000',
 				'dur': '1000',
 				'ease': 'ease-out',
 			});
 
-            helpers.appendNewElement(sky, 'a-animation', {
-                'attribute': 'color',
+			helpers.appendNewElement(sky, 'a-animation', {
+				'attribute': 'color',
 				'from': '#000000',
 				'to': '#FFFFFF',
 				'dur': '1000',
 				'ease': 'ease-out',
-            });
+			});
 
 			setTimeout(hideYesText, 1350);
 
@@ -128,7 +128,7 @@ function init(savings) {
 				const ledImpactFigure = helpers.appendNewElement(ledImpactText, 'a-text', {
 					'id': 'ledImpactFigure',
 					'mixin': 'ledImpactTextMixin',
-                    'color': '#000000',
+					'color': '#000000',
 					'position': '22.235 4 -14.602',
 					'align': 'center',
 					'value': '0',

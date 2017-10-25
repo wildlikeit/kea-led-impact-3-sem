@@ -13,7 +13,9 @@ module.exports = {
 
 let assetsSetup = false;
 
-const lampElement = helpers.createElement('a-entity', { 'id': 'lamp' });
+const lampElement = helpers.createElement('a-entity', {
+	'id': 'lamp'
+});
 
 // LAMP INFO //
 helpers.appendNewElement(lampElement, 'a-plane', {
@@ -86,14 +88,14 @@ const lampPrevEvent = helpers
 	});
 
 
-function setupLampData(id){
+function setupLampData(id) {
 
 	let lampText = document.querySelectorAll('.lamp-text');
 	let lampName = document.querySelector('#lamp-name');
 	let lampModel = document.querySelector('#lamp-model');
 
 	if (lampText) {
-		lampText.forEach(function(element){
+		lampText.forEach(function(element) {
 			element.parentNode.removeChild(element);
 		});
 	}
@@ -158,7 +160,7 @@ function setupLampData(id){
 		'value': ajlamps[id].name,
 	});
 
-	helpers.appendNewElement(lampNameText, 'a-animation',{
+	helpers.appendNewElement(lampNameText, 'a-animation', {
 		'id': 'lamp-name-animation',
 		'attribute': 'opacity',
 		'from': '0',
@@ -167,13 +169,13 @@ function setupLampData(id){
 		'ease': 'ease-out',
 	});
 
-	let lamp = helpers.appendNewElement(lampElement, 'a-gltf-model',{
+	let lamp = helpers.appendNewElement(lampElement, 'a-gltf-model', {
 		'id': 'lamp-model',
 		'src': ajlamps[id].src,
 		'position': '0 5 -15',
 	});
 
-	helpers.appendNewElement(lamp, 'a-animation',{
+	helpers.appendNewElement(lamp, 'a-animation', {
 		'id': 'lamp-animation',
 		'attribute': 'scale',
 		'from': '0 0 0',
