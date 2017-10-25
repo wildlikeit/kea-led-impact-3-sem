@@ -9,70 +9,72 @@ module.exports = {
 };
 const sceneElement = document.querySelector('a-scene');
 
-function initTrees(savings){
-	setTimeout(function(){
+function initTrees(savings) {
+	setTimeout(function() {
 		let i = 0;
 		let countTo = 10;
 		// let countTo = ((savings.yearlySavings * 1.222) / 48).toFixed(0);
-		function count(){
+		function count() {
 			setTimeout(function() {
 				document.querySelector('#ledImpactFigure').setAttribute('value', i);
 				i++;
 				if (i <= countTo) {
 					count();
 				} else {
-					setTimeout(function(){
+					setTimeout(function() {
 						sceneElement.emit('startTrees', true);
 					}, 500);
 				}
-			}, 100 - (i*0.9));
+			}, 100 - (i * 0.9));
 		}
 		count();
 	}, 13000);
 }
 
-function initCars(savings){
+function initCars(savings) {
 	document.querySelector('#ledImpactFigure').setAttribute('value', 0);
-	setTimeout(function(){
+	setTimeout(function() {
 		let i = 0;
 		// let countTo = 10;
 		let countTo = ((savings.yearlySavings * 1.222) / 8000).toFixed(0);
 		console.log(countTo);
-		function count(){
+
+		function count() {
 			setTimeout(function() {
 				document.querySelector('#ledImpactFigure').setAttribute('value', i);
 				i++;
 				if (i <= countTo) {
 					count();
 				} else {
-					setTimeout(function(){
+					setTimeout(function() {
 						sceneElement.emit('startCars', true);
 					}, 500);
 				}
-			}, 100 - (i*0.9));
+			}, 100 - (i * 0.9));
 		}
 		count();
 	}, 13000);
 }
 
-function initTrash(savings){
-	setTimeout(function(){
+function initTrash(savings) {
+	setTimeout(function() {
 		let i = 0;
 		// let countTo = 10;
 		let countTo = (((savings.yearlySavings * 1.222) / 40) * 10);
 		console.log(countTo);
-		function count(){
+
+		function count() {
 			setTimeout(function() {
 				document.querySelector('#ledImpactFigure').setAttribute('value', i);
 				i++;
 				if (i <= countTo) {
 					count();
 				} else {
-					setTimeout(function(){
+					setTimeout(function() {
 						sceneElement.emit('startTrash', true);
 					}, 500);
 				}
-			}, 100 - (i*0.9));
+			}, 100 - (i * 0.9));
 		}
 		count();
 	}, 1000);

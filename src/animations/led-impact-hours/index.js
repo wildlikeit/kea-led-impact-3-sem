@@ -10,6 +10,10 @@ const lampsModule = require('../../modules/lamps');
 const sky = require('../sky');
 const ledImpact = require('../led-impact');
 
+// DATA
+const daylightHoursData = require('../../data/daylightHoursData');
+const inputHoursData = require('../../data/inputHoursData');
+
 module.exports = {
 	create,
 	remove,
@@ -36,38 +40,6 @@ function _setupAssets() {
 	assetsSetup = true;
 }
 
-// DATA
-const daylightHoursData = [
-		{
-			'text': [
-				'How many',
-				'hours per year',
-				'will each',
-				'lamp operate?',
-			],
-		},
-		{
-			'text': [
-				'How many',
-				'of those hours',
-				'are nighttime?',
-			],
-		},
-		{
-			'text': [
-				'How many ',
-				'lamps will',
-				'you operate?',
-			],
-		}
-	];
-
-const inputHoursData = [
-	{ 'type': 'input', 'value': 10 },
-	{ 'type': 'input', 'value': 100 },
-	{ 'type': 'input', 'value': 1000 },
-	{ 'type': 'text', 'value': 0 },
-];
 
 const ledImpactTextContainer = helpers
 	.createElement('a-entity', {
@@ -183,8 +155,8 @@ function create(step, ledActive) {
 }
 
 // STEPS
-function steps(step, ledActive){
-	if (step == 1 && !ledActive){
+function steps(step, ledActive) {
+	if (step == 1 && !ledActive) {
 		const sceneContainerElement = document.querySelector('a-scene');
 		sceneContainerElement.appendChild(ledImpactTextContainer);
 		sceneContainerElement.appendChild(ledImpactInputsContainer);
@@ -200,8 +172,8 @@ function steps(step, ledActive){
 	const ledImpactTextContainerElement = document.querySelector('#ledImpactTextContainer');
 	let impactTexts = document.querySelectorAll('.ledImpactText');
 
-	if (impactTexts){
-		impactTexts.forEach(function(element, index){
+	if (impactTexts) {
+		impactTexts.forEach(function(element, index) {
 			let childAnimation = document.querySelector('#ledImpactTextAnim' + index);
 			element.removeChild(childAnimation);
 			element.parentNode.removeChild(element);

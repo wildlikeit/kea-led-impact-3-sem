@@ -24,13 +24,13 @@ function animIn(savings) {
 		// calculates amount of acres from trees, in case treesToCreate get overwritten below
 		let acresToCreate = ((treesToCreate / 400).toFixed(0));
 		treesToCreate = 1;
-		if ( treesToCreate > 100) {
+		if (treesToCreate > 100) {
 			// Override in case too many trees need to be created and it will break the browser
 			treesToCreate = 100;
 		}
 
 		// Trees container
-		const trees = helpers.appendNewElement(sceneElement, 'a-entity',{
+		const trees = helpers.appendNewElement(sceneElement, 'a-entity', {
 			'id': 'trees',
 		});
 
@@ -45,8 +45,7 @@ function animIn(savings) {
 
 			setTimeout(function() {
 				// Makes sure trees spawn in a certain radius around the camera
-				if ((ranX < 5 && ranX > -5) || (ranZ < 10 && ranZ > 0)) {
-				} else {
+				if ((ranX < 5 && ranX > -5) || (ranZ < 10 && ranZ > 0)) {} else {
 					const tree = helpers.appendNewElement(trees, 'a-gltf-model', {
 						'src': '#tree',
 						'position': ranX + ' -5 ' + ranZ,
@@ -61,15 +60,15 @@ function animIn(savings) {
 				} else {
 					ajsounds.trees_above_intro.play();
 					const cameraUpAnim = helpers.appendNewElement(camera, 'a-animation', {
-						'attribute':'position',
-						'from':'0 2 5',
-						'to':'0 1000 5',
-						'dur':'3000',
+						'attribute': 'position',
+						'from': '0 2 5',
+						'to': '0 1000 5',
+						'dur': '3000',
 						'delay': '4000',
-						'ease':'ease-in-out',
+						'ease': 'ease-in-out',
 					});
 					sceneElement.removeAttribute('rain');
-					setTimeout(function(){
+					setTimeout(function() {
 						let countTo = acresToCreate;
 						let split = Math.floor(Math.sqrt(countTo));
 						let forestPos = -(split * 250) / 2;
@@ -77,7 +76,7 @@ function animIn(savings) {
 						let posX = 0;
 
 						ajsounds.trees_above_1.play();
-						setTimeout(function(){
+						setTimeout(function() {
 							if (countTo > 10) {
 								ajsounds.acres[9].play();
 							} else {
@@ -85,15 +84,15 @@ function animIn(savings) {
 							}
 						}, 1500);
 
-						setTimeout(function(){
+						setTimeout(function() {
 							ajsounds.trees_end.play();
 						}, 5000);
 
 						sceneElement.removeChild(trees);
-						const forests = helpers.appendNewElement(sceneElement, 'a-entity',{
+						const forests = helpers.appendNewElement(sceneElement, 'a-entity', {
 							'id': 'forests',
 						});
-						const forest = helpers.appendNewElement(forests, 'a-plane',{
+						const forest = helpers.appendNewElement(forests, 'a-plane', {
 							'id': 'forest',
 							'width': '700',
 							'height': '700',
@@ -106,14 +105,14 @@ function animIn(savings) {
 
 							forests.removeChild(forest);
 							forests.setAttribute('position', (forestPos + 100) + ' 0 ' + (forestPos - 150));
-							for (var i = 0; i < countTo; i++){
-								if (i % split == 0){
+							for (var i = 0; i < countTo; i++) {
+								if (i % split == 0) {
 									posZ += 250;
 									posX = 0;
 								} else {
 									posX += 250;
 								}
-								const miniForest = helpers.appendNewElement(forests, 'a-plane',{
+								const miniForest = helpers.appendNewElement(forests, 'a-plane', {
 									'id': 'miniForest',
 									'width': '250',
 									'height': '250',
@@ -122,7 +121,7 @@ function animIn(savings) {
 									'src': '#forest',
 								});
 							}
-							setTimeout(function(){
+							setTimeout(function() {
 								sceneElement.removeChild(forests);
 								camera.setAttribute('position', '0 2 0');
 								sceneElement.emit('treesEnd', true);

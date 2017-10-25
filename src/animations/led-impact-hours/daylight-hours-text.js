@@ -8,7 +8,7 @@ module.exports = {
 
 function create(daylightHoursData, container, step) {
 	// Adding text
-	daylightHoursData[step-1].text.forEach(function(text, index) {
+	daylightHoursData[step - 1].text.forEach(function(text, index) {
 		helpers.appendNewElement(container, 'a-text', {
 			'id': 'ledImpactText' + index,
 			'class': 'ledImpactText',
@@ -18,12 +18,12 @@ function create(daylightHoursData, container, step) {
 			'value': text,
 		});
 		helpers.appendNewElement(document.querySelector('#ledImpactText' + index), 'a-animation', {
-				'id': 'ledImpactTextAnim' + index,
-				'attribute': 'opacity',
-				'from': '0',
-				'to': '1',
-				'dur': '500',
-				'ease': 'ease-out',
+			'id': 'ledImpactTextAnim' + index,
+			'attribute': 'opacity',
+			'from': '0',
+			'to': '1',
+			'dur': '500',
+			'ease': 'ease-out',
 		});
 	});
 }

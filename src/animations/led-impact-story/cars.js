@@ -10,8 +10,7 @@ module.exports = {
 
 const sceneElement = document.querySelector('a-scene');
 const sky = document.querySelector('a-sky');
-const carCurvePaths = [
-	{
+const carCurvePaths = [{
 		'z': '10',
 	},
 	{
@@ -26,8 +25,8 @@ const carCurvePaths = [
 ];
 let ledImpactFigure;
 
-function init(){
-	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text',{
+function init() {
+	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text', {
 		'id': 'ledImpactFigure',
 		'color': '#000000',
 		'position': '11.700 0 -24.485',
@@ -42,10 +41,10 @@ function init(){
 function animIn(savings) {
 	sceneElement.removeChild(ledImpactFigure);
 
-	const cars = helpers.appendNewElement(sceneElement, 'a-entity',{
+	const cars = helpers.appendNewElement(sceneElement, 'a-entity', {
 		'id': 'cars',
 	});
-	const path = helpers.appendNewElement(cars, 'a-curve',{
+	const path = helpers.appendNewElement(cars, 'a-curve', {
 		'id': 'path',
 	});
 
@@ -53,7 +52,7 @@ function animIn(savings) {
 
 	// CREATE CURVE POSITION POINTS IN JSON OBJECT AND LOOP CREATE IT
 
-	carCurvePaths.forEach(function(cPath, index){
+	carCurvePaths.forEach(function(cPath, index) {
 		const theta = index * (2 * Math.PI);
 		const x = cPath.z * Math.sin(theta);
 		const y = 0;
@@ -65,7 +64,7 @@ function animIn(savings) {
 		});
 	});
 
-	const car = helpers.appendNewElement(cars, 'a-gltf-model',{
+	const car = helpers.appendNewElement(cars, 'a-gltf-model', {
 		'src': '#car',
 		'scale': '0.02 0.02 0.02',
 		'alongpath': 'curve: #path; dur: 10000; loop: true; rotate: true;',

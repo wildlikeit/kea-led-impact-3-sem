@@ -13,8 +13,8 @@ const sky = document.querySelector('a-sky');
 let ledImpactFigure;
 let floor;
 
-function init(){
-	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text',{
+function init() {
+	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text', {
 		'id': 'ledImpactFigure',
 		'color': '#000000',
 		'position': '11.700 0 -24.485',
@@ -24,7 +24,7 @@ function init(){
 		'rotation': '0 -34 0',
 		'value': '0',
 	});
-	floor = helpers.appendNewElement(sceneElement, 'a-plane',{
+	floor = helpers.appendNewElement(sceneElement, 'a-plane', {
 		'id': 'floor',
 		'width': '100',
 		'height': '100',
@@ -36,7 +36,7 @@ function init(){
 function animIn(savings) {
 	sceneElement.removeChild(ledImpactFigure);
 
-	const trash = helpers.appendNewElement(sceneElement, 'a-entity',{
+	const trash = helpers.appendNewElement(sceneElement, 'a-entity', {
 		'id': 'trash',
 	});
 
@@ -51,14 +51,13 @@ function animIn(savings) {
 		let ranX = Math.floor(Math.random() * (cMax - cMin)) + cMin;
 		let ranZ = Math.floor(Math.random() * (cMax - cMin)) + cMin;
 		let ranY = Math.floor(Math.random() * (360 - 0)) + 0;
-		let items = [
-			{
+		let items = [{
 				'type': 'a-box',
 				'src': '#pizzaBox',
 				'depth': '1',
 				'height': '0.1',
 				'width': '1',
-				'rotation': '0 '+ ranY +' 0',
+				'rotation': '0 ' + ranY + ' 0',
 				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
 				'dynamic-body': 'shape: box',
 
@@ -69,7 +68,7 @@ function animIn(savings) {
 				'depth': '0.65',
 				'height': '0.01',
 				'width': '1',
-				'rotation': '0 '+ ranY +' 0',
+				'rotation': '0 ' + ranY + ' 0',
 				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
 				'dynamic-body': 'shape: box',
 			},
@@ -79,7 +78,7 @@ function animIn(savings) {
 				'depth': '1',
 				'height': '0.2',
 				'width': '0.5',
-				'rotation': '0 '+ ranY +' 0',
+				'rotation': '0 ' + ranY + ' 0',
 				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
 				'dynamic-body': 'shape: box',
 			},
@@ -88,11 +87,10 @@ function animIn(savings) {
 				'src': '#can',
 				'height': '0.3',
 				'radius': '0.1',
-				'rotation': '0 '+ ranY +' 0',
+				'rotation': '0 ' + ranY + ' 0',
 				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
 				'dynamic-body': 'shape: cylinder',
-				'child':
-				{
+				'child': {
 					'type': 'a-circle',
 					'radius': '0.1',
 					'src': '#canTop',
@@ -105,7 +103,7 @@ function animIn(savings) {
 				'src': '#plasticBottle',
 				'height': '0.4',
 				'radius': '0.1',
-				'rotation': '-90 '+ ranY +' 45',
+				'rotation': '-90 ' + ranY + ' 45',
 				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
 				'dynamic-body': 'shape: cylinder',
 			},
@@ -115,7 +113,7 @@ function animIn(savings) {
 				'depth': '0.05',
 				'height': '0.75',
 				'width': '0.45',
-				'rotation': '0 '+ ranY +' 0',
+				'rotation': '0 ' + ranY + ' 0',
 				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
 				'dynamic-body': 'shape: box',
 			},
@@ -124,7 +122,7 @@ function animIn(savings) {
 				'src': '#tubeChips',
 				'height': '0.7',
 				'radius': '0.14',
-				'rotation': '-90 '+ ranY +' 0',
+				'rotation': '-90 ' + ranY + ' 0',
 				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
 				'dynamic-body': 'shape: cylinder',
 			},
@@ -134,29 +132,27 @@ function animIn(savings) {
 				'depth': '0.3',
 				'height': '0.075',
 				'width': '0.45',
-				'rotation': '0 '+ ranY +' 0',
+				'rotation': '0 ' + ranY + ' 0',
 				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
 				'dynamic-body': 'shape: box',
-			}];
+			}
+		];
 
 		let ranItem = Math.floor(Math.random() * items.length);
 
-		setTimeout(function(){
-			if ((ranX < 1 && ranX > -1) || (ranZ < 1 && ranZ > -1)) {
-			} else {
+		setTimeout(function() {
+			if ((ranX < 1 && ranX > -1) || (ranZ < 1 && ranZ > -1)) {} else {
 				const item = document.createElement(items[ranItem].type);
 				for (const [key, value] of Object.entries(items[ranItem])) {
-					if(key == 'type'){
-					}else if (key == 'child'){
+					if (key == 'type') {} else if (key == 'child') {
 						const child = document.createElement(items[ranItem].child.type);
 						for (const [key, value] of Object.entries(items[ranItem].child)) {
-							if(key == 'type'){
-							}else{
+							if (key == 'type') {} else {
 								child.setAttribute(key, value);
 							}
 						}
 						item.appendChild(child);
-					}else{
+					} else {
 						item.setAttribute(key, value);
 					}
 				}
