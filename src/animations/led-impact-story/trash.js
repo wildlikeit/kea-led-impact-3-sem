@@ -42,14 +42,15 @@ function animIn(savings) {
 	});
 
 	let i = 0;
-	// let trashToCreate = 600;
+	// let trashToCreate = 50; // TESTING
 	let trashToCreate = (((savings.yearlySavings * 1.222) / 40)).toFixed(0);
-	if (trashToCreate > 300) {
-		trashToCreate = 300; // In case trash to create is too high.
+	if (trashToCreate > 50) {
+		trashToCreate = 50; // In case trash to create is too high.
 	}
+	//
 	const cMin = -20;
 	const cMax = 20;
-	const rainHeight = 10;
+	const rainHeight = 50; // Height that it rains from
 
 	function createTrash() {
 		let ranX = Math.floor(Math.random() * (cMax - cMin)) + cMin;

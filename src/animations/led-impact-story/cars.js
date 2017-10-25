@@ -10,19 +10,7 @@ module.exports = {
 
 const sceneElement = document.querySelector('a-scene');
 const sky = document.querySelector('a-sky');
-const carCurvePaths = [{
-		'z': '10',
-	},
-	{
-		'z': '10',
-	},
-	{
-		'z': '10',
-	},
-	{
-		'z': '10',
-	},
-];
+
 let ledImpactFigure;
 
 function init() {
@@ -39,7 +27,9 @@ function init() {
 }
 
 function animIn(savings) {
-	sceneElement.removeChild(ledImpactFigure);
+	// sceneElement.removeChild(ledImpactFigure);
+
+	let carsToCreate = (((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0);
 
 	const cars = helpers.appendNewElement(sceneElement, 'a-entity', {
 		'id': 'cars',
@@ -48,30 +38,25 @@ function animIn(savings) {
 		'id': 'path',
 	});
 
-	let carsToCreate = (((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0);
-
 	// CREATE CURVE POSITION POINTS IN JSON OBJECT AND LOOP CREATE IT
-	carCurvePaths.forEach(function(cPath, index) {
-		const theta = index * (2 * Math.PI);
-		const x = cPath.z * Math.sin(theta);
-		const y = 0;
-		const z = cPath.z * Math.cos(theta);
+	let j = 100;
+
+	for (let i = 0; i <= 100; i++) {
 		const curve = helpers.appendNewElement(path, 'a-curve-point', {
-			'id': index,
-			'position': x + ' ' + y + ' ' + z,
+			'position': i + ' 0 ' + j,
 		});
-	});
+		j--;
+	}
 
 	const car = helpers.appendNewElement(cars, 'a-gltf-model', {
 		'src': '#car',
 		'scale': '0.02 0.02 0.02',
-		'alongpath': 'curve: #path; dur: 10000; loop: true; rotate: true;',
+		'alongpath': 'curve: #path; dur: 10000; loop: true; rotate: false;',
 	});
 
 
-	setTimeout(function() {
-		console.log('carsEnd');
-		sceneElement.removeChild(cars);
-		sceneElement.emit('carsEnd', true);
-	}, 5000);
+	// setTimeout(function() {
+	// 	sceneElement.removeChild(cars);
+	// 	sceneElement.emit('carsEnd', true);
+	// }, 20000);
 }

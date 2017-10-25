@@ -45,7 +45,9 @@ const lampNextCtaWrapper = helpers
 helpers
 	.appendNewElement(lampNextCtaWrapper, 'a-text', {
 		'id': 'lampNextCta',
-		'position': '0 0 0',
+		'position': '0 -1.1 0',
+		'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/raleway/Raleway-Bold.json',
+		'shader': 'msdf',
 		'value': '>',
 		'color': '#FFFFFF',
 		'scale': '8 8',
@@ -71,7 +73,9 @@ const lampPrevCtaWrapper = helpers
 helpers
 	.appendNewElement(lampPrevCtaWrapper, 'a-text', {
 		'id': 'lampPrevCta',
-		'position': '0 0 0',
+		'position': '0 -1.1 0',
+		'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/raleway/Raleway-Bold.json',
+		'shader': 'msdf',
 		'value': '<',
 		'color': '#FFFFFF',
 		'scale': '8 8',
@@ -113,6 +117,8 @@ function setupLampData(id) {
 		let measurementText = helpers.appendNewElement(lampElement, 'a-text', {
 			'id': 'measurement-' + [index + 1],
 			'class': 'measurements lamp-text',
+			'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/raleway/Raleway-Light.json',
+			'shader': 'msdf',
 			'mixin': 'lampInfoTextMixin',
 			'opacity': '0',
 			'position': '-28 ' + posY + ' -9',
@@ -131,6 +137,8 @@ function setupLampData(id) {
 		let measurementValue = helpers.appendNewElement(lampElement, 'a-text', {
 			'id': 'value-' + [index + 1],
 			'class': 'values lamp-text',
+			'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/raleway/Raleway-Bold.json',
+			'shader': 'msdf',
 			'mixin': 'lampInfoTextMixin',
 			'opacity': '0',
 			'position': '-15 ' + posY + ' -12.8',
@@ -151,7 +159,9 @@ function setupLampData(id) {
 
 	let lampNameText = helpers.appendNewElement(lampElement, 'a-text', {
 		'id': 'lamp-name',
-		'color': '#0054a6',
+		'color': '#000000',
+		'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/raleway/Raleway-Black.json',
+		'shader': 'msdf',
 		'align': 'center',
 		'baseline': 'bottom',
 		'line-height': '60',
