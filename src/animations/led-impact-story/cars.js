@@ -27,7 +27,7 @@ function init() {
 }
 
 function animIn(savings) {
-	// sceneElement.removeChild(ledImpactFigure);
+	sceneElement.removeChild(ledImpactFigure);
 
 	let carsToCreate = (((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0);
 
@@ -55,8 +55,8 @@ function animIn(savings) {
 	});
 
 
-	// setTimeout(function() {
-	// 	sceneElement.removeChild(cars);
-	// 	sceneElement.emit('carsEnd', true);
-	// }, 20000);
+	setTimeout(function() {
+		sceneElement.removeChild(cars);
+		sceneElement.emit('carsEnd', true);
+	}, 10000);
 }

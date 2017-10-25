@@ -20,10 +20,11 @@ function animIn(savings) {
 
 	setTimeout(function() {
 		let i = 0;
+		// let treesToCreate = 1; TESTING
 		let treesToCreate = ((savings.yearlySavings * 1.222) / 48);
 		// calculates amount of acres from trees, in case treesToCreate get overwritten below
 		let acresToCreate = ((treesToCreate / 400).toFixed(0));
-		treesToCreate = 1;
+
 		if (treesToCreate > 100) {
 			// Override in case too many trees need to be created and it will break the browser
 			treesToCreate = 100;
