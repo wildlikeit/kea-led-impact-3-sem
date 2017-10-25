@@ -77,5 +77,5 @@ function initTrash(savings) {
 			}, 100 - (i * 0.9));
 		}
 		count();
-	}, 1000);
+	}, 7000);
 }

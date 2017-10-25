@@ -33,6 +33,7 @@ module.exports = {
 
 
 	'trash_counter': document.querySelector('#trash_counter'),
+	'trash_intro': document.querySelector('#trash_intro'),
 	'trash_end': document.querySelector('#trash_end'),
 	'payoff': document.querySelector('#payoff'),
 	'outro': document.querySelector('#outro'),

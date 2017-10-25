@@ -51,13 +51,11 @@ function animIn(savings) {
 	let carsToCreate = (((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0);
 
 	// CREATE CURVE POSITION POINTS IN JSON OBJECT AND LOOP CREATE IT
-
 	carCurvePaths.forEach(function(cPath, index) {
 		const theta = index * (2 * Math.PI);
 		const x = cPath.z * Math.sin(theta);
 		const y = 0;
 		const z = cPath.z * Math.cos(theta);
-		console.log('pos', x, y, z);
 		const curve = helpers.appendNewElement(path, 'a-curve-point', {
 			'id': index,
 			'position': x + ' ' + y + ' ' + z,
@@ -71,8 +69,9 @@ function animIn(savings) {
 	});
 
 
-	// setTimeout(function(){
-	// 	sceneElement.removeChild(cars);
-	// 	sceneElement.emit('carsEnd', true);
-	// }, 20000);
+	setTimeout(function() {
+		console.log('carsEnd');
+		sceneElement.removeChild(cars);
+		sceneElement.emit('carsEnd', true);
+	}, 5000);
 }
