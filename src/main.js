@@ -99,7 +99,6 @@ lampPrevEvent
 	});
 
 
-
 sceneElement
 	.addEventListener('ledImpactInit', function() {
 		let ledImpactPrevEvent = document.querySelector('#ledImpactPrevEvent');
