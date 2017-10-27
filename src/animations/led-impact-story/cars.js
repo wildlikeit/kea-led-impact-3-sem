@@ -37,108 +37,102 @@ function animIn(savings) {
 		'id': 'path',
 	});
 
-	let carsToCreate = (((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0);
+	// FUTURE DEVELOPMENT
+	// let carsToCreate = parseInt(((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0));
+	// let carsToCreate = 1;
 
-	let items = 20;
+	let points = 50;
 	let x0 = 0;
 	let z0 = 0;
-	let r = 30;
-	// let positions = [];
-	// let rotations = [];
-	let prevPos;
+	let r = 20;
+	let positions = [];
+	let rotations = [];
 
-	for (let i = 0; i < items; i++) {
-		let x = x0 + r * Math.cos(2 * Math.PI * i / items);
-		let z = z0 + r * Math.sin(2 * Math.PI * i / items);
+	for (let i = 0; i < points; i++) {
+		let x = x0 + r * Math.cos(2 * Math.PI * i / -points);
+		let z = z0 + r * Math.sin(2 * Math.PI * i / -points);
 		let position = x + ' 0 ' + z;
-
-		let pRot = '0 ' + ((-360 / items) * i) + ' 0';
-		let cRot = '0 ' + ((-360 / items) * (i + 1)) + ' 0';
-		// positions.push(position);
-		// rotations.push(rotation);
-		helpers.appendNewElement(path, 'a-curve-point', {
-			'position': position,
-		});
+		let rotation = '0 ' + (((360 / points) * i) + 15) + ' 0';
+		rotations.push(rotation);
+		positions.push(position);
 	}
 
 	setTimeout(function() {
-		let i = 0;
+		sceneElement.removeChild(cars);
+		sceneElement.emit('carsEnd', true);
+	}, 10000);
 
-		function createCar()  {
-			if (i <= carsToCreate) {
-				const car = helpers.appendNewElement(cars, 'a-gltf-model', {
-					'src': '#car',
-					'scale': '0.02 0.02 0.02',
-					'alongpath': 'curve: #path; dur: 5000; loop: false; rotate: false;',
+	const car = helpers.appendNewElement(cars, 'a-entity', {
+		'obj-model': 'obj: #car-obj; mtl: #car-mtl;',
+		'position': positions[positions.length - 1],
+		'rotation': rotations[rotations.length - 1],
+		'scale': '5 5 5',
+	});
+
+	let i = 0;
+	let pPos;
+	let cPos;
+	let pRot;
+	let cRot;
+
+	function addAnimation() {
+		setTimeout(function() {
+			if (i < positions.length) {
+				if (i == 0) {
+					pPos = positions[positions.length - 1];
+					pRot = rotations[positions.length - 1];
+				} else {
+					pPos = positions[i - 1];
+					pRot = rotations[i - 1];
+				}
+
+				cPos = positions[i];
+				cRot = rotations[i];
+				helpers.appendNewElement(car, 'a-animation', {
+					'id': 'carAnim-' + i,
+					'attribute': 'position',
+					'from': pPos,
+					'to': cPos,
+					'dur': '50',
+					'ease': 'linear'
 				});
+
+				helpers.appendNewElement(car, 'a-animation', {
+					'id': 'carAnimRotate-' + i,
+					'attribute': 'rotation',
+					'from': pRot,
+					'to': cRot,
+					'dur': '50',
+					'ease': 'linear'
+				});
+				let prevAnim;
+				if (i == 0) {
+					prevAnim = document.querySelector('#carAnim-' + i);
+				} else {
+					prevAnim = document.querySelector('#carAnim-' + (i - 1));
+				}
+
+				if (prevAnim) {
+					car.removeChild(prevAnim);
+				}
+				let prevAnimRotate;
+				if (i == 0) {
+					prevAnimRotate = document.querySelector('#carAnimRotate-' + i);
+				} else {
+					prevAnimRotate = document.querySelector('#carAnimRotate-' + (i - 1));
+				}
+
+
+				if (prevAnimRotate) {
+					car.removeChild(prevAnimRotate);
+				}
 				i++;
-			} else {
-				setTimeout(function() {
-					sceneElement.removeChild(cars);
-					sceneElement.emit('carsEnd', true);
-				}, 5000);
+				if (i == positions.length) {
+					i = 0;
+				}
+				addAnimation();
 			}
-		}
-
-	}, 500);
-
-
-	// CREATE CURVE POSITION POINTS IN JSON OBJECT AND LOOP CREATE IT
-
-	// TESTING CIRCLE CREATION
-
-	// let i = 0;
-	// let pPos;
-	// let cPos;
-	// let pRot;
-	// let cRot;
-	// let animActive = false;
-	//
-	// function addAnimation() {
-	// 	setTimeout(function() {
-	// 		if (i < positions.length) {
-	// 			pPos = positions[i - 1];
-	// 			cPos = positions[i];
-	// 			pRot = rotations[i - 1];
-	// 			cRot = rotations[i];
-	// 			helpers.appendNewElement(car, 'a-animation', {
-	// 				'id': 'carAnim-' + i,
-	// 				'attribute': 'position',
-	// 				'from': pPos,
-	// 				'to': cPos,
-	// 				'dur': '2000',
-	// 				'ease': 'linear'
-	// 			});
-	//
-	// helpers.appendNewElement(car, 'a-animation', {
-	// 	'id': 'carAnimRotate-' + i,
-	// 	'attribute': 'rotation',
-	// 	'from': pRot,
-	// 	'to': cRot,
-	// 	'dur': '2000',
-	// 	'ease': 'linear'
-	// });
-	//
-	// 			let prevAnim = document.querySelector('#carAnim-' + (i - 1));
-	// 			if (prevAnim) {
-	// 				console.log('removed');
-	// 				car.removeChild(prevAnim);
-	// 			}
-	//
-	// 			let prevAnimRotate = document.querySelector('#carAnimRotate-' + (i - 1));
-	// 			if (prevAnimRotate) {
-	// 				console.log('removed rotate');
-	// 				car.removeChild(prevAnimRotate);
-	// 			}
-	// 			i++;
-	// 			if (i == positions.length) {
-	// 				i = 0;
-	// 			}
-	// 			addAnimation();
-	// 		}
-	//
-	// 	}, 2000);
-	// }
-	//
-	// addAnimation();
+		}, 50);
+	}
+	addAnimation();
 }
