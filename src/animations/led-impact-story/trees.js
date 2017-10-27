@@ -20,8 +20,8 @@ function animIn(savings) {
 
 	setTimeout(function() {
 		let i = 0;
-		// let treesToCreate = 1; TESTING
-		let treesToCreate = ((savings.yearlySavings * 1.222) / 48);
+		let treesToCreate = 1; // TESTING
+		// let treesToCreate = ((savings.yearlySavings * 1.222) / 48);
 		// calculates amount of acres from trees, in case treesToCreate get overwritten below
 		let acresToCreate = ((treesToCreate / 400).toFixed(0));
 

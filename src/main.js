@@ -64,7 +64,10 @@ ledPlaneEl
 			animations.ledImpact.show();
 			animations.ledImpactHours.create(step, ledActive);
 			setTimeout(function() {
-				ajsounds.steps[step - 1].play()
+				ajsounds.steps[step - 1].play();
+				setTimeout(function() {
+					ajsounds.calculate_instruction.play();
+				}, 5000);
 			}, 300);
 		}
 		ledActive = true;
@@ -137,7 +140,7 @@ sceneElement
 				step--;
 
 				setTimeout(function() {
-					ajsounds.steps[step - 1].play()
+					ajsounds.steps[step - 1].play();
 				}, 300);
 				animations.ledImpactHours.steps(step, ledActive);
 			}
@@ -191,13 +194,13 @@ sceneElement
 
 			if (step < 3) {
 				let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
-
 				if (step == 1) {
 					calcValues.daylightHours = value;
 				} else if (step == 2) {
 					calcValues.dimmedHours = value;
 				}
 				ajsounds.steps[step].play();
+
 				step++;
 				setTimeout(function() {
 					animations.ledImpactHours.steps(step, ledActive);
@@ -307,7 +310,10 @@ sceneElement
 		setTimeout(function() {
 			animations.ledImpactStory.trash.animIn(savings);
 			setTimeout(function() {
-				ajsounds.trash_end.play();
+				ajsounds.trash_lookup.play();
+				setTimeout(function() {
+					ajsounds.trash_end.play();
+				}, 3000);
 			}, 3000);
 		}, 3000);
 	}, {

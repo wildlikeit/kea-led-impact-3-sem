@@ -12,7 +12,8 @@ module.exports = [{
 		'text': [
 			'How many',
 			'of those hours',
-			'are nighttime?',
+			'are nighttime',
+			'hours?',
 		],
 	},
 	{

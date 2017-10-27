@@ -29,8 +29,6 @@ function init() {
 function animIn(savings) {
 	sceneElement.removeChild(ledImpactFigure);
 
-	let carsToCreate = (((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0);
-
 	const cars = helpers.appendNewElement(sceneElement, 'a-entity', {
 		'id': 'cars',
 	});
@@ -39,22 +37,14 @@ function animIn(savings) {
 		'id': 'path',
 	});
 
-	const car = helpers.appendNewElement(cars, 'a-gltf-model', {
-		'src': '#car',
-		'scale': '0.02 0.02 0.02',
-		'alongpath': 'curve: #path; dur: 5000; loop: false; rotate: false;',
-	});
-
-	// CREATE CURVE POSITION POINTS IN JSON OBJECT AND LOOP CREATE IT
-
-	// TESTING CIRCLE CREATION
+	let carsToCreate = (((savings.yearlySavings * 1.222) / 40) * 10).toFixed(0);
 
 	let items = 20;
 	let x0 = 0;
 	let z0 = 0;
 	let r = 30;
-	let positions = [];
-	let rotations = []
+	// let positions = [];
+	// let rotations = [];
 	let prevPos;
 
 	for (let i = 0; i < items; i++) {
@@ -71,7 +61,31 @@ function animIn(savings) {
 		});
 	}
 
+	setTimeout(function() {
+		let i = 0;
 
+		function createCar()  {
+			if (i <= carsToCreate) {
+				const car = helpers.appendNewElement(cars, 'a-gltf-model', {
+					'src': '#car',
+					'scale': '0.02 0.02 0.02',
+					'alongpath': 'curve: #path; dur: 5000; loop: false; rotate: false;',
+				});
+				i++;
+			} else {
+				setTimeout(function() {
+					sceneElement.removeChild(cars);
+					sceneElement.emit('carsEnd', true);
+				}, 5000);
+			}
+		}
+
+	}, 500);
+
+
+	// CREATE CURVE POSITION POINTS IN JSON OBJECT AND LOOP CREATE IT
+
+	// TESTING CIRCLE CREATION
 
 	// let i = 0;
 	// let pPos;
@@ -127,10 +141,4 @@ function animIn(savings) {
 	// }
 	//
 	// addAnimation();
-
-
-	setTimeout(function() {
-		sceneElement.removeChild(cars);
-		sceneElement.emit('carsEnd', true);
-	}, 10000);
 }
