@@ -30,11 +30,11 @@ function init() {
 		'id': 'floor',
 		'width': '100',
 		'depth': '100',
-		'height': '10',
-		'position': '0 -10 0',
+		'height': '50',
+		'position': '0 -50 0',
 		'static-body': '',
 		'color': 'black',
-		'opacity': '0.5',
+		'opacity': '0',
 	});
 }
 
@@ -54,7 +54,7 @@ function animIn(savings) {
 
 	const cMin = -20;
 	const cMax = 20;
-	const rainHeight = 50; // Height that it rains from
+	const rainHeight = 200; // Height that it rains from
 
 	function createTrash() {
 		let ranX = Math.floor(Math.random() * (cMax - cMin)) + cMin;
@@ -166,13 +166,6 @@ function animIn(savings) {
 					}
 				}
 				trash.appendChild(item);
-				// const anim = helpers.appendNewElement(item, 'a-animation',{
-				// 	'attribute': 'position',
-				// 	'from': ranX + ' 1000 '+ ranZ,
-				// 	'to': ranX + ' 20 '+ ranZ,
-				// 	'dur': '5000',
-				// 	'ease': 'linear',
-				// });
 				i++;
 			}
 			if (i <= trashToCreate) {
@@ -182,7 +175,7 @@ function animIn(savings) {
 					sceneElement.removeChild(trash);
 					sceneElement.removeChild(floor);
 					sceneElement.emit('trashEnd', true);
-				}, 3000);
+				}, 6000);
 			}
 		}, 100);
 	}
