@@ -37,43 +37,29 @@ const ledPlaneEl = ledEl.getChildren().find(el => el.id === 'led-plane');
 const lampNextEvent = document.querySelector('#lampNextEvent');
 const lampPrevEvent = document.querySelector('#lampPrevEvent');
 
-// Add event listener after sound 1 has ended
-// ajsounds.intro_1.addEventListener('ended', function(){
-// 	ajsounds.intro_1.currentTime = 0;
-// 	ledPlaneEl
-// 		.addEventListener('click', function() {
-// 			if (!ledActive) {
-// 				lampsModule.remove();
-// 				animations.sky.darken();
-// 				animations.ledImpact.show();
-// 				animations.ledImpactHours.create(step, ledActive);
-// 				setTimeout( function(){
-// 					ajsounds.steps[step - 1].play()
-// 				}, 300);
-// 			}
-// 			ledActive = true;
-// 		}, { passive: true });
-//
-// }, {passive: true});
-
-ledPlaneEl
-	.addEventListener('click', function() {
-		if (!ledActive) {
-			lampsModule.remove();
-			animations.sky.darken();
-			animations.ledImpact.show();
-			animations.ledImpactHours.create(step, ledActive);
-			setTimeout(function() {
-				ajsounds.steps[step - 1].play();
+ajsounds.intro_1.addEventListener('ended', function() {
+	ajsounds.intro_1.currentTime = 0;
+	ledPlaneEl
+		.addEventListener('click', function() {
+			if (!ledActive) {
+				lampsModule.remove();
+				animations.sky.darken();
+				animations.ledImpact.show();
+				animations.ledImpactHours.create(step, ledActive);
 				setTimeout(function() {
-					ajsounds.calculate_instruction.play();
-				}, 5000);
-			}, 300);
-		}
-		ledActive = true;
-	}, {
-		passive: true
-	});
+					ajsounds.steps[step - 1].play();
+					setTimeout(function() {
+						ajsounds.calculate_instruction.play();
+					}, 5000);
+				}, 300);
+			}
+			ledActive = true;
+		}, {
+			passive: true
+		});
+}, {
+	passive: true
+});
 
 lampNextEvent
 	.addEventListener('mouseenter', function() {

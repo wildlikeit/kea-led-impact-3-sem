@@ -13,6 +13,7 @@ function create(daylightHoursData, container, step) {
 			'id': 'ledImpactText' + index,
 			'class': 'ledImpactText',
 			'mixin': 'ledImpactTextMixin',
+			'scale': '8 8',
 			'align': 'right',
 			'position': '0 ' + (-index * 3) + ' 0',
 			'value': text,

@@ -9,13 +9,13 @@ module.exports = {
 };
 
 const led = helpers.createElement('a-entity', {
-	'id': 'led'
+	'id': 'led',
 });
 
 const ledPlaneEl = helpers.appendNewElement(led, 'a-circle', {
 	'id': 'led-plane',
 	'color': '#0054a6',
-	'rotation': '0 -15 0',
+	'rotation': '0 -55 0',
 	'segments': '128',
 	'radius': '5',
 	'position': '15.5  6.5 -13.5',
@@ -35,14 +35,20 @@ helpers.appendNewElement(ledPlaneEl, 'a-animation', {
 helpers.appendNewElement(led, 'a-text', {
 	'id': 'led-text',
 	'mixin': 'ledTextMixin',
-	'position': '11.589 7.216 -14.371',
+	'position': '11.589 6.316 -14.371',
+	'rotation': '0 -55 0',
+	'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Light.json',
+	'shader': 'msdf',
 	'value': 'CALCULATE YOUR',
 });
 
 helpers.appendNewElement(led, 'a-text', {
 	'id': 'led-sub-text',
 	'mixin': 'ledTextMixin',
-	'position': '12.382 5.890 -14.270',
+	'position': '12.382 4.990 -14.270',
+	'rotation': '0 -55 0',
+	'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Light.json',
+	'shader': 'msdf',
 	'value': 'LED SAVINGS',
 });
 

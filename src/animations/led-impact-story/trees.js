@@ -15,19 +15,20 @@ const ajsounds = require('../../data/ajsounds');
 
 function animIn(savings) {
 	sky.setAttribute('color', '#ffffff');
+	camera.setAttribute('position', '0 2 0');
+
 	sceneElement.removeChild(document.querySelector('#ledImpactText'));
 	sceneElement.setAttribute('rain', '');
 
 	setTimeout(function() {
 		let i = 0;
-		let treesToCreate = 1; // TESTING
-		// let treesToCreate = ((savings.yearlySavings * 1.222) / 48);
+		let treesToCreate = ((savings.yearlySavings * 1.222) / 48);
 		// calculates amount of acres from trees, in case treesToCreate get overwritten below
 		let acresToCreate = ((treesToCreate / 400).toFixed(0));
 
-		if (treesToCreate > 100) {
+		if (treesToCreate > 70) {
 			// Override in case too many trees need to be created and it will break the browser
-			treesToCreate = 100;
+			treesToCreate = 70;
 		}
 
 		// Trees container
@@ -46,7 +47,7 @@ function animIn(savings) {
 
 			setTimeout(function() {
 				// Makes sure trees spawn in a certain radius around the camera
-				if ((ranX < 5 && ranX > -5) || (ranZ < 10 && ranZ > 0)) {} else {
+				if ((ranX < 10 && ranX > 0) || (ranZ < 5 && ranZ > -5)) {} else {
 					const tree = helpers.appendNewElement(trees, 'a-gltf-model', {
 						'src': '#tree',
 						'position': ranX + ' -5 ' + ranZ,
@@ -62,7 +63,7 @@ function animIn(savings) {
 					ajsounds.trees_above_intro.play();
 					const cameraUpAnim = helpers.appendNewElement(camera, 'a-animation', {
 						'attribute': 'position',
-						'from': '0 2 5',
+						'from': '0 2 0',
 						'to': '0 1000 5',
 						'dur': '3000',
 						'delay': '4000',

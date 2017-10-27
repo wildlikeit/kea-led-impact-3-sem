@@ -79,7 +79,7 @@ const ledImpactCtaContainer = helpers
 const ledImpactNextCtaWrapper = helpers
 	.appendNewElement(ledImpactCtaContainer, 'a-entity', {
 		'id': 'ledImpactNextCtaWrapper',
-		'position': '7 0 0',
+		'position': '5 0 0',
 	});
 
 helpers
@@ -105,7 +105,7 @@ const ledImpactNextEvent = helpers
 const ledImpactPrevCtaWrapper = helpers
 	.appendNewElement(ledImpactCtaContainer, 'a-entity', {
 		'id': 'ledImpactPrevCtaWrapper',
-		'position': '-7 0 0',
+		'position': '-5 0 0',
 	});
 
 helpers
@@ -131,7 +131,7 @@ const ledImpactPrevEvent = helpers
 const ledImpactStepText = helpers
 	.appendNewElement(ledImpactTextContainer, 'a-text', {
 		'id': 'ledImpactStepText',
-		'position': '2.307 7 1.306',
+		'position': '2.307 5 1.306',
 		'rotation': '0 -43 0',
 		'align': 'center',
 		'value': 'STEP 1',

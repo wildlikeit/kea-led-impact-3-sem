@@ -57,7 +57,7 @@ helpers
 const lampNextEvent = helpers
 	.appendNewElement(lampNextCtaWrapper, 'a-circle', {
 		'id': 'lampNextEvent',
-		'position': '0.048 0 -0.045',
+		'position': '0.048 0.2 -0.045',
 		'radius': '1.7',
 		'color': '#ff6961',
 		'opacity': '0.9',
@@ -85,7 +85,7 @@ helpers
 const lampPrevEvent = helpers
 	.appendNewElement(lampPrevCtaWrapper, 'a-circle', {
 		'id': 'lampPrevEvent',
-		'position': '0.081 0 -0.075',
+		'position': '0.081 0.2 -0.075',
 		'radius': '1.7',
 		'color': '#ff6961',
 		'opacity': '0.9',

@@ -48,10 +48,10 @@ function animIn(savings) {
 	let i = 0;
 	// let trashToCreate = 50; // TESTING
 	let trashToCreate = (((savings.yearlySavings * 1.222) / 40)).toFixed(0);
-	if (trashToCreate > 50) {
-		trashToCreate = 50; // In case trash to create is too high.
+	if (trashToCreate > 100) {
+		trashToCreate = 100; // In case trash to create is too high.
 	}
-	//
+
 	const cMin = -20;
 	const cMax = 20;
 	const rainHeight = 50; // Height that it rains from
@@ -178,9 +178,11 @@ function animIn(savings) {
 			if (i <= trashToCreate) {
 				createTrash();
 			} else {
-				sceneElement.removeChild(trash);
-				sceneElement.removeChild(floor);
-				sceneElement.emit('trashEnd', true);
+				setTimeout(function() {
+					sceneElement.removeChild(trash);
+					sceneElement.removeChild(floor);
+					sceneElement.emit('trashEnd', true);
+				}, 3000);
 			}
 		}, 100);
 	}

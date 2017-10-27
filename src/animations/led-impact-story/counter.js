@@ -12,7 +12,7 @@ const sceneElement = document.querySelector('a-scene');
 function initTrees(savings) {
 	setTimeout(function() {
 		let i = 0;
-		// let countTo = 1; TESTING
+		// let countTo = 1; // TESTING
 		let countTo = ((savings.yearlySavings * 1.222) / 48).toFixed(0);
 
 		function count() {
@@ -36,7 +36,7 @@ function initCars(savings) {
 	document.querySelector('#ledImpactFigure').setAttribute('value', 0);
 	setTimeout(function() {
 		let i = 0;
-		// let countTo = 1; TESTING
+		// let countTo = 1; // TESTING
 		let countTo = ((savings.yearlySavings * 1.222) / 8000).toFixed(0);
 
 		function count() {
