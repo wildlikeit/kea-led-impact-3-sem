@@ -21,7 +21,7 @@
 </head>
 
 <body>
-	<a-scene physics="debug:true">
+	<a-scene>
 		<a-assets>
 			<img id="forest" src="images/forest.png">
 
@@ -86,6 +86,8 @@
 
 			<a-asset-item id="tree" src="models/tree/scene.gltf"></a-asset-item>
 			<a-asset-item id="car" src="models/car/scene.gltf"></a-asset-item>
+			<a-asset-item id="car-obj" src="models/car2/model.obj"></a-asset-item>
+			<a-asset-item id="car-mtl" src="models/car2/materials.mtl"></a-asset-item>
 		</a-assets>
 		<a-camera position="0 2 5">
 			<a-entity cursor="fuse: true; fuseTimeout: 0000001" id="cursor" position="0 0 -1" geometry="primitive: ring; radiusInner: 0.015; radiusOuter: 0.03" material="color: #ff6961; shader: flat">
