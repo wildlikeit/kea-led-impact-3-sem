@@ -80,6 +80,8 @@ function animIn(savings) {
 						setTimeout(function() {
 							if (countTo > 10) {
 								ajsounds.acres[9].play();
+							} else if (countTo <= 1) {
+								ajsounds.acres[0].play();
 							} else {
 								ajsounds.acres[countTo - 1].play();
 							}

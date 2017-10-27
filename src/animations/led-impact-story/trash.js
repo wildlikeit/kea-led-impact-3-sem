@@ -12,6 +12,8 @@ const sceneElement = document.querySelector('a-scene');
 const sky = document.querySelector('a-sky');
 let ledImpactFigure;
 let floor;
+let walls;
+const numWalls = 4;
 
 function init() {
 	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text', {
@@ -24,13 +26,15 @@ function init() {
 		'rotation': '0 -34 0',
 		'value': '0',
 	});
-	floor = helpers.appendNewElement(sceneElement, 'a-plane', {
+	floor = helpers.appendNewElement(sceneElement, 'a-box', {
 		'id': 'floor',
 		'width': '100',
-		'height': '100',
-		'rotation': '-90 0 0',
+		'depth': '100',
+		'height': '10',
+		'position': '0 -10 0',
 		'static-body': '',
-		'opacity': '0',
+		'color': 'black',
+		'opacity': '0.5',
 	});
 }
 
