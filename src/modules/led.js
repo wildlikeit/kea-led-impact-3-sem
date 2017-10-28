@@ -18,35 +18,31 @@ const ledPlaneEl = helpers.appendNewElement(led, 'a-circle', {
 	'rotation': '0 -55 0',
 	'segments': '128',
 	'radius': '5',
-	'position': '15.5  6.5 -13.5',
+	'position': '15.302 6.5 -11.091',
 });
 
-helpers.appendNewElement(ledPlaneEl, 'a-animation', {
-	'id': 'ledPlaneScaleAnim',
+const ledTextContainer = helpers.appendNewElement(ledPlaneEl, 'a-entity', {
+	'id': 'ledTextContainer',
 	'attribute': 'radius',
-	'from': '5',
-	'to': '5.2',
-	'dur': '1000',
-	'repeat': 'indefinite',
-	'direction': 'alternate',
-	'ease': 'ease-in-out',
+	'rotation': '0 15 0',
+	'position': '0 -0.1 0.1',
 });
 
-helpers.appendNewElement(led, 'a-text', {
+helpers.appendNewElement(ledTextContainer, 'a-text', {
 	'id': 'led-text',
 	'mixin': 'ledTextMixin',
-	'position': '11.589 6.316 -14.371',
-	'rotation': '0 -55 0',
+	'align': 'center',
+	'position': '0 0 0',
 	'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Light.json',
 	'shader': 'msdf',
 	'value': 'CALCULATE YOUR',
 });
 
-helpers.appendNewElement(led, 'a-text', {
+helpers.appendNewElement(ledTextContainer, 'a-text', {
 	'id': 'led-sub-text',
 	'mixin': 'ledTextMixin',
-	'position': '12.382 4.990 -14.270',
-	'rotation': '0 -55 0',
+	'align': 'center',
+	'position': '0 -1.3 0',
 	'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Light.json',
 	'shader': 'msdf',
 	'value': 'LED SAVINGS',

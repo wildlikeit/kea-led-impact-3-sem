@@ -18,10 +18,10 @@ const lampElement = helpers.createElement('a-entity', {
 });
 
 // LAMP INFO //
-helpers.appendNewElement(lampElement, 'a-plane', {
-	'id': 'lampInfo-plane',
+const lampInfoPlane = helpers.appendNewElement(lampElement, 'a-plane', {
+	'id': 'lampInfoPlane',
 	'position': '-22 5.7 -12',
-	'rotation': '0 15 0',
+	'rotation': '0 45 0',
 	'color': '#0054a6',
 	'width': '19',
 	'height': '9',
@@ -31,7 +31,7 @@ helpers.appendNewElement(lampElement, 'a-plane', {
 const lampCtaContainer = helpers
 	.appendNewElement(lampElement, 'a-entity', {
 		'id': 'lampCtaContainer',
-		'position': '0.043 6 -14.6',
+		'position': '0.043 5 -14.6',
 		'rotation': '0 0 0',
 	});
 
@@ -39,7 +39,7 @@ const lampCtaContainer = helpers
 const lampNextCtaWrapper = helpers
 	.appendNewElement(lampCtaContainer, 'a-entity', {
 		'id': 'ledImpactNextCtaWrapper',
-		'position': '7 0 0',
+		'position': '5.5 0 0',
 	});
 
 helpers
@@ -67,7 +67,7 @@ const lampNextEvent = helpers
 const lampPrevCtaWrapper = helpers
 	.appendNewElement(lampCtaContainer, 'a-entity', {
 		'id': 'lampPrevCtaWrapper',
-		'position': '-7 0 0',
+		'position': '-5.5 0 0',
 	});
 
 helpers
@@ -112,16 +112,16 @@ function setupLampData(id) {
 		lampElement.removeChild(lampModel);
 	}
 
-	let posY = 8;
+	let posY = 2.2;
 	ajlamps[id].measurements.forEach(function(measurement, index) {
-		let measurementText = helpers.appendNewElement(lampElement, 'a-text', {
+		let measurementText = helpers.appendNewElement(lampInfoPlane, 'a-text', {
 			'id': 'measurement-' + [index + 1],
 			'class': 'measurements lamp-text',
 			'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Light.json',
 			'shader': 'msdf',
 			'mixin': 'lampInfoTextMixin',
 			'opacity': '0',
-			'position': '-28 ' + posY + ' -9',
+			'position': '-6.827 ' + posY + ' 0.1',
 			'value': measurement.measurement,
 		});
 
@@ -134,14 +134,14 @@ function setupLampData(id) {
 			'ease': 'ease-out',
 		});
 
-		let measurementValue = helpers.appendNewElement(lampElement, 'a-text', {
+		let measurementValue = helpers.appendNewElement(lampInfoPlane, 'a-text', {
 			'id': 'value-' + [index + 1],
 			'class': 'values lamp-text',
 			'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Bold.json',
 			'shader': 'msdf',
 			'mixin': 'lampInfoTextMixin',
 			'opacity': '0',
-			'position': '-15 ' + posY + ' -12.8',
+			'position': '5.873 ' + posY + ' 0.1',
 			'value': measurement.value,
 		});
 
@@ -205,7 +205,6 @@ function _setupAssets() {
 		'baseline': 'bottom',
 		'line-height': '60',
 		'scale': '3 3 0',
-		'rotation': '0 15 0',
 	}, {
 		'id': 'ledTextMixin',
 		'color': '#ffffff',
