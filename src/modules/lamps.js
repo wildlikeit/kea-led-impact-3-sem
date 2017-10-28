@@ -20,7 +20,7 @@ const lampElement = helpers.createElement('a-entity', {
 // LAMP INFO //
 const lampInfoPlane = helpers.appendNewElement(lampElement, 'a-plane', {
 	'id': 'lampInfoPlane',
-	'position': '-22 5.7 -12',
+	'position': '-17.812 5.7 -9.047',
 	'rotation': '0 45 0',
 	'color': '#0054a6',
 	'width': '19',

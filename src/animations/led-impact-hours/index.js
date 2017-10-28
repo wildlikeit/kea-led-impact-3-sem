@@ -44,7 +44,7 @@ function _setupAssets() {
 const ledImpactTextContainer = helpers
 	.createElement('a-entity', {
 		'id': 'ledImpactTextContainer',
-		'position': '12.757 12.472 -14.793',
+		'position': '12.757 12.472 -12.311',
 	});
 
 const ledImpactOverlay = helpers
@@ -131,8 +131,10 @@ const ledImpactPrevEvent = helpers
 const ledImpactStepText = helpers
 	.appendNewElement(ledImpactTextContainer, 'a-text', {
 		'id': 'ledImpactStepText',
-		'position': '2.307 5 1.306',
+		'position': '2.307 3.192  1.306',
 		'rotation': '0 -43 0',
+		'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Bold.json',
+		'shader': 'msdf',
 		'align': 'center',
 		'value': 'STEP 1',
 		'color': '#FFFFFF',
@@ -142,7 +144,7 @@ const ledImpactStepText = helpers
 // Input container
 const ledImpactInputsContainer = helpers.createElement('a-entity', {
 	'id': 'ledImpactInputsContainer',
-	'position': '19.049 12.311 -9.762',
+	'position': '19.177 12.311 -7.052',
 });
 
 function create(step, ledActive) {

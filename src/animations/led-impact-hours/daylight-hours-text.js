@@ -14,8 +14,10 @@ function create(daylightHoursData, container, step) {
 			'class': 'ledImpactText',
 			'mixin': 'ledImpactTextMixin',
 			'scale': '8 8',
+			'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Light.json',
+			'shader': 'msdf',
 			'align': 'right',
-			'position': '0 ' + (-index * 3) + ' 0',
+			'position': '0 ' + ((-index * 3) - 1.808) + ' 0',
 			'value': text,
 		});
 		helpers.appendNewElement(document.querySelector('#ledImpactText' + index), 'a-animation', {

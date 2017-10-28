@@ -52,7 +52,7 @@ function show() {
 	ledEnterPlaneScaleAnim = helpers.createElement('a-animation', {
 		'attribute': 'radius',
 		'from': '5',
-		'to': '17',
+		'to': '16',
 		'dur': '500',
 		'ease': 'ease-out',
 	});
@@ -104,7 +104,7 @@ function hide() {
 
 		ledLeavePlaneScaleAnim = helpers.createElement('a-animation', {
 			'attribute': 'radius',
-			'from': '17',
+			'from': '16',
 			'to': '5',
 			'dur': '400',
 			'ease': 'ease-out',

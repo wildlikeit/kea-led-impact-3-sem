@@ -106,7 +106,9 @@ function create(inputHoursData, container) {
 			.appendNewElement(ledImpactInputWrapper, 'a-text', {
 				'id': 'ledImpactInput' + index,
 				'mixin': 'ledImpactTextMixin',
-				'position': '0.754 0 0.595',
+				'position': '0.754 -1.808 0.595',
+				'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Light.json',
+				'shader': 'msdf',
 				'value': element.value,
 			});
 	});
