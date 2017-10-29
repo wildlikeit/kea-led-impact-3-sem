@@ -14,6 +14,7 @@ const ajsounds = require('./data/ajsounds');
 
 // Global Elements
 const sceneElement = document.querySelector('a-scene');
+const assetsElement = document.querySelector('a-assets');
 
 // Global variables
 let ledActive = false;
@@ -303,31 +304,40 @@ function startScene() {
 
 				if (step < 3) {
 					let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
-					if (step == 1) {
-						calcValues.daylightHours = value;
-					} else if (step == 2) {
-						calcValues.dimmedHours = value;
-					}
-					ajsounds.steps[step].play();
+					let goToNext = false;
 
-					step++;
-					setTimeout(function() {
-						animations.ledImpactHours.steps(step, ledActive);
-					}, 500);
+					// Adds value to object
+					if (step == 1 && value > 0) {
+						calcValues.daylightHours = value;
+						goToNext = true;
+					} else if (step == 2 && value <= calcValues.daylightHours) {
+						calcValues.dimmedHours = value;
+						goToNext = true;
+					}
+
+					if (goToNext)  {
+						ajsounds.steps[step].play();
+						step++;
+						setTimeout(function() {
+							animations.ledImpactHours.steps(step, ledActive);
+						}, 500);
+					}
 
 				} else if (step == 3) {
 					let lamp = ajlamps[activeLampId];
 					let value = parseInt(document.querySelector('#ledImpactInput3').getAttribute('value'));
-					calcValues.lampAmount = value;
-					savings = helpers.calculateSavings(calcValues, lamp);
+					if (value > 0) {
+						calcValues.lampAmount = value;
+						savings = helpers.calculateSavings(calcValues, lamp);
 
-					setTimeout(function() {
-						animations.ledImpactHours.remove();
-						animations.ledImpactStoryDelay.init(savings);
 						setTimeout(function() {
-							ajsounds.impact_intro.play();
-						}, 1000);
-					}, 500)
+							animations.ledImpactHours.remove();
+							animations.ledImpactStoryDelay.init(savings);
+							setTimeout(function() {
+								ajsounds.impact_intro.play();
+							}, 1000);
+						}, 500);
+					}
 				}
 
 			}, {
@@ -449,4 +459,8 @@ function startScene() {
 		});
 }
 
-introduction();
+assetsElement.addEventListener('loaded', function() {
+	setTimeout(function() {
+		introduction();
+	}, 500);
+});
