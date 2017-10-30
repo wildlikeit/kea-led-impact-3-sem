@@ -167,7 +167,7 @@ function init(savings) {
 				ledImpactText.removeChild(ledImpactYesText);
 				setTimeout(function() {
 					sceneElement.emit('startLedImpactStory', true);
-				}, 100000);
+				}, 1000);
 			}
 		});
 	}
