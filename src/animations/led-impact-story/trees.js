@@ -51,7 +51,7 @@ function animIn(savings) {
 						'position': ranX + ' -5 ' + ranZ,
 						'rotation': '0 ' + ranX + ' 0',
 					});
-					helpers.playSound(ajsounds.pop);
+					ajsounds.pop.play();
 
 					i++;
 
