@@ -73,8 +73,7 @@ function init(savings) {
 		'value': 'by using LED!',
 	});
 
-	ajsounds.impact_intro.addEventListener('ended', function() {
-		ajsounds.impact_intro.currentTime = 0;
+	setTimeout(function() {
 		helpers.appendNewElement(ledImpactText, 'a-animation', {
 			'attribute': 'opacity',
 			'from': '1',
@@ -83,9 +82,7 @@ function init(savings) {
 			'ease': 'ease-out',
 		});
 		setTimeout(startLedImpact, 1000);
-	}, {
-		passive: true,
-	});
+	}, 8000);
 
 	function startLedImpact() {
 
@@ -103,7 +100,7 @@ function init(savings) {
 			'ease': 'ease-out',
 		});
 
-		setTimeout(function(){
+		setTimeout(function() {
 
 			const trees = helpers.appendNewElement(ledImpactText, 'a-text', {
 				'id': 'trees',
@@ -128,7 +125,7 @@ function init(savings) {
 				'opacity': '0',
 			});
 
-			setTimeout(function(){
+			setTimeout(function() {
 				helpers.appendNewElement(trees, 'a-animation', {
 					'attribute': 'opacity',
 					'from': '1',

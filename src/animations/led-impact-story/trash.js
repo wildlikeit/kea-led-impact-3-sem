@@ -95,90 +95,90 @@ function animIn(savings) {
 		let ranZ = Math.floor(Math.random() * (cMax - cMin)) + cMin;
 		let ranY = Math.floor(Math.random() * (360 - 0)) + 0;
 		let items = [{
-			'type': 'a-box',
-			'src': '#pizzaBox',
-			'depth': '1',
-			'height': '0.1',
-			'width': '1',
-			'rotation': '0 ' + ranY + ' 0',
-			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-			'dynamic-body': 'shape: box',
+				'type': 'a-box',
+				'src': '#pizzaBox',
+				'depth': '1',
+				'height': '0.1',
+				'width': '1',
+				'rotation': '0 ' + ranY + ' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
 
-		},
-		{
-			'type': 'a-box',
-			'src': '#plasticBag',
-			'depth': '0.65',
-			'height': '0.01',
-			'width': '1',
-			'rotation': '0 ' + ranY + ' 0',
-			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-			'dynamic-body': 'shape: box',
-		},
-		{
-			'type': 'a-box',
-			'src': '#cereal',
-			'depth': '1',
-			'height': '0.2',
-			'width': '0.5',
-			'rotation': '0 ' + ranY + ' 0',
-			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-			'dynamic-body': 'shape: box',
-		},
-		{
-			'type': 'a-cylinder',
-			'src': '#can',
-			'height': '0.3',
-			'radius': '0.1',
-			'rotation': '0 ' + ranY + ' 0',
-			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-			'dynamic-body': 'shape: cylinder',
-			'child': {
-				'type': 'a-circle',
-				'radius': '0.1',
-				'src': '#canTop',
-				'position': '-0.002 0.158 0.007',
-				'rotation': '-90 0 0',
 			},
-		},
-		{
-			'type': 'a-cylinder',
-			'src': '#plasticBottle',
-			'height': '0.4',
-			'radius': '0.1',
-			'rotation': '-90 ' + ranY + ' 45',
-			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-			'dynamic-body': 'shape: cylinder',
-		},
-		{
-			'type': 'a-box',
-			'src': '#crisps',
-			'depth': '0.05',
-			'height': '0.75',
-			'width': '0.45',
-			'rotation': '0 ' + ranY + ' 0',
-			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-			'dynamic-body': 'shape: box',
-		},
-		{
-			'type': 'a-cylinder',
-			'src': '#tubeChips',
-			'height': '0.7',
-			'radius': '0.14',
-			'rotation': '-90 ' + ranY + ' 0',
-			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-			'dynamic-body': 'shape: cylinder',
-		},
-		{
-			'type': 'a-box',
-			'src': '#cookies',
-			'depth': '0.3',
-			'height': '0.075',
-			'width': '0.45',
-			'rotation': '0 ' + ranY + ' 0',
-			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-			'dynamic-body': 'shape: box',
-		}
+			{
+				'type': 'a-box',
+				'src': '#plasticBag',
+				'depth': '0.65',
+				'height': '0.01',
+				'width': '1',
+				'rotation': '0 ' + ranY + ' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
+			},
+			{
+				'type': 'a-box',
+				'src': '#cereal',
+				'depth': '1',
+				'height': '0.2',
+				'width': '0.5',
+				'rotation': '0 ' + ranY + ' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
+			},
+			{
+				'type': 'a-cylinder',
+				'src': '#can',
+				'height': '0.3',
+				'radius': '0.1',
+				'rotation': '0 ' + ranY + ' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: cylinder',
+				'child': {
+					'type': 'a-circle',
+					'radius': '0.1',
+					'src': '#canTop',
+					'position': '-0.002 0.158 0.007',
+					'rotation': '-90 0 0',
+				},
+			},
+			{
+				'type': 'a-cylinder',
+				'src': '#plasticBottle',
+				'height': '0.4',
+				'radius': '0.1',
+				'rotation': '-90 ' + ranY + ' 45',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: cylinder',
+			},
+			{
+				'type': 'a-box',
+				'src': '#crisps',
+				'depth': '0.05',
+				'height': '0.75',
+				'width': '0.45',
+				'rotation': '0 ' + ranY + ' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
+			},
+			{
+				'type': 'a-cylinder',
+				'src': '#tubeChips',
+				'height': '0.7',
+				'radius': '0.14',
+				'rotation': '-90 ' + ranY + ' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: cylinder',
+			},
+			{
+				'type': 'a-box',
+				'src': '#cookies',
+				'depth': '0.3',
+				'height': '0.075',
+				'width': '0.45',
+				'rotation': '0 ' + ranY + ' 0',
+				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+				'dynamic-body': 'shape: box',
+			}
 		];
 
 		let ranItem = Math.floor(Math.random() * items.length);
@@ -206,11 +206,11 @@ function animIn(savings) {
 				createTrash();
 			} else {
 				setTimeout(function() {
-					ajsounds.outro.play();
+					helpers.playSound(ajsounds.outro);
 					setTimeout(function() {
 						sceneElement.removeChild(trash);
 						sceneElement.removeChild(floor);
-						ajsounds.payoff.play();
+						helpers.playSound(ajsounds.payoff);
 						setTimeout(function() {
 							helpers.appendNewElement(sky, 'a-animation', {
 								'attribute': 'color',

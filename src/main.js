@@ -30,14 +30,14 @@ let calcValues = {
 };
 let savings = {};
 
-sceneElement.addEventListener('startScene', function(){
+sceneElement.addEventListener('startScene', function() {
 	startScene()
 });
 
 function startScene() {
 
 	lampsModule.create(activeLampId);
-	ajsounds.intro_1.play();
+	helpers.playSound(ajsounds.intro_1);
 
 	const ledEl = ledModule.create(activeLampId);
 	const ledPlaneEl = ledEl.getChildren().find(el => el.id === 'led-plane');
@@ -45,41 +45,35 @@ function startScene() {
 	const lampNextEvent = document.querySelector('#lampNextEvent');
 	const lampPrevEvent = document.querySelector('#lampPrevEvent');
 
-	ajsounds.intro_1.addEventListener('ended', function() {
-		ajsounds.intro_1.currentTime = 0;
-
-		helpers.appendNewElement(ledPlaneEl, 'a-animation', {
-			'id': 'ledPlaneScaleAnim',
-			'attribute': 'radius',
-			'from': '5',
-			'to': '5.2',
-			'dur': '750',
-			'repeat': 'indefinite',
-			'direction': 'alternate',
-			'ease': 'ease-in-out',
-		});
-
-		ledPlaneEl
-			.addEventListener('click', function() {
-				if (!ledActive) {
-					lampsModule.remove();
-					animations.sky.darken();
-					animations.ledImpact.show();
-					animations.ledImpactHours.create(step, ledActive);
-					setTimeout(function() {
-						ajsounds.steps[step - 1].play();
-						setTimeout(function() {
-							ajsounds.calculate_instruction.play();
-						}, 5000);
-					}, 300);
-				}
-				ledActive = true;
-			}, {
-				passive: true
-			});
-	}, {
-		passive: true
+	helpers.appendNewElement(ledPlaneEl, 'a-animation', {
+		'id': 'ledPlaneScaleAnim',
+		'attribute': 'radius',
+		'from': '5',
+		'to': '5.2',
+		'dur': '750',
+		'repeat': 'indefinite',
+		'direction': 'alternate',
+		'ease': 'ease-in-out',
 	});
+
+	ledPlaneEl
+		.addEventListener('click', function() {
+			if (!ledActive) {
+				lampsModule.remove();
+				animations.sky.darken();
+				animations.ledImpact.show();
+				animations.ledImpactHours.create(step, ledActive);
+				setTimeout(function() {
+					helpers.playSound(ajsounds.steps[step - 1]);
+					setTimeout(function() {
+						helpers.playSound(ajsounds.calculate_instruction);
+					}, 5000);
+				}, 300);
+			}
+			ledActive = true;
+		}, {
+			passive: true
+		});
 
 	lampNextEvent
 		.addEventListener('mouseenter', function() {
@@ -146,7 +140,7 @@ function startScene() {
 					step--;
 
 					setTimeout(function() {
-						ajsounds.steps[step - 1].play();
+						helpers.playSound(ajsounds.steps[step - 1]);
 					}, 300);
 					animations.ledImpactHours.steps(step, ledActive);
 				}
@@ -212,7 +206,7 @@ function startScene() {
 					}
 
 					if (goToNext)  {
-						ajsounds.steps[step].play();
+						helpers.playSound(ajsounds.steps[step]);
 						step++;
 						setTimeout(function() {
 							animations.ledImpactHours.steps(step, ledActive);
@@ -230,7 +224,7 @@ function startScene() {
 							animations.ledImpactHours.remove();
 							animations.ledImpactStoryDelay.init(savings);
 							setTimeout(function() {
-								ajsounds.impact_intro.play();
+								helpers.playSound(ajsounds.impact_intro);
 							}, 1000);
 						}, 500);
 					}
@@ -267,7 +261,7 @@ function startScene() {
 
 	sceneElement
 		.addEventListener('startLedImpactStory', function() {
-			ajsounds.trees_counter.play();
+			helpers.playSound(ajsounds.trees_counter);
 			animations.ledImpactStory.counter.initTrees(savings);
 		}, {
 			passive: true
@@ -275,7 +269,7 @@ function startScene() {
 
 	sceneElement
 		.addEventListener('startTrees', function() {
-			ajsounds.trees_intro.play();
+			helpers.playSound(ajsounds.trees_intro);
 			setTimeout(function() {
 				animations.ledImpactStory.trees.animIn(savings);
 			}, 6000);
@@ -286,7 +280,7 @@ function startScene() {
 	sceneElement
 		.addEventListener('treesEnd', function() {
 			setTimeout(function() {
-				ajsounds.cars_counter.play();
+				helpers.playSound(ajsounds.cars_counter);
 				animations.ledImpactStory.cars.init();
 				animations.ledImpactStory.counter.initCars(savings);
 			}, 1000);
@@ -297,7 +291,7 @@ function startScene() {
 
 	sceneElement
 		.addEventListener('startCars', function() {
-			ajsounds.cars_intro.play();
+			helpers.playSound(ajsounds.cars_intro);
 			setTimeout(function() {
 				animations.ledImpactStory.cars.animIn(savings);
 			}, 3000);
@@ -307,9 +301,9 @@ function startScene() {
 
 	sceneElement
 		.addEventListener('carsEnd', function() {
-			ajsounds.cars_end.play();
+			helpers.playSound(ajsounds.cars_end);
 			setTimeout(function() {
-				ajsounds.trash_counter.play();
+				helpers.playSound(ajsounds.trash_counter);
 				animations.ledImpactStory.trash.init();
 				animations.ledImpactStory.counter.initTrash(savings);
 			}, 7000);
@@ -319,13 +313,13 @@ function startScene() {
 
 	sceneElement
 		.addEventListener('startTrash', function() {
-			ajsounds.trash_intro.play();
+			helpers.playSound(ajsounds.trash_intro);
 			setTimeout(function() {
 				animations.ledImpactStory.trash.animIn(savings);
 				setTimeout(function() {
-					ajsounds.trash_lookup.play();
+					helpers.playSound(ajsounds.trash_lookup);
 					setTimeout(function() {
-						ajsounds.trash_end.play();
+						helpers.playSound(ajsounds.trash_end);
 					}, 3000);
 				}, 3000);
 			}, 3000);
