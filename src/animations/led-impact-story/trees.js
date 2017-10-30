@@ -40,7 +40,7 @@ function animIn(savings) {
 			let cMax = 350;
 			let ranX = Math.floor(Math.random() * (cMax - cMin)) + cMin;
 			let ranZ = Math.floor(Math.random() * (cMax - cMin)) + cMin;
-			let ranTime = Math.floor(Math.random() * (500 - 0)) + 0;
+			let ranTime = Math.floor(Math.random() * (750 - 350)) + 350;
 
 
 			setTimeout(function() {
