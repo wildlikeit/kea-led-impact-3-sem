@@ -17,16 +17,49 @@ let walls;
 const numWalls = 4;
 
 function init() {
-	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text', {
-		'id': 'ledImpactFigure',
-		'color': '#19b77e',
-		'position': '11.700 0 -24.485',
-		'align': 'center',
-		'baseline': 'bottom',
-		'scale': '55 55',
-		'rotation': '0 -34 0',
-		'value': '0',
-	});
+	setTimeout(function(){
+		ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text', {
+			'id': 'ledImpactFigure',
+			'color': '#19b77e',
+			'position': '11.700 2 -24.485',
+			'align': 'center',
+			'baseline': 'bottom',
+			'scale': '55 55',
+			'rotation': '0 -34 0',
+			'value': '0',
+			'opacity': '0',
+		});
+		const trash = helpers.appendNewElement(sceneElement, 'a-text', {
+			'id': 'trash',
+			'mixin': 'ledImpactTextMixin',
+			'color': '#19b77e',
+			'position': '12.700 6 -23.485',
+			'align': 'center',
+			'value': 'trash',
+			'scale': '55 55 0',
+			'rotation': '0 -38 0',
+		});
+
+		setTimeout(function(){
+			helpers.appendNewElement(trash, 'a-animation', {
+				'attribute': 'opacity',
+				'from': '1',
+				'to': '0',
+				'dur': '500',
+				'ease': 'ease-in-out',
+			});
+			setTimeout(sceneElement.removeChild(trash), 500);
+
+			helpers.appendNewElement(ledImpactFigure, 'a-animation', {
+				'attribute': 'opacity',
+				'from': '0',
+				'to': '1',
+				'dur': '600',
+				'ease': 'ease-in-out',
+			});
+		}, 5000);
+	}, 1000);
+
 	floor = helpers.appendNewElement(sceneElement, 'a-box', {
 		'id': 'floor',
 		'width': '100',

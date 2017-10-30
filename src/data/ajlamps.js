@@ -4,7 +4,7 @@ module.exports = [{
 	'id': '1',
 	'name': 'Albertslund Mini 42W TC-TEL',
 	'src': '#lamp_1',
-	'scale': '0.06 0.06 0.06',
+	'scale': '0.055 0.055 0.055',
 	'measurements': [{
 		'measurement': 'System power normal operation * [W]',
 		'value': 46

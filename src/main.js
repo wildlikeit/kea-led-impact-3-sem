@@ -297,12 +297,10 @@ function startScene() {
 
 	sceneElement
 		.addEventListener('startCars', function() {
+			ajsounds.cars_intro.play();
 			setTimeout(function() {
 				animations.ledImpactStory.cars.animIn(savings);
-				setTimeout(function() {
-					ajsounds.cars_intro.play();
-				}, 2000);
-			}, 1000);
+			}, 3000);
 		}, {
 			passive: true
 		});

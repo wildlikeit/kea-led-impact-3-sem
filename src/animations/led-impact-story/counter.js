@@ -53,7 +53,7 @@ function initCars(savings) {
 			}, 0.1);
 		}
 		count();
-	}, 15000);
+	}, 13500);
 }
 
 function initTrash(savings) {
@@ -76,5 +76,5 @@ function initTrash(savings) {
 			}, 0.1);
 		}
 		count();
-	}, 7000);
+	}, 10000);
 }
