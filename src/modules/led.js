@@ -33,7 +33,7 @@ helpers.appendNewElement(ledTextContainer, 'a-text', {
 	'mixin': 'ledTextMixin',
 	'align': 'center',
 	'position': '0 0 0',
-	'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Light.json',
+	'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Bold.json',
 	'shader': 'msdf',
 	'value': 'CALCULATE YOUR',
 });
@@ -43,7 +43,7 @@ helpers.appendNewElement(ledTextContainer, 'a-text', {
 	'mixin': 'ledTextMixin',
 	'align': 'center',
 	'position': '0 -1.3 0',
-	'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Light.json',
+	'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Bold.json',
 	'shader': 'msdf',
 	'value': 'LED SAVINGS',
 });

@@ -26,15 +26,15 @@ function initTrees(savings) {
 						sceneElement.emit('startTrees', true);
 					}, 500);
 				}
-			}, 100 - (i * 0.9));
+			}, 0.1);
 		}
 		count();
-	}, 13000);
+	}, 11250);
 }
 
 function initCars(savings) {
-	document.querySelector('#ledImpactFigure').setAttribute('value', 0);
 	setTimeout(function() {
+		console.log('in loop');
 		let i = 0;
 		// let countTo = 1; // TESTING
 		let countTo = ((savings.yearlySavings * 1.222) / 8000).toFixed(0);
@@ -50,10 +50,10 @@ function initCars(savings) {
 						sceneElement.emit('startCars', true);
 					}, 500);
 				}
-			}, 100 - (i * 0.9));
+			}, 0.1);
 		}
 		count();
-	}, 13000);
+	}, 15000);
 }
 
 function initTrash(savings) {
@@ -73,7 +73,7 @@ function initTrash(savings) {
 						sceneElement.emit('startTrash', true);
 					}, 500);
 				}
-			}, 100 - (i * 0.9));
+			}, 0.1);
 		}
 		count();
 	}, 7000);

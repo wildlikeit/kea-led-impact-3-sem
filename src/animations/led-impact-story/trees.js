@@ -10,7 +10,6 @@ module.exports = {
 const sceneElement = document.querySelector('a-scene');
 const sky = document.querySelector('a-sky');
 const camera = document.querySelector('a-camera');
-
 const ajsounds = require('../../data/ajsounds');
 
 function animIn(savings) {
@@ -18,7 +17,6 @@ function animIn(savings) {
 	camera.setAttribute('position', '0 2 0');
 
 	sceneElement.removeChild(document.querySelector('#ledImpactText'));
-	sceneElement.setAttribute('rain', '');
 
 	setTimeout(function() {
 		let i = 0;
@@ -35,7 +33,6 @@ function animIn(savings) {
 		const trees = helpers.appendNewElement(sceneElement, 'a-entity', {
 			'id': 'trees',
 		});
-
 		// Create tree function
 		function createTree() {
 			// Makes sure trees spawn in a certain radius around the camera
@@ -43,6 +40,7 @@ function animIn(savings) {
 			let cMax = 350;
 			let ranX = Math.floor(Math.random() * (cMax - cMin)) + cMin;
 			let ranZ = Math.floor(Math.random() * (cMax - cMin)) + cMin;
+			let ranTime = Math.floor(Math.random() * (500 - 0)) + 0;
 
 
 			setTimeout(function() {
@@ -53,6 +51,7 @@ function animIn(savings) {
 						'position': ranX + ' -5 ' + ranZ,
 						'rotation': '0 ' + ranX + ' 0',
 					});
+					ajsounds.pop.play();
 
 					i++;
 
@@ -69,14 +68,12 @@ function animIn(savings) {
 						'delay': '4000',
 						'ease': 'ease-in-out',
 					});
-					sceneElement.removeAttribute('rain');
 					setTimeout(function() {
 						let countTo = acresToCreate;
 						let split = Math.floor(Math.sqrt(countTo));
 						let forestPos = -(split * 250) / 2;
 						let posZ = 0;
 						let posX = 0;
-
 						ajsounds.trees_above_1.play();
 						setTimeout(function() {
 							if (countTo > 10) {
@@ -135,7 +132,7 @@ function animIn(savings) {
 
 					}, 7500);
 				}
-			}, 350);
+			}, ranTime);
 		}
 		createTree();
 	}, 2000);
