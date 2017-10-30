@@ -34,7 +34,6 @@ function initTrees(savings) {
 
 function initCars(savings) {
 	setTimeout(function() {
-		console.log('in loop');
 		let i = 0;
 		// let countTo = 1; // TESTING
 		let countTo = ((savings.yearlySavings * 1.222) / 8000).toFixed(0);

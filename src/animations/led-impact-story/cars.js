@@ -10,6 +10,7 @@ module.exports = {
 
 const sceneElement = document.querySelector('a-scene');
 const sky = document.querySelector('a-sky');
+const ajsounds = require('../../data/ajsounds');
 
 let ledImpactFigure;
 
@@ -62,6 +63,7 @@ function init() {
 function animIn(savings) {
 	sceneElement.removeChild(ledImpactFigure);
 
+
 	const cars = helpers.appendNewElement(sceneElement, 'a-entity', {
 		'id': 'cars',
 	});
@@ -76,7 +78,7 @@ function animIn(savings) {
 	let points = 50;
 	let x0 = 0;
 	let z0 = 0;
-	let r = 70;
+	let r = 40;
 	for (let i = 0; i <= points; i++) {
 		let x = x0 + r * Math.cos(2 * Math.PI * i / -points);
 		let z = z0 + r * Math.sin(2 * Math.PI * i / -points);
@@ -103,9 +105,10 @@ function animIn(savings) {
 				setTimeout(function() {
 					sceneElement.removeChild(cars);
 					sceneElement.emit('carsEnd', true);
-				}, 10000);
+				}, 6000);
 			}
-		}, 10000 / (carsToCreate - 1));
+		}, 10000 / (carsToCreate + 1));
 	}
+	ajsounds.cars_noise.play();
 	createCar();
 }
