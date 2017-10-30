@@ -95,7 +95,6 @@ function init(savings) {
 		ledImpactText.removeChild(ledImpactText2);
 		ledImpactText.removeChild(ledImpactText3);
 		ledImpactText.removeChild(ledImpactText4);
-
 		helpers.appendNewElement(sky, 'a-animation', {
 			'attribute': 'color',
 			'from': '#000000',
@@ -146,7 +145,7 @@ function init(savings) {
 					'dur': '600',
 					'ease': 'ease-in-out',
 				});
-			}, 10500);
+			}, 9500);
 
 			sceneElement.emit('startLedImpactStory', true);
 
