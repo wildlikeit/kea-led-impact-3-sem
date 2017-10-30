@@ -45,12 +45,12 @@ const lampNextCtaWrapper = helpers
 helpers
 	.appendNewElement(lampNextCtaWrapper, 'a-text', {
 		'id': 'lampNextCta',
-		'position': '0 -1.1 0',
+		'position': '0.1 -0.8 0',
 		'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Bold.json',
 		'shader': 'msdf',
 		'value': '>',
 		'color': '#FFFFFF',
-		'scale': '8 8',
+		'scale': '6 6',
 		'align': 'center',
 	});
 
@@ -58,7 +58,7 @@ const lampNextEvent = helpers
 	.appendNewElement(lampNextCtaWrapper, 'a-circle', {
 		'id': 'lampNextEvent',
 		'position': '0.048 0.2 -0.045',
-		'radius': '1.7',
+		'radius': '1',
 		'color': '#ff6961',
 		'opacity': '0.9',
 	});
@@ -73,12 +73,12 @@ const lampPrevCtaWrapper = helpers
 helpers
 	.appendNewElement(lampPrevCtaWrapper, 'a-text', {
 		'id': 'lampPrevCta',
-		'position': '0 -1.1 0',
+		'position': '0 -0.8 0',
 		'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Bold.json',
 		'shader': 'msdf',
 		'value': '<',
 		'color': '#FFFFFF',
-		'scale': '8 8',
+		'scale': '6 6',
 		'align': 'center',
 	});
 
@@ -86,7 +86,7 @@ const lampPrevEvent = helpers
 	.appendNewElement(lampPrevCtaWrapper, 'a-circle', {
 		'id': 'lampPrevEvent',
 		'position': '0.081 0.2 -0.075',
-		'radius': '1.7',
+		'radius': '1',
 		'color': '#ff6961',
 		'opacity': '0.9',
 	});
@@ -159,7 +159,7 @@ function setupLampData(id) {
 
 	let lampNameText = helpers.appendNewElement(lampElement, 'a-text', {
 		'id': 'lamp-name',
-		'color': '#000000',
+		'color': '#0054a6',
 		'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/breeserif/BreeSerif-Regular.json',
 		'shader': 'msdf',
 		'align': 'center',

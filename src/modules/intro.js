@@ -22,7 +22,7 @@ function introduction() {
 		'position': '0 0 0',
 		'opacity': '0',
 		'scale': '8 8',
-		'color': '#000000',
+		'color': '#0054a6',
 		'align': 'center'
 	});
 
@@ -39,16 +39,16 @@ function introduction() {
 		'position': '0 -4 0',
 		'color': '#ff6961',
 		'opacity': '0',
-		'width': '5.6',
-		'height': '1.9',
+		'width': '9',
+		'height': '2',
 	});
 
 	const introStartPlaneEvent = helpers.appendNewElement(introTextContainer, 'a-plane', {
 		'id': 'introStartPlaneEvent',
 		'position': '0 -4 0.2',
 		'opacity': '0',
-		'width': '5.6',
-		'height': '1.9',
+		'width': '9',
+		'height': '2',
 	});
 
 	const introStartText = helpers.appendNewElement(introStartPlane, 'a-text', {
@@ -57,7 +57,7 @@ function introduction() {
 		'color': '#ffffff',
 		'font': 'https://raw.githubusercontent.com/etiennepinchon/aframe-fonts/master/fonts/opensans/OpenSans-Bold.json',
 		'shader': 'msdf',
-		'position': '0 -0.9 0.1',
+		'position': '0 -0.85 0.1',
 		'opacity': '0',
 		'scale': '5 5',
 		'align': 'center',

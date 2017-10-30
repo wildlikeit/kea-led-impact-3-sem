@@ -14,16 +14,49 @@ const sky = document.querySelector('a-sky');
 let ledImpactFigure;
 
 function init() {
-	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text', {
-		'id': 'ledImpactFigure',
-		'color': '#000000',
-		'position': '11.700 0 -24.485',
-		'align': 'center',
-		'baseline': 'bottom',
-		'scale': '55 55',
-		'rotation': '0 -34 0',
-		'value': '0',
-	});
+	setTimeout(function(){
+		ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text', {
+			'id': 'ledImpactFigure',
+			'color': '#19b77e',
+			'position': '13.700 -1 -22.485',
+			'align': 'center',
+			'baseline': 'bottom',
+			'scale': '55 55',
+			'rotation': '0 -34 0',
+			'value': '0',
+			'opacity': '0',
+		});
+		const cars = helpers.appendNewElement(sceneElement, 'a-text', {
+			'id': 'cars',
+			'mixin': 'ledImpactTextMixin',
+			'color': '#19b77e',
+			'position': '14.200 4 -21.985',
+			'align': 'center',
+			'value': 'cars',
+			'scale': '55 55 0',
+			'rotation': '0 -34 0',
+		});
+
+		setTimeout(function(){
+			helpers.appendNewElement(cars, 'a-animation', {
+				'attribute': 'opacity',
+				'from': '1',
+				'to': '0',
+				'dur': '500',
+				'ease': 'ease-in-out',
+			});
+			setTimeout(sceneElement.removeChild(cars), 500);
+
+			helpers.appendNewElement(ledImpactFigure, 'a-animation', {
+				'attribute': 'opacity',
+				'from': '0',
+				'to': '1',
+				'dur': '600',
+				'ease': 'ease-in-out',
+			});
+		}, 6500);
+	}, 6000);
+
 }
 
 function animIn(savings) {

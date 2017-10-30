@@ -1,5 +1,7 @@
 'use strict';
 
+/*global document*/
+
 module.exports = {
 	'intro_1': document.querySelector('#intro_1'),
 	'calculate_instruction': document.querySelector('#calculate_instruction'),
@@ -12,6 +14,8 @@ module.exports = {
 	'impact_intro': document.querySelector('#impact_intro'),
 	'trees_counter': document.querySelector('#trees_counter'),
 	'trees_intro': document.querySelector('#trees_intro'),
+	'pop': document.querySelector('#pop'),
+	'var birds': document.querySelector('#birds'),
 	'trees_above_intro': document.querySelector('#trees_above_intro'),
 	'trees_above_1': document.querySelector('#trees_above_1'),
 	'acres': [

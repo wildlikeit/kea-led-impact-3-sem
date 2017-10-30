@@ -2,6 +2,7 @@
 
 /*global document*/
 const helpers = require('../../helpers');
+const ajsounds = require('../../data/ajsounds');
 
 module.exports = {
 	init,
@@ -18,7 +19,7 @@ const numWalls = 4;
 function init() {
 	ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text', {
 		'id': 'ledImpactFigure',
-		'color': '#000000',
+		'color': '#19b77e',
 		'position': '11.700 0 -24.485',
 		'align': 'center',
 		'baseline': 'bottom',
@@ -31,7 +32,7 @@ function init() {
 		'width': '100',
 		'depth': '100',
 		'height': '50',
-		'position': '0 -50 0',
+		'position': '0 -25 0',
 		'static-body': '',
 		'color': 'black',
 		'opacity': '0',
@@ -61,90 +62,90 @@ function animIn(savings) {
 		let ranZ = Math.floor(Math.random() * (cMax - cMin)) + cMin;
 		let ranY = Math.floor(Math.random() * (360 - 0)) + 0;
 		let items = [{
-				'type': 'a-box',
-				'src': '#pizzaBox',
-				'depth': '1',
-				'height': '0.1',
-				'width': '1',
-				'rotation': '0 ' + ranY + ' 0',
-				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-				'dynamic-body': 'shape: box',
+			'type': 'a-box',
+			'src': '#pizzaBox',
+			'depth': '1',
+			'height': '0.1',
+			'width': '1',
+			'rotation': '0 ' + ranY + ' 0',
+			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+			'dynamic-body': 'shape: box',
 
-			},
-			{
-				'type': 'a-box',
-				'src': '#plasticBag',
-				'depth': '0.65',
-				'height': '0.01',
-				'width': '1',
-				'rotation': '0 ' + ranY + ' 0',
-				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-				'dynamic-body': 'shape: box',
-			},
-			{
-				'type': 'a-box',
-				'src': '#cereal',
-				'depth': '1',
-				'height': '0.2',
-				'width': '0.5',
-				'rotation': '0 ' + ranY + ' 0',
-				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-				'dynamic-body': 'shape: box',
-			},
-			{
-				'type': 'a-cylinder',
-				'src': '#can',
-				'height': '0.3',
+		},
+		{
+			'type': 'a-box',
+			'src': '#plasticBag',
+			'depth': '0.65',
+			'height': '0.01',
+			'width': '1',
+			'rotation': '0 ' + ranY + ' 0',
+			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+			'dynamic-body': 'shape: box',
+		},
+		{
+			'type': 'a-box',
+			'src': '#cereal',
+			'depth': '1',
+			'height': '0.2',
+			'width': '0.5',
+			'rotation': '0 ' + ranY + ' 0',
+			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+			'dynamic-body': 'shape: box',
+		},
+		{
+			'type': 'a-cylinder',
+			'src': '#can',
+			'height': '0.3',
+			'radius': '0.1',
+			'rotation': '0 ' + ranY + ' 0',
+			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+			'dynamic-body': 'shape: cylinder',
+			'child': {
+				'type': 'a-circle',
 				'radius': '0.1',
-				'rotation': '0 ' + ranY + ' 0',
-				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-				'dynamic-body': 'shape: cylinder',
-				'child': {
-					'type': 'a-circle',
-					'radius': '0.1',
-					'src': '#canTop',
-					'position': '-0.002 0.158 0.007',
-					'rotation': '-90 0 0',
-				},
+				'src': '#canTop',
+				'position': '-0.002 0.158 0.007',
+				'rotation': '-90 0 0',
 			},
-			{
-				'type': 'a-cylinder',
-				'src': '#plasticBottle',
-				'height': '0.4',
-				'radius': '0.1',
-				'rotation': '-90 ' + ranY + ' 45',
-				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-				'dynamic-body': 'shape: cylinder',
-			},
-			{
-				'type': 'a-box',
-				'src': '#crisps',
-				'depth': '0.05',
-				'height': '0.75',
-				'width': '0.45',
-				'rotation': '0 ' + ranY + ' 0',
-				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-				'dynamic-body': 'shape: box',
-			},
-			{
-				'type': 'a-cylinder',
-				'src': '#tubeChips',
-				'height': '0.7',
-				'radius': '0.14',
-				'rotation': '-90 ' + ranY + ' 0',
-				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-				'dynamic-body': 'shape: cylinder',
-			},
-			{
-				'type': 'a-box',
-				'src': '#cookies',
-				'depth': '0.3',
-				'height': '0.075',
-				'width': '0.45',
-				'rotation': '0 ' + ranY + ' 0',
-				'position': ranX + ' ' + rainHeight + ' ' + ranZ,
-				'dynamic-body': 'shape: box',
-			}
+		},
+		{
+			'type': 'a-cylinder',
+			'src': '#plasticBottle',
+			'height': '0.4',
+			'radius': '0.1',
+			'rotation': '-90 ' + ranY + ' 45',
+			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+			'dynamic-body': 'shape: cylinder',
+		},
+		{
+			'type': 'a-box',
+			'src': '#crisps',
+			'depth': '0.05',
+			'height': '0.75',
+			'width': '0.45',
+			'rotation': '0 ' + ranY + ' 0',
+			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+			'dynamic-body': 'shape: box',
+		},
+		{
+			'type': 'a-cylinder',
+			'src': '#tubeChips',
+			'height': '0.7',
+			'radius': '0.14',
+			'rotation': '-90 ' + ranY + ' 0',
+			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+			'dynamic-body': 'shape: cylinder',
+		},
+		{
+			'type': 'a-box',
+			'src': '#cookies',
+			'depth': '0.3',
+			'height': '0.075',
+			'width': '0.45',
+			'rotation': '0 ' + ranY + ' 0',
+			'position': ranX + ' ' + rainHeight + ' ' + ranZ,
+			'dynamic-body': 'shape: box',
+		}
 		];
 
 		let ranItem = Math.floor(Math.random() * items.length);
@@ -172,10 +173,22 @@ function animIn(savings) {
 				createTrash();
 			} else {
 				setTimeout(function() {
-					sceneElement.removeChild(trash);
-					sceneElement.removeChild(floor);
-					sceneElement.emit('trashEnd', true);
-				}, 6000);
+					ajsounds.outro.play();
+					setTimeout(function() {
+						sceneElement.removeChild(trash);
+						sceneElement.removeChild(floor);
+						ajsounds.payoff.play();
+						setTimeout(function() {
+							helpers.appendNewElement(sky, 'a-animation', {
+								'attribute': 'color',
+								'from': '#FFFFFF',
+								'to': '#000000',
+								'dur': '500',
+								'ease': 'ease-out',
+							});
+						}, 2500);
+					}, 10500);
+				}, 12000);
 			}
 		}, 100);
 	}

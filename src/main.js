@@ -53,7 +53,7 @@ function startScene() {
 			'attribute': 'radius',
 			'from': '5',
 			'to': '5.2',
-			'dur': '1000',
+			'dur': '750',
 			'repeat': 'indefinite',
 			'direction': 'alternate',
 			'ease': 'ease-in-out',
@@ -337,19 +337,7 @@ function startScene() {
 
 	sceneElement
 		.addEventListener('trashEnd', function() {
-			ajsounds.outro.play();
-			setTimeout(function() {
-				ajsounds.payoff.play();
-				setTimeout(function() {
-					helpers.appendNewElement(sky, 'a-animation', {
-						'attribute': 'color',
-						'from': '#FFFFFF',
-						'to': '#000000',
-						'dur': '500',
-						'ease': 'ease-out',
-					}, 2500);
-				}, );
-			}, 10500);
+
 		}, {
 			passive: true
 		});

@@ -25,7 +25,7 @@ let ledPlaneScaleAnim = helpers.createElement('a-animation', {
 	'attribute': 'radius',
 	'from': '5',
 	'to': '5.2',
-	'dur': '1000',
+	'dur': '750',
 	'repeat': 'indefinite',
 	'direction': 'alternate',
 	'ease': 'ease-in-out',
@@ -59,7 +59,7 @@ function show() {
 
 	ledEnterPlaneRotateAnim = helpers.createElement('a-animation', {
 		'attribute': 'rotation',
-		'from': '0 -15 0',
+		'from': '0 -55 0',
 		'to': '0 -43 0',
 		'dur': '500',
 		'ease': 'ease-out',
@@ -113,7 +113,7 @@ function hide() {
 		ledLeavePlaneRotateAnim = helpers.createElement('a-animation', {
 			'attribute': 'rotation',
 			'from': '0 -43 0',
-			'to': '0 -15 0',
+			'to': '0 -55 0',
 			'dur': '500',
 			'ease': 'ease-out',
 		});
