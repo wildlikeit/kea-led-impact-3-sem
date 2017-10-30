@@ -51,7 +51,7 @@ function animIn(savings) {
 						'position': ranX + ' -5 ' + ranZ,
 						'rotation': '0 ' + ranX + ' 0',
 					});
-					ajsounds.pop.play();
+					helpers.playSound(ajsounds.pop);
 
 					i++;
 
@@ -59,7 +59,7 @@ function animIn(savings) {
 				if (i <= treesToCreate) {
 					createTree();
 				} else {
-					ajsounds.trees_above_intro.play();
+					helpers.playSound(ajsounds.trees_above_intro);
 					const cameraUpAnim = helpers.appendNewElement(camera, 'a-animation', {
 						'attribute': 'position',
 						'from': '0 2 0',
@@ -74,19 +74,19 @@ function animIn(savings) {
 						let forestPos = -(split * 250) / 2;
 						let posZ = 0;
 						let posX = 0;
-						ajsounds.trees_above_1.play();
+						helpers.playSound(ajsounds.trees_above_1);
 						setTimeout(function() {
 							if (countTo > 10) {
-								ajsounds.acres[9].play();
+								helpers.playSound(ajsounds.acres[9]);
 							} else if (countTo <= 1) {
-								ajsounds.acres[0].play();
+								helpers.playSound(ajsounds.acres[0]);
 							} else {
-								ajsounds.acres[countTo - 1].play();
+								helpers.playSound(ajsounds.acres[countTo - 1]);
 							}
 						}, 1500);
 
 						setTimeout(function() {
-							ajsounds.trees_end.play();
+							helpers.playSound(ajsounds.trees_end);
 						}, 5000);
 
 						sceneElement.removeChild(trees);
