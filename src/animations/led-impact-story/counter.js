@@ -26,7 +26,7 @@ function initTrees(savings) {
 						sceneElement.emit('startTrees', true);
 					}, 500);
 				}
-			}, 0.1);
+			}, 0.001);
 		}
 		count();
 	}, 11250);
@@ -50,7 +50,7 @@ function initCars(savings) {
 						sceneElement.emit('startCars', true);
 					}, 500);
 				}
-			}, 0.1);
+			}, 250);
 		}
 		count();
 	}, 13500);
@@ -73,8 +73,8 @@ function initTrash(savings) {
 						sceneElement.emit('startTrash', true);
 					}, 500);
 				}
-			}, 0.1);
+			}, 0.0000001);
 		}
 		count();
-	}, 10000);
+	}, 6750);
 }

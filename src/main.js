@@ -279,13 +279,9 @@ function startScene() {
 
 	sceneElement
 		.addEventListener('treesEnd', function() {
-			setTimeout(function() {
-				helpers.playSound(ajsounds.cars_counter);
-				animations.ledImpactStory.cars.init();
-				animations.ledImpactStory.counter.initCars(savings);
-			}, 1000);
-		}, {
-			passive: true
+			helpers.playSound(ajsounds.cars_counter);
+			animations.ledImpactStory.cars.init();
+			animations.ledImpactStory.counter.initCars(savings);
 		});
 
 
@@ -306,7 +302,8 @@ function startScene() {
 				helpers.playSound(ajsounds.trash_counter);
 				animations.ledImpactStory.trash.init();
 				animations.ledImpactStory.counter.initTrash(savings);
-			}, 7000);
+
+			}, 6350);
 		}, {
 			passive: true
 		});
@@ -323,13 +320,6 @@ function startScene() {
 					}, 3000);
 				}, 3000);
 			}, 3000);
-		}, {
-			passive: true
-		});
-
-	sceneElement
-		.addEventListener('trashEnd', function() {
-
 		}, {
 			passive: true
 		});

@@ -17,7 +17,6 @@ let walls;
 const numWalls = 4;
 
 function init() {
-	setTimeout(function(){
 		ledImpactFigure = helpers.appendNewElement(sceneElement, 'a-text', {
 			'id': 'ledImpactFigure',
 			'color': '#19b77e',
@@ -58,7 +57,6 @@ function init() {
 				'ease': 'ease-in-out',
 			});
 		}, 5000);
-	}, 1000);
 
 	floor = helpers.appendNewElement(sceneElement, 'a-box', {
 		'id': 'floor',
@@ -212,13 +210,25 @@ function animIn(savings) {
 						sceneElement.removeChild(floor);
 						helpers.playSound(ajsounds.payoff);
 						setTimeout(function() {
-							helpers.appendNewElement(sky, 'a-animation', {
-								'attribute': 'color',
-								'from': '#FFFFFF',
-								'to': '#000000',
-								'dur': '500',
-								'ease': 'ease-out',
+							const endText = helpers.appendNewElement(sceneElement, 'a-text',{
+								'id': 'endText',
+								'mixin': 'ledImpactTextMixin',
+								'color': '#19b77e',
+								'position': '12.700 6 -23.485',
+								'align': 'center',
+								'value': '#together',
+								'scale': '55 55 0',
+								'rotation': '0 -38 0',
 							});
+							setTimeout(function(){
+								helpers.appendNewElement(endText, 'a-animation', {
+									'attribute': 'opacity',
+									'from': '1',
+									'to': '0',
+									'dur': '500',
+									'ease': 'ease-out',
+								});
+							}, 3000);
 						}, 2500);
 					}, 10500);
 				}, 12000);

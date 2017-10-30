@@ -96,7 +96,7 @@ function init(savings) {
 			'attribute': 'color',
 			'from': '#000000',
 			'to': '#FFFFFF',
-			'dur': '1000',
+			'dur': '2300',
 			'ease': 'ease-out',
 		});
 
