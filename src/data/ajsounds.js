@@ -14,7 +14,7 @@ module.exports = {
 	'impact_intro': './audio/impact_intro.mp3',
 	'trees_counter': './audio/trees_counter.mp3',
 	'pop': document.querySelector('#pop'),
-	'var birds': document.querySelector('#birds'),
+	'birds': document.querySelector('#birds'),
 	'trees_intro': './audio/trees_intro.mp3',
 	'trees_above_intro': './audio/trees_above_intro.mp3',
 	'trees_above_1': './audio/trees_above_1.mp3',

@@ -317,8 +317,8 @@ function startScene() {
 					helpers.playSound(ajsounds.trash_lookup);
 					setTimeout(function() {
 						helpers.playSound(ajsounds.trash_end);
-					}, 3000);
-				}, 3000);
+					}, 4500);
+				}, 1750);
 			}, 3000);
 		}, {
 			passive: true

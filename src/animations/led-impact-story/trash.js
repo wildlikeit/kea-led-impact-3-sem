@@ -216,7 +216,7 @@ function animIn(savings) {
 								'id': 'endText',
 								'mixin': 'ledImpactTextMixin',
 								'color': '#19b77e',
-								'position': '0 0 0',
+								'position': '11.700 2 -24.485',
 								'align': 'center',
 								'value': '#together',
 								'scale': '30 30 0',
@@ -230,16 +230,6 @@ function animIn(savings) {
 									'dur': '500',
 									'ease': 'ease-out',
 								});
-								setTimeout(function(){
-									intro.introduction();
-									helpers.appendNewElement(camera, 'a-entity', {
-										'cursor': 'fuse: true; fuseTimeout: 0000001',
-										'id': 'cursor',
-										'position': '0 0 -1',
-										'geometry': 'primitive: ring; radiusInner: 0.015; radiusOuter: 0.03',
-										'material': 'color: #ff6961; shader: flat',
-									});
-								}, 500);
 							}, 5000);
 						}, 500);
 					}, 10500);

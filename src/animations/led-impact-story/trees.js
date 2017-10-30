@@ -19,6 +19,10 @@ function animIn(savings) {
 	sceneElement.removeChild(document.querySelector('#ledImpactText'));
 
 	setTimeout(function() {
+
+		ajsounds.birds.volume = 0.5;
+		ajsounds.birds.loop = true;
+		ajsounds.birds.play();
 		let i = 0;
 		let treesToCreate = ((savings.yearlySavings * 1.222) / 48);
 		// calculates amount of acres from trees, in case treesToCreate get overwritten below
@@ -51,6 +55,7 @@ function animIn(savings) {
 						'position': ranX + ' -5 ' + ranZ,
 						'rotation': '0 ' + ranX + ' 0',
 					});
+					ajsounds.pop.volume = 0.2;
 					ajsounds.pop.play();
 
 					i++;
@@ -123,6 +128,7 @@ function animIn(savings) {
 								});
 							}
 							setTimeout(function() {
+								ajsounds.birds.pause();
 								sceneElement.removeChild(forests);
 								camera.setAttribute('position', '0 2 0');
 								sceneElement.emit('treesEnd', true);
