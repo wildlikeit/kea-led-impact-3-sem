@@ -3,6 +3,8 @@
 /*global document*/
 const helpers = require('../../helpers');
 const ajsounds = require('../../data/ajsounds');
+const intro  = require('../../modules/intro');
+const camera = document.querySelector('a-camera');
 
 module.exports = {
 	init,
@@ -214,10 +216,10 @@ function animIn(savings) {
 								'id': 'endText',
 								'mixin': 'ledImpactTextMixin',
 								'color': '#19b77e',
-								'position': '12.700 6 -23.485',
+								'position': '0 0 0',
 								'align': 'center',
 								'value': '#together',
-								'scale': '55 55 0',
+								'scale': '30 30 0',
 								'rotation': '0 -38 0',
 							});
 							setTimeout(function(){
@@ -228,8 +230,18 @@ function animIn(savings) {
 									'dur': '500',
 									'ease': 'ease-out',
 								});
-							}, 3000);
-						}, 2500);
+								setTimeout(function(){
+									intro.introduction();
+									helpers.appendNewElement(camera, 'a-entity', {
+										'cursor': 'fuse: true; fuseTimeout: 0000001',
+										'id': 'cursor',
+										'position': '0 0 -1',
+										'geometry': 'primitive: ring; radiusInner: 0.015; radiusOuter: 0.03',
+										'material': 'color: #ff6961; shader: flat',
+									});
+								}, 500);
+							}, 5000);
+						}, 500);
 					}, 10500);
 				}, 12000);
 			}
