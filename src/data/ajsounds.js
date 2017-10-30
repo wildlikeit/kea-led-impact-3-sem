@@ -35,7 +35,7 @@ module.exports = {
 
 	'cars_counter': './audio/cars_counter.mp3',
 	'cars_intro': './audio/cars_intro.mp3',
-	'cars_noise': './audio/trafficJam.mp3',
+	'cars_noise': document.querySelector('#cars_noise'),
 	'cars_end': './audio/cars_end.mp3',
 
 	'trash_counter': './audio/trash_counter.mp3',
